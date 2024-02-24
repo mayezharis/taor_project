@@ -1,0 +1,109 @@
+FAC = Fundamentals of Algebra and Calculus = MATH07003
+IMA = Introductory Mathematics with Applications = MATH07004
+SY2 = Statistics (Year 2) = MATH08051
+ILA = Introduction to Linear Algebra = MATH08057
+CAP = Calculus and its Applications = MATH08058
+PPS = Proofs and Problem Solving = MATH08059
+AAC = Accelerated Algebra and Calculus for Direct Entry = MATH08062
+SVCDE = Several Variable Calculus and Differential Equations = MATH08063
+FPM = Fundamentals of Pure Mathematics = MATH08064
+CNu = Computing and Numerics = MATH08065
+probability = Probability = MATH08066
+FoM = Facets of Mathematics = MATH08068
+APPS = Accelerated Proofs and Problem Solving = MATH08071
+MNS1a = Mathematics for the Natural Sciences 1a = MATH08072
+MNS1b = Mathematics for the Natural Sciences 1b = MATH08073
+EM1a = Engineering Mathematics 1a = MATH08074
+EM1b = Engineering Mathematics 1b = MATH08075
+IDS = Introduction to Data Science = MATH08077
+FM = Financial Mathematics = MATH10003
+SM1 = Stochastic Modelling = MATH10007
+ME = Mathematical Education = MATH10010
+MB = Mathematical Biology = MATH10013
+FunAn = Functional Analysis = MATH11135
+CA = Commutative Algebra = MATH10017
+PMF = Probability, Measure & Finance = MATH10024
+TSI = Theory of Statistical Inference = MATH10028
+EAP = Essentials in Analysis and Probability = MATH10047
+FourAn = Fourier Analysis = MATH10051
+ASDE = Applied Stochastic Differential Equations = MATH10053
+NODE = Numerical Ordinary Differential Equations and Applications = MATH10060
+MDA = Multivariate Data Analysis = MATH10064
+FOR = Fundamentals of Operational Research = MATH10065
+HDE = Honours Differential Equations = MATH10066
+HCV = Honours Complex Variables = MATH10067
+HAn = Honours Analysis = MATH10068
+HAlg = Honours Algebra = MATH10069
+INT = Introduction to Number Theory = MATH10071
+CGT = Combinatorics and Graph Theory = MATH10072
+LPMS = Linear Programming, Modelling and Solution = MATH10073
+geometry = Geometry = MATH10074
+GenTop = General Topology = MATH10076
+AlgTop = Algebraic Topology = MATH10077
+GrTh = Group Theory = MATH10079
+GalTh = Galois Theory = MATH10080
+LinAn = Linear Analysis = MATH10082
+TMB = Topics in Mathematical Biology = MATH10083
+AMAM = Advanced Methods of Applied Mathematics = MATH10086
+SC = Statistical Computing = MATH10093
+SM = Statistical Methodology = MATH10095
+NLA = Numerical Linear Algebra = MATH10098
+EMS = Entrepreneurship in the Mathematical Sciences = MATH10099
+IPDE = Introduction to Partial Differential Equations = MATH10100
+MS = Metric Spaces = MATH10101
+SCS = Statistical Case Studies = MATH10102
+MMCS = Methodology, Modelling and Consulting Skills = MATH11007
+simulation = Simulation = MATH11028
+SM2 = Stochastic Modelling = MATH11029
+ILG = Introduction to Lie Groups = MATH11053
+FRU = Finance, Risk and Uncertainty = MATH11088
+FOO = Fundamentals of Optimization = MATH11111
+AG = Algebraic Geometry = MATH11120
+TS = Time Series = MATH11131
+FRT = Financial Risk Theory = MATH11132
+GGR = Geometry of General Relativity = MATH11138
+ADS = Applied Dynamical Systems = MATH11140
+TRRT = Topics in Ring and Representation Theory = MATH11144
+MMGT = Modern Methods in Geometry and Topology = MATH11142
+IAGT = Interactions in Algebra, Geometry, and Topology = MATH11145
+LSODS = Large Scale Optimization for Data Science = MATH11147
+CS = Credit Scoring = MATH11148
+SCDAA = Stochastic Control and Dynamic Asset Allocation = MATH11150
+DTF = Discrete-Time Finance = MATH11153
+SAF = Stochastic Analysis in Finance = MATH11154
+RNAP = Risk-Neutral Asset Pricing = MATH11157
+OMF = Optimization Methods in Finance = MATH11158
+BDS = Biomedical Data Science = MATH11174
+BDA = Bayesian Data Analysis = MATH11175
+SP = Statistical Programming = MATH11176
+BT = Bayesian Theory = MATH11177
+QI = Quantum Information = MATH11169
+VC = Variational Calculus = MATH11179
+MAA = Mathematics in Action A = MATH11180
+MAB = Mathematics in Action B = MATH11181
+TAOR = Topics in Applied Operational Research = MATH11183
+IDA = Incomplete Data Analysis = MATH11185
+GRM = Generalised Regression Models = MATH11187
+SRS = Statistical Research Skills = MATH11188
+RL = Risk and Logistics = MATH11190
+ICO = Integer and Combinatorial Optimization = MATH11192
+OREI = Operational Research in the Energy Industry = MATH11193
+RSCAM = Research Skills for Computational Applied Mathematics = MATH11197
+PP = Python Programming = MATH11199
+NPMC = Numerical Probability and Monte Carlo = MATH11202
+IPS = Introductory Probability and Statistics = MATH11203
+PS = Probability and Statistics = MATH11204
+MLP = Machine Learning in Python = MATH11205
+DA = Data Assimilation = MATH11206
+NPDE = Numerical Partial Differential Equations = MATH11207
+ANT = Analytic Number Theory = MATH11226
+TMPA = Topics in Mathematical Physics A = MATH11227
+TMPB = Topics in Mathematical Physics B = MATH11229
+RSFM = Research Skills for Financial Mathematics = MATH11228
+biostatistics = Biostatistics = MATH11230
+IM = Industrial Mathematics = MATH11231
+FCV = Further Complex Variables = MATH11233
+DG = Differential Geometry = MATH11235
+AST = Axiomatic Set Theory = MATH11236
+TCL = Targeted Causal Learning = MATH11238
+NMD = Numerical Methods for Data = MATH11240

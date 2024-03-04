@@ -1,0 +1,10 @@
+Lecture = lec
+Workshop = ws
+Computer Workshop = cws
+Lecture - Online Live = lec_olive
+Examples Class = examples
+Q&A Session = qna
+Self Study = self
+Lecture - Online Pre-recorded = lec_opre
+Oral Presentation = oral
+Workshop - Online Live = ws_olive

@@ -1,0 +1,84 @@
+degree_programme_names: [ "ambsc" "ammmath" "cammsc" "cmfft" "cmfpt" "fmoft" "fmopt" "mbsc" "mma" "mmmath" "mnbi" "mnbu" "mnmu" "mnph" "mnst" "orco" "ords" "ormsc" "orwr" "stds" "storft" "storpt" ]
+
+course codes: [ "MATH08062" "MATH08071" "MATH10068" "MATH10086" "MATH11120" "MATH10077" "MATH11226" "MATH11140" "MATH10053" "MATH11236" "MATH11175" "MATH11177" "MATH11174" "MATH11230" "MATH08058" "MATH10072" "MATH10017" "MATH08065" "MATH11148" "MATH11206" "MATH11235" "MATH11153" "MATH08074" "MATH08075" "MATH10099" "MATH10047" "MATH08068" "MATH11088" "MATH10003" "MATH11132" "MATH10051" "MATH07003" "MATH10065" "MATH11111" "MATH08064" "MATH11233" "MATH10080" "MATH10076" "MATH11187" "MATH10074" "MATH11138" "MATH10079" "MATH10069" "MATH10067" "MATH10066" "MATH11185" "MATH11231" "MATH11192" "MATH11145" "MATH08077" "MATH11053" "MATH08057" "MATH10071" "MATH10100" "MATH07004" "MATH11147" "MATH10082" "MATH10073" "MATH11205" "MATH10013" "MATH10010" "MATH08072" "MATH08073" "MATH11181" "MATH11007" "MATH10101" "MATH10064" "MATH10098" "MATH11240" "MATH10060" "MATH11207" "MATH11202" "MATH11193" "MATH11158" "MATH08066" "MATH10024" "MATH08059" "MATH11199" "MATH11197" "MATH11228" "MATH11190" "MATH11157" "MATH08063" "MATH11028" "MATH10102" "MATH10093" "MATH10095" "MATH11176" "MATH11188" "MATH08051" "MATH11154" "MATH11150" "MATH11029" "MATH10007" "MATH11238" "MATH10028" "MATH11131" "MATH11183" "MATH10083" "MATH11227" "MATH11144" "MATH11179" ]
+
+course_names: [ "AAC" "APPS" "HAn" "AMAM" "AG" "AlgTop" "ANT" "ADS" "ASDE" "AST" "BDA" "BT" "BDS" "biostatistics" "CAP" "CGT" "CA" "CNu" "CS" "DA" "DG" "DTF" "EM1a" "EM1b" "EMS" "EAP" "FoM" "FRU" "FM" "FRT" "FourAn" "FAC" "FOR" "FOO" "FPM" "FCV" "GalTh" "GenTop" "GRM" "geometry" "GGR" "GrTh" "HAlg" "HCV" "HDE" "IDA" "IM" "ICO" "IAGT" "IDS" "ILG" "ILA" "INT" "IPDE" "IMA" "LSODS" "LinAn" "LPMS" "MLP" "MB" "ME" "MNS1a" "MNS1b" "MAB" "MMCS" "MS" "MDA" "NLA" "NMD" "NODE" "NPDE" "NPMC" "OREI" "OMF" "probability" "PMF" "PPS" "PP" "RSCAM" "RSFM" "RL" "RNAP" "SVCDE" "simulation" "SCS" "SC" "SM" "SP" "SRS" "SY2" "SAF" "SCDAA" "SM2" "SM1" "TCL" "TSI" "TS" "TAOR" "TMB" "TMPA" "TRRT" "VC" ]
+
+
+
+algebra_courses: [ "MATH10017" "MATH10069" "MATH10071" "MATH10072" "MATH10077" "MATH10079" "MATH10080" "MATH11053" "MATH11120" ]
+
+analysis_courses: [ "MATH11135" "MATH10047" "MATH10051" "MATH10067" "MATH10068" "MATH10082" "MATH10100" "MATH10101" ]
+
+app_comp_courses: [ "MATH08063" "MATH08065" "MATH10013" "MATH10053" "MATH10060" "MATH10066" "MATH10083" "MATH10086" "MATH10098" "MATH10099" "MATH11140" "MATH11180" "MATH11197" "MATH11199" "MATH11205" "MATH11207" "MATH11231" "MATH11240" ]
+
+data_science_courses: [ "MATH08051" "MATH08064" "MATH08077" "MATH10064" "MATH10065" "MATH10093" "MATH10095" "MATH10098" "MATH10102" "MATH11111" "MATH11131" "MATH11147" "MATH11175" "MATH11176" "MATH11177" "MATH11185" "MATH11187" "MATH11188" "MATH11193" "MATH11199" "MATH11205" "MATH11238" ]
+
+financial_courses: [ "MATH10003" "MATH10024" "MATH11028" "MATH11088" "MATH11132" "MATH11148" "MATH11150" "MATH11153" "MATH11154" "MATH11157" "MATH11158" "MATH11202" "MATH11228" ]
+
+geom_top_courses: [ "MATH10074" "MATH10076" "MATH10077" "MATH11053" "MATH11120" "MATH11138" "MATH11142" "MATH11235" ]
+
+mat_phys_courses: [ "MATH11138" "MATH11169" "MATH11227" "MATH11229" ]
+
+opt_or_courses: [ "MATH08064" "MATH10065" "MATH10073" "MATH10098" "MATH11007" "MATH11029" "MATH11111" "MATH11147" "MATH11158" "MATH11183" "MATH11190" "MATH11192" "MATH11193" ]
+
+probability_courses: [ "MATH08066" "MATH10007" "MATH10024" "MATH10047" "MATH11029" "MATH11088" "MATH11132" "MATH11150" "MATH11154" "MATH11202" "MATH11203" "MATH11204" ]
+
+statistics_courses: [ "MATH08051" "MATH08066" "MATH08077" "MATH10007" "MATH10028" "MATH10064" "MATH10093" "MATH10095" "MATH10102" "MATH11029" "MATH11131" "MATH11148" "MATH11175" "MATH11176" "MATH11177" "MATH11185" "MATH11187" "MATH11188" "MATH11203" "MATH11204" "MATH11205" "MATH11230" "MATH11238" ]
+
+comp_ambsc: [ "MATH08051" "MATH08057" "MATH08058" "MATH08059" "MATH08063" "MATH08064" "MATH08065" "MATH08066" "MATH08077" "MATH10060" "MATH10066" "MATH10067" "MATH10068" "MATH10098" ]
+
+comp_ammmath: [ "MATH08051" "MATH08057" "MATH08058" "MATH08059" "MATH08063" "MATH08064" "MATH08065" "MATH08066" "MATH08077" "MATH10060" "MATH10066" "MATH10067" "MATH10068" "MATH10069" "MATH10098" "MATH11181" "MATH11207" ]
+
+comp_cammsc: [ "MATH10098" "MATH11140" "MATH11197" "MATH11199" "MATH11207" ]
+
+comp_cmfft: [ "MATH11150" "MATH11153" "MATH11154" "MATH11157" "MATH11199" "MATH11202" "MATH11228" ]
+
+comp_cmfpt: [ "MATH11150" "MATH11153" "MATH11154" "MATH11157" "MATH11199" "MATH11202" "MATH11228" ]
+
+comp_fmoft: [ "MATH11111" "MATH11153" "MATH11154" "MATH11157" "MATH11158" "MATH11202" "MATH11228" ]
+
+comp_fmopt: [ "MATH11111" "MATH11153" "MATH11154" "MATH11157" "MATH11158" "MATH11202" "MATH11228" ]
+
+comp_mbsc: [ "MATH08051" "MATH08057" "MATH08058" "MATH08059" "MATH08063" "MATH08064" "MATH08065" "MATH08066" "MATH08068" "MATH08077" "MATH10066" "MATH10067" "MATH10068" "MATH10069" ]
+
+comp_mma: [ "MATH08051" "MATH08057" "MATH08058" "MATH08059" "MATH08063" "MATH08064" "MATH08065" "MATH08066" "MATH08077" "MATH10066" "MATH10067" "MATH10068" "MATH10069" ]
+
+comp_mmmath: [ "MATH08051" "MATH08057" "MATH08058" "MATH08059" "MATH08063" "MATH08064" "MATH08065" "MATH08066" "MATH10066" "MATH10067" "MATH10068" "MATH10069" ]
+
+comp_mnbi: [ "MATH10007" "MATH10013" "MATH10060" "MATH10066" "MATH10066" "MATH10067" "MATH10083" "MATH10095" ]
+
+comp_mnbu: [ "MATH08051" "MATH08057" "MATH08058" "MATH08059" "MATH08063" "MATH08064" "MATH08065" "MATH08066" "MATH08068" "MATH10067" ]
+
+comp_mnmu: [ "MATH08057" "MATH08058" "MATH08059" "MATH08063" "MATH08064" ]
+
+comp_mnph: [ "MATH08057" "MATH08058" "MATH08059" "MATH08064" "MATH08066" "MATH08077" "MATH10066" "MATH10067" ]
+
+comp_mnst: [ "MATH08051" "MATH08057" "MATH08058" "MATH08059" "MATH08063" "MATH08064" "MATH08065" "MATH08066" "MATH08068" "MATH08077" "MATH10093" "MATH10095" ]
+
+comp_orco: [ "MATH10065" "MATH11007" "MATH11028" "MATH11029" "MATH11111" ]
+
+comp_ords: [ "MATH10065" "MATH11007" "MATH11111" ]
+
+comp_ormsc: [ "MATH10065" "MATH11007" "MATH11028" "MATH11029" "MATH11111" ]
+
+comp_orwr: [ "MATH10065" "MATH11007" "MATH11028" "MATH11029" "MATH11111" ]
+
+comp_stds: [ "MATH11175" "MATH11177" "MATH11185" "MATH11187" "MATH11188" ]
+
+comp_storft: [ "MATH10065" "MATH11007" "MATH11028" "MATH11111" "MATH11176" "MATH11177" "MATH11187" "MATH11188" ]
+
+comp_storpt: [ "MATH10065" "MATH11007" "MATH11028" "MATH11111" "MATH11176" "MATH11177" "MATH11187" "MATH11188" ]
+
+
+
+all_rooms: [ "ALR_Classroom 10" "ASH_Honours Room 1" "ASH_Honours Room 2" "ASH_Lecture Theatre 1" "ASH_Lecture Theatre 3" "DRB_G.27 Lecture Theatre 1" "ESB_Lecture Theatre No. 1" "GRA_Lecture Theatre 201" "GRA_Room 304B" "HBB_Classroom 4" "HBB_Lecture Theatre 2" "JBB_G.69" "JBB_Theatre 100" "JBB_Theatre 250" "JBB_Theatre 40" "JCMB_1206c - Teaching Studio" "JCMB_1501" "JCMB_2901" "JCMB_3211 - Teaching Studio" "JCMB_3212 - Teaching Studio" "JCMB_3217 - Teaching Studio" "JCMB_4312" "JCMB_4325A" "JCMB_4325B" "JCMB_4325C - Teaching Studio" "JCMB_5326" "JCMB_5327" "JCMB_5328" "JCMB_6201" "JCMB_6206" "JCMB_6301" "JCMB_Lecture Theatre A" "JCMB_Lecture Theatre B" "JCMB_Lecture Theatre C" "MH_1.19" "MH_G.04" "MH_G.05" "MH_G.07 - Teaching Studio" "MH_G.09 - Teaching Studio" "MH_G.10" "MH_G.12" "MH_G.13" "MH_G.30" "MH_G.31" "MH_G.32" "MH_G.33" "MH_G.34" "MH_Lecture Theatre G.26" "NUC_1.14 - Oak Lecture Theatre" "NUC_1.15 - Larch Lecture Theatre" "NUC_2.03 - Hawthorn Teaching Studio" "NUC_2.06 - Rowan" "NUC_2.07 - Yew Lecture Theatre" "NUC_B.01 - Alder Lecture Theatre" "NUC_G.02 - Elm Lecture Theatre" "SB_7.15" "SB_7.20" "SB_Main Lecture Theatre" "JCMB_5205" "JCMB_1512" "JCMB_3210" "MH_1.20 - Open Access/Teaching Computer Lab" "MH_LG.12 - Open Access Computer Lab" "MH_LG.01 - Open Access Computer Lab" "GALT_ Gordon Aikman Lecture Theatre" "AT_M2 - Teaching Studio" "AT_2.05" "AT_2.07" "AT_2.11" "AT_2.12" "AT_Lecture Theatre 2" "AT_Lecture Theatre 3" "AT_Lecture Theatre 5" "40GS_LG.07 - Teaching Studio" "40GS_Lecture Theatre B" "40GS_Lecture Theatre C" "40GS_13.07" "40GS_LG.09" "40GS_LG.11" "CMB_Seminar Room 5" "CMB_Seminar Room 6" "OC_Usha Kasera Lecture Theatre" "LLTC_2.14 - Teaching Studio" "ROB_Hugh Robson Building Computer Lab - 129 cap" ]
+
+all_room_types: [ "classroom" "classroom" "classroom" "theatre" "theatre" "theatre" "theatre" "theatre" "classroom" "classroom" "theatre" "classroom" "theatre" "theatre" "classroom" "classroom" "classroom" "boardroom" "classroom" "classroom" "classroom" "classroom" "classroom" "classroom" "classroom" "classroom" "classroom" "classroom" "theatre" "theatre" "classroom" "theatre" "theatre" "theatre" "classroom" "boardroom" "classroom" "classroom" "classroom" "classroom" "classroom" "classroom" "classroom" "classroom" "classroom" "classroom" "classroom" "theatre" "theatre" "theatre" "classroom" "classroom" "theatre" "theatre" "theatre" "classroom" "classroom" "theatre" "boardroom" "comp_lab" "comp_lab" "comp_lab" "comp_lab" "comp_lab" "theatre" "classroom" "classroom" "classroom" "classroom" "classroom" "theatre" "theatre" "theatre" "classroom" "theatre" "theatre" "boardroom" "theatre" "classroom" "classroom" "classroom" "theatre" "classroom" "comp_lab" ]
+
+lecture_theatres: [ "ASH_Lecture Theatre 1" "ASH_Lecture Theatre 3" "DRB_G.27 Lecture Theatre 1" "ESB_Lecture Theatre No. 1" "GRA_Lecture Theatre 201" "HBB_Lecture Theatre 2" "JBB_Theatre 100" "JBB_Theatre 250" "JCMB_6201" "JCMB_6206" "JCMB_Lecture Theatre A" "JCMB_Lecture Theatre B" "JCMB_Lecture Theatre C" "MH_Lecture Theatre G.26" "NUC_1.14 - Oak Lecture Theatre" "NUC_1.15 - Larch Lecture Theatre" "NUC_2.07 - Yew Lecture Theatre" "NUC_B.01 - Alder Lecture Theatre" "NUC_G.02 - Elm Lecture Theatre" "SB_Main Lecture Theatre" "GALT_ Gordon Aikman Lecture Theatre" "AT_Lecture Theatre 2" "AT_Lecture Theatre 3" "AT_Lecture Theatre 5" "40GS_Lecture Theatre B" "40GS_Lecture Theatre C" "40GS_LG.09" "OC_Usha Kasera Lecture Theatre" ]
+
+classrooms: [ "ALR_Classroom 10" "ASH_Honours Room 1" "ASH_Honours Room 2" "GRA_Room 304B" "HBB_Classroom 4" "JBB_G.69" "JBB_Theatre 40" "JCMB_1206c - Teaching Studio" "JCMB_1501" "JCMB_2901" "JCMB_3211 - Teaching Studio" "JCMB_3212 - Teaching Studio" "JCMB_3217 - Teaching Studio" "JCMB_4312" "JCMB_4325A" "JCMB_4325B" "JCMB_4325C - Teaching Studio" "JCMB_5326" "JCMB_5327" "JCMB_5328" "JCMB_6301" "MH_1.19" "MH_G.04" "MH_G.05" "MH_G.07 - Teaching Studio" "MH_G.09 - Teaching Studio" "MH_G.10" "MH_G.12" "MH_G.13" "MH_G.30" "MH_G.31" "MH_G.32" "MH_G.33" "MH_G.34" "NUC_2.03 - Hawthorn Teaching Studio" "NUC_2.06 - Rowan" "SB_7.15" "SB_7.20" "JCMB_5205" "AT_M2 - Teaching Studio" "AT_2.05" "AT_2.07" "AT_2.11" "AT_2.12" "40GS_LG.07 - Teaching Studio" "40GS_13.07" "40GS_LG.11" "CMB_Seminar Room 5" "CMB_Seminar Room 6" "LLTC_2.14 - Teaching Studio" ]
+
+computer_labs: [ "JCMB_1512" "JCMB_3210" "MH_1.20 - Open Access/Teaching Computer Lab" "MH_LG.12 - Open Access Computer Lab" "MH_LG.01 - Open Access Computer Lab" "ROB_Hugh Robson Building Computer Lab - 129 cap" ]
+

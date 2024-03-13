@@ -1,0 +1,84 @@
+model checking_constraints
+  uses "mmxprs", "mmsystem", "mmsheet"
+
+
+  ! Choose a sem and week
+  sem := 2
+  week := 4
+
+  ! Timetable file name
+  csvfname := jointext(["mmsheet.csv:Initial_timetables/init_tt_s", sem, "w", week, ".csv"], "")
+  datafname := "Course_groupings.txt"
+
+  ! ---------------------------------------------------------------------------
+  ! -------------------   Loading Problem Parameters   ------------------------
+  ! ---------------------------------------------------------------------------
+
+  declarations
+      CourseID:                         set of string
+      CourseName:                       array(CourseID) of string
+      days:                             set of string
+      time_periods:                     set of string
+      ! Rooms:                            set of string
+      ! RoomType:                         array(Rooms) of string
+      ! Rooms_Lecture:                    set of string
+      ! Rooms_CompWorkshop:                   set of string
+      ! CourseSizes:                      array(CourseID) of integer
+      ! CourseLectureSize:                array(CourseID) of integer
+      ! CourseWorkshopGroupSize:          array(CourseID) of integer
+      ! CourseCompWorkshopGroupSize:           array(CourseID) of integer
+      ! NumCourseLecs_pw:                 array(CourseID) of integer
+      ! NumCourseWS_pw:                   array(CourseID) of integer
+      ! NumCourseCWS_pw:                   array(CourseID) of integer
+      ! NumWSgroups:                      array(CourseID) of integer
+      ! NumCWSgroups:                      array(CourseID) of integer
+      ! DegreeProgrammes:                 set of string
+      ! CompulsoryCourseGroupings:        array(DegreeProgrammes) of string
+      ! Categories:                       set of string
+      ! CategoryCourseGroupings:          array(Categories) of string
+      Timetable:                        array(time_periods, days) of string
+      ! x:                                array(CourseID, days, time_periods, Rooms) of integer
+      ! y:                                array(CourseID, days, time_periods, Rooms) of integer
+      ! z:                                array(CourseID, days, time_periods, Rooms) of integer
+  end-declarations
+
+
+
+  ! ---------------------------------------------------------------------------
+  ! ----------------------   Loading timetable data  --------------------------
+  ! ---------------------------------------------------------------------------
+
+
+  initializations from datafname
+    CourseID CourseName days time_periods
+    ! Rooms RoomType Rooms_Lecture Rooms_CompWorkshop
+    ! CourseSizes CourseLectureSize CourseWorkshopGroupSize CourseCompWorkshopGroupSize
+    ! NumCourseLecs_pw NumCourseWS_pw NumCourseCWS_pw
+    ! NumWSgroups NumCWSgroups
+    ! DegreeProgrammes CompulsoryCourseGroupings
+    ! Categories CategoryCourseGroupings
+  end-initializations
+
+  initializations from csvfname
+    Timetable as "noindex;[B2:F10]"
+  end-initializations
+
+
+  ! ---------------------------------------------------------------------------
+  ! ----------------------   Writing timetable data  --------------------------
+  ! ---------------------------------------------------------------------------
+
+  ! Initial value assignment
+  ! forall(c in CourseID, d in days, t in time_periods, r in Rooms) do
+  ! x(c,d,t,r) := 0
+  ! y(c,d,t,r) := 0
+  ! z(c,d,t,r) := 0
+  ! end-do
+
+  ! Value assignment for solution
+  forall(d in days, t in time_periods) do
+    writeln(Timetable(t, d))
+  end-do
+
+
+end-model

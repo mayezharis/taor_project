@@ -4,11 +4,12 @@ model checking_constraints
 
   ! Choose a sem and week
   sem := 2
-  week := 4
+  week := 3
 
   ! Timetable file name
   csvfname := jointext(["mmsheet.csv:Initial_timetables/init_tt_s", sem, "w", week, ".csv"], "")
   datafname := "Course_groupings.txt"
+  datafname := "xpress_test_data.txt"
 
   ! ---------------------------------------------------------------------------
   ! -------------------   Loading Problem Parameters   ------------------------
@@ -19,10 +20,10 @@ model checking_constraints
       CourseName:                       array(CourseID) of string
       days:                             set of string
       time_periods:                     set of string
-      ! Rooms:                            set of string
-      ! RoomType:                         array(Rooms) of string
-      ! Rooms_Lecture:                    set of string
-      ! Rooms_CompWorkshop:                   set of string
+      Rooms:                            set of string
+      RoomType:                         array(Rooms) of string
+      RoomsLecture:                    set of string
+      RoomsCompWorkshop:                   set of string
       ! CourseSizes:                      array(CourseID) of integer
       ! CourseLectureSize:                array(CourseID) of integer
       ! CourseWorkshopGroupSize:          array(CourseID) of integer
@@ -33,13 +34,13 @@ model checking_constraints
       ! NumWSgroups:                      array(CourseID) of integer
       ! NumCWSgroups:                      array(CourseID) of integer
       ! DegreeProgrammes:                 set of string
-      ! CompulsoryCourseGroupings:        array(DegreeProgrammes) of string
+      ! CompulsoryCourseGroupings:        array(DegreeProgrammes) of set of string
       ! Categories:                       set of string
-      ! CategoryCourseGroupings:          array(Categories) of string
+      ! CategoryCourseGroupings:          array(Categories) of set of string
       Timetable:                        array(time_periods, days) of string
-      ! x:                                array(CourseID, days, time_periods, Rooms) of integer
-      ! y:                                array(CourseID, days, time_periods, Rooms) of integer
-      ! z:                                array(CourseID, days, time_periods, Rooms) of integer
+      x:                                array(CourseID, days, time_periods, Rooms) of integer
+      y:                                array(CourseID, days, time_periods, Rooms) of integer
+      z:                                array(CourseID, days, time_periods, Rooms) of integer
   end-declarations
 
 
@@ -51,7 +52,7 @@ model checking_constraints
 
   initializations from datafname
     CourseID CourseName days time_periods
-    ! Rooms RoomType Rooms_Lecture Rooms_CompWorkshop
+    Rooms RoomType RoomsLecture RoomsCompWorkshop
     ! CourseSizes CourseLectureSize CourseWorkshopGroupSize CourseCompWorkshopGroupSize
     ! NumCourseLecs_pw NumCourseWS_pw NumCourseCWS_pw
     ! NumWSgroups NumCWSgroups
@@ -69,16 +70,121 @@ model checking_constraints
   ! ---------------------------------------------------------------------------
 
   ! Initial value assignment
-  ! forall(c in CourseID, d in days, t in time_periods, r in Rooms) do
-  ! x(c,d,t,r) := 0
-  ! y(c,d,t,r) := 0
-  ! z(c,d,t,r) := 0
-  ! end-do
+  forall(c in CourseID, d in days, t in time_periods, r in Rooms) do
+  x(c,d,t,r) := 0
+  y(c,d,t,r) := 0
+  z(c,d,t,r) := 0
+  end-do
 
+  counting := 0
+  checking := 0
   ! Value assignment for solution
   forall(d in days, t in time_periods) do
-    writeln(Timetable(t, d))
+    ! writeln(Timetable(t, d))
+    writeln
+    dt_time := splittext(Timetable(t,d), "[")
+    forall (dt in dt_time) do
+      dtcr := splittext(dt, "'")
+      if getsize(dtcr) > 2 then
+        dtcr -= [cutlast(dtcr), cutfirst(dtcr)]
+        course_classtype := splittext(getfirst(dtcr), "_")
+        coursecode := getfirst(course_classtype)
+        class_type := getlast(course_classtype)
+        room_name := getlast(dtcr)
+        ! writeln("Course: ", coursecode, ", class type: ", class_type, ", Room: ", room_name)
+        checking += 1
+        forall (c in CourseID, r in Rooms) do
+        if (c = coursecode) and (r = room_name) then
+          if (class_type = "lec") then
+            x(c, d, t, r) := 1
+            counting += 1
+          elif class_type = "ws" then
+            y(c, d, t, r) := 1
+            counting += 1
+          elif class_type = "cws" then
+            z(c, d, t, r) := 1
+            counting += 1
+          else
+            writeln("Course: ", CourseName(c), ", class type: ", class_type, ", Room: ", room_name)
+          end-if
+        end-if
+        end-do
+      end-if
+    end-do
+    writeln; writeln; writeln
+  end-do
+
+  writeln(sum(c in CourseID, d in days, t in time_periods, r in Rooms) (x(c,d,t,r) + y(c,d,t,r) + z(c,d,t,r)))
+  writeln("count checker says: ", counting, ", ", checking)
+
+
+  ! ---------------------------------------------------------------------------
+  ! -----------------------   Checking Constraints  ---------------------------
+  ! ---------------------------------------------------------------------------
+  ! Check the Constraints
+
+  writeln; writeln("------------------------------------------")
+  writeln("Checking Constraints")
+  writeln("------------------------------------------"); writeln
+
+  check_status := "All good :)"
+  dummy_var := 0
+
+  ! Two classes cannot take place in the same room at the same time
+  forall (t in time_periods, r in Rooms, d in days) do
+    if (sum(c in CourseID) (x(c,d,t,r) + y(c,d,t,r) + z(c,d,t,r)) <= 1) then
+      dummy_var += 0
+    else
+      check_status := "Not Good :("
+      writeln("More than one class taking place in room ", r, " on day ", d, " at time period ", t)
+    end-if
+  end-do
+
+  ! Classes of each course must be assigned to distinct periods
+  forall(t in time_periods, c in CourseID, d in days) do
+    if (sum(r in Rooms) (x(c,d,t,r) + y(c,d,t,r) + z(c,d,t,r)) <= 1) then
+      dummy_var += 0
+    else
+      check_status := "Not Good :("
+      writeln("More than one class taking place at a time for course ", CourseName(c), " on day ", d, " at time period ", t)
+      writeln("Lecture: ", sum(r in Rooms) x(c,d,t,r), ", Workshop: ", sum(r in Rooms) y(c,d,t,r), ", Computer Workshop: ", sum(r in Rooms) z(c,d,t,r))
+    end-if
   end-do
 
 
+
+  ! Classes must be assigned to appropriate room types
+  non_lec_rooms := Rooms - RoomsLecture; writeln; writeln
+  if (sum(r in non_lec_rooms, c in CourseID, t in time_periods, d in days) x(c,d,t,r) = 0) then
+    dummy_var += 0
+  else
+    writeln("Courses not assigned to lecture rooms for lectures")
+    check_status := "Not Good :("
+    forall(c in CourseID, d in days, t in time_periods, r in non_lec_rooms | x(c,d,t,r) > 0)  writeln(CourseName(c), ", ", d, ", ", t, ", ", r, ", ",  x(c,d,t,r))
+  end-if
+
+  non_cws_rooms := Rooms - RoomsCompWorkshop; writeln; writeln
+  if (sum(r in non_cws_rooms, c in CourseID, t in time_periods, d in days) z(c,d,t,r) = 0) then
+    dummy_var += 0
+  else
+    writeln("Courses not assigned to cws rooms for cws")
+    check_status := "Not Good :("
+    forall(c in CourseID, d in days, t in time_periods, r in non_cws_rooms | z(c,d,t,r) > 0)  writeln(CourseName(c), ", ", d, ", ", t, ", ", r, ", ",  z(c,d,t,r))
+  end-if
+
 end-model
+
+! non_computer labs - need to change stuff here
+! non_lecture rooms - need to change stuff here
+! course sizes (course enrolment numbers)
+! room capacities (for all rooms, so similar to roomtype)
+! size of a lecture
+! size of a workshop (on average?)
+! size of a computer lab (on average?)
+! number of lectures per week (that each student needs to attend)
+! number of workshops per week
+! number of computer labs per week
+! number of workshop groups (for the course)
+! number of computer workshop groups (for the course)
+! array of commpulsory course groupings indexed by degree programmes
+! array of caategory course groupings indexed by categories

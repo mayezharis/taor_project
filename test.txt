@@ -1,2 +1,0 @@
-comp_labs: [ "JCMB_1512" "JCMB_3210" "MH_1.20 - Open Access/Teaching Computer Lab" "MH_LG.12 - Open Access Computer Lab" "MH_LG.01 - Open Access Computer Lab" "ROB_Hugh Robson Building Computer Lab - 129 cap" ]
-

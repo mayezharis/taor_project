@@ -30,8 +30,7 @@
                     "name": "tab2",
                     "path": "",
                     "className": [
-                        "tab2",
-                        "running"
+                        "tab2"
                     ],
                     "document": {
                         "changed": false,
@@ -39,8 +38,8 @@
                             "timestamp": 1710367171944
                         },
                         "filter": true,
-                        "title": "Checking_timetable.mos - Running",
-                        "tooltip": "Checking_timetable.mos - Running",
+                        "title": "Checking_timetable.mos - Stopped",
+                        "tooltip": "Checking_timetable.mos - Stopped",
                         "output": {
                             "id": "output571560",
                             "width": 966,
@@ -50,35 +49,6 @@
                                 "command": "Checking_timetable.mos",
                                 "debug": false,
                                 "toolbar": true
-                            },
-                            "running": {
-                                "pid": 39652,
-                                "name": "output571560",
-                                "running": 2,
-                                "runner": [
-                                    {
-                                        "caption": "Mosel",
-                                        "cmd": [
-                                            "/Applications/FICO Xpress/Xpress Workbench.app/Contents/Resources/.c9/node/bin/node",
-                                            "/Applications/FICO Xpress/Xpress Workbench.app/Contents/Resources/.c9/node_modules/mosel-runner/bin/mosel-runner",
-                                            "run",
-                                            "${debug?--debug=6167}",
-                                            "--basedir",
-                                            "$project_path",
-                                            "$file",
-                                            "--stack-trace=20",
-                                            "$args"
-                                        ],
-                                        "cmdCleanup": [
-                                            "true"
-                                        ],
-                                        "debugger": "mosel",
-                                        "debugport": 6167,
-                                        "selector": "\\.mos$",
-                                        "$builtin": true
-                                    }
-                                ],
-                                "debug": false
                             }
                         }
                     },
@@ -97,7 +67,7 @@
             "@acestatus": 1,
             "@base-step-wizard": 2,
             "@divider": 4,
-            "@document": 9,
+            "@document": 10,
             "@editorswitch": 1,
             "@fico.vdl.attributes-panel": 1,
             "@fico.vdl.palette-panel": 1,
@@ -105,9 +75,9 @@
             "@menu": 3,
             "@menuitem": 8,
             "@pane": 2,
-            "@session": 9,
-            "@tab": 9,
-            "@undoManager": 9,
+            "@session": 10,
+            "@tab": 10,
+            "@undoManager": 10,
             "@welcome": 1
         }
     },
@@ -197,6 +167,11 @@
         "json()": []
     },
     "search-history": {
+        "replace": {
+            "json()": [
+                "Timetable(d,t)"
+            ]
+        },
         "search": {
             "json()": [
                 "ESB",
@@ -215,8 +190,7 @@
             "meta": {
                 "accessList": [
                     "tab1",
-                    "tab7",
-                    "tab8"
+                    "tab7"
                 ]
             },
             "name": "pane0",
@@ -232,7 +206,7 @@
                     "document": {
                         "changed": false,
                         "meta": {
-                            "timestamp": 1710434321010
+                            "timestamp": 1710436833453
                         },
                         "filter": true,
                         "title": "Checking_timetable.mos",
@@ -261,26 +235,6 @@
                     },
                     "editorType": "ace",
                     "active": false
-                },
-                {
-                    "type": "tab",
-                    "name": "tab8",
-                    "path": "/Initial_timetables/init_tt_s2w4.csv",
-                    "className": [
-                        "tab8"
-                    ],
-                    "document": {
-                        "changed": false,
-                        "meta": {
-                            "timestamp": 1710434504111
-                        },
-                        "filter": true,
-                        "title": "init_tt_s2w4.csv",
-                        "tooltip": "/Initial_timetables/init_tt_s2w4.csv",
-                        "ace": {}
-                    },
-                    "editorType": "ace",
-                    "active": false
                 }
             ],
             "skin": "editor_tab",
@@ -290,7 +244,7 @@
     },
     "tree_selection": {
         "json()": [
-            "/Initial_timetables/init_tt_s2w4.csv"
+            "/Initial_timetables/init_tt_s2w3.csv"
         ]
     },
     "welcome": {

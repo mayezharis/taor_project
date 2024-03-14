@@ -4,7 +4,7 @@ model checking_constraints
 
   ! Choose a sem and week
   sem := 2
-  week := 3
+  week := 4
 
   ! Timetable file name
   csvfname := jointext(["mmsheet.csv:Initial_timetables/init_tt_s", sem, "w", week, ".csv"], "")
@@ -140,14 +140,17 @@ model checking_constraints
     end-if
   end-do
 
+
+
   ! Classes of each course must be assigned to distinct periods
   forall(t in time_periods, c in CourseID, d in days) do
-    if (sum(r in Rooms) (x(c,d,t,r) + y(c,d,t,r) + z(c,d,t,r)) <= 1) then
+    if (minlist(1, sum(r in Rooms) x(c,d,t,r)) + minlist(1, sum(r in Rooms) y(c,d,t,r)) + minlist(1, sum(r in Rooms) z(c,d,t,r)) <= 1) then
       dummy_var += 0
     else
       check_status := "Not Good :("
       writeln("More than one class taking place at a time for course ", CourseName(c), " on day ", d, " at time period ", t)
       writeln("Lecture: ", sum(r in Rooms) x(c,d,t,r), ", Workshop: ", sum(r in Rooms) y(c,d,t,r), ", Computer Workshop: ", sum(r in Rooms) z(c,d,t,r))
+      writeln(sum(r in Rooms) minlist(1,x(c,d,t,r)), sum(r in Rooms) minlist(1,y(c,d,t,r)), sum(r in Rooms) minlist(1,z(c,d,t,r)))
     end-if
   end-do
 

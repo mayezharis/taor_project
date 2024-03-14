@@ -22,10 +22,11 @@ model checking_constraints
       time_periods:                     set of string
       Rooms:                            set of string
       RoomType:                         array(Rooms) of string
+      RoomCapacities:                   array(Rooms) of integer
       RoomsLecture:                     set of string
       RoomsCompWorkshop:                set of string
       PseudoLecTheatres:                set of string
-      ! CourseSizes:                      array(CourseID) of integer
+      EnrollmentNumber:                      array(CourseID) of integer
       ! CourseLectureSize:                array(CourseID) of integer
       ! CourseWorkshopGroupSize:          array(CourseID) of integer
       ! CourseCompWorkshopGroupSize:           array(CourseID) of integer
@@ -54,7 +55,8 @@ model checking_constraints
   initializations from datafname
     CourseID CourseName days time_periods
     Rooms RoomType RoomsLecture RoomsCompWorkshop PseudoLecTheatres
-    ! CourseSizes CourseLectureSize CourseWorkshopGroupSize CourseCompWorkshopGroupSize
+    EnrollmentNumber RoomCapacities
+    ! CourseLectureSize CourseWorkshopGroupSize CourseCompWorkshopGroupSize
     ! NumCourseLecs_pw NumCourseWS_pw NumCourseCWS_pw
     ! NumWSgroups NumCWSgroups
     DegreeProgrammes CompulsoryCourseGroupings
@@ -65,7 +67,6 @@ model checking_constraints
     Timetable as "noindex;[B2:T19]"
   end-initializations
 
-  writeln(Timetable("Thursday", "7"))
 
   ! ---------------------------------------------------------------------------
   ! ----------------------   Writing timetable data  --------------------------
@@ -80,12 +81,14 @@ model checking_constraints
 
   counting := 0
   checking := 0
+  hmmm := 0
+  all_list := {jointext(["1"], "list")}
+  added_list := {jointext(["1"], "list")}
 
   ! Value assignment for solution
   forall(d in days, t in time_periods) do
     ! writeln(Timetable(t, d))
     writeln(t, ", ", d)
-    writeln
     dt_time := splittext(Timetable(d,t), "[")
     forall (dt in dt_time) do
       dtcr := splittext(dt, "'")
@@ -95,10 +98,12 @@ model checking_constraints
         coursecode := getfirst(course_classtype)
         class_type := getlast(course_classtype)
         room_name := getlast(dtcr)
+        ! writeln(jointext([coursecode, "_", class_type, "~", room_name], ""))
         ! writeln("Course: ", coursecode, ", class type: ", class_type, ", Room: ", room_name)
         checking += 1
         forall (c in CourseID, r in Rooms) do
         if (c = coursecode) and (r = room_name) then
+          ! writeln(jointext([coursecode, "_", class_type, "~", room_name], ""))
           if (class_type = "lec") then
             x(c, d, t, r) := 1
             counting += 1
@@ -115,11 +120,11 @@ model checking_constraints
         end-do
       end-if
     end-do
-    writeln; writeln; writeln
+    ! writeln; writeln;
   end-do
 
-  writeln(sum(c in CourseID, d in days, t in time_periods, r in Rooms) (x(c,d,t,r) + y(c,d,t,r) + z(c,d,t,r)))
-  writeln("count checker says: ", counting, ", ", checking)
+  writeln("Sum of all x, y, z: ", sum(c in CourseID, d in days, t in time_periods, r in Rooms) (x(c,d,t,r) + y(c,d,t,r) + z(c,d,t,r)))
+  writeln("count checker says: ", counting, ", ", checking, ", ", hmmm)
 
 
   ! ---------------------------------------------------------------------------
@@ -189,12 +194,33 @@ model checking_constraints
       dummy_var += 0
     else
       check_status := "Not Good :("
-      writeln("On ", d, " at time period ", t, " the number of lectures clashing in degree programme ", deg, ": ", sum(c in CompulsoryCourseGroupings(deg)) minlist(1, sum(r in Rooms) x(c,d,t,r)))
-      write("Courses: "  )
+      ! writeln("On ", d, " at time period ", t, " the number of lectures clashing in degree programme ", deg, ": ", sum(c in CompulsoryCourseGroupings(deg)) minlist(1, sum(r in Rooms) x(c,d,t,r)))
+      ! write("Courses: "  )
       forall (c in CompulsoryCourseGroupings(deg) | minlist(1, sum(r in Rooms) x(c,d,t,r)) > 0) write(CourseName(c), ", ")
       writeln
     end-if
-  end-do 
+  end-do
+
+
+  forall(cat in Categories) do
+  writeln("Category: ", cat)
+  forall(c in CategoryCourseGroupings(cat)) writeln(c, CourseName["MATH11135"])
+  end-do
+
+  !  Lectures within a category of courses should not have clashes
+  writeln; writeln; writeln("Lecture clashes within compulsory categories")
+  forall(t in time_periods, d in days, cat in Categories) do
+    writeln(t, ", ", d, ", ", cat)
+    if (sum(c in CategoryCourseGroupings(cat)) minlist(sum(r in Rooms) x(c,d,t,r), 1) <= 1) then
+      dummy_var += 0
+    else
+      check_status := "Not Good :("
+      writeln("On ", d, " at time period ", t, " the number of lectures clashing in degree programme ", cat, ": ", sum(c in CategoryCourseGroupings(cat)) minlist(1, sum(r in Rooms) x(c,d,t,r)))
+      write("Courses: "  )
+      forall(c in CategoryCourseGroupings(cat) | minlist(1, sum(r in Rooms) x(c,d,t,r)) > 0) write(CourseName(c), ", ")
+      writeln
+    end-if
+  end-do
 
 end-model
 

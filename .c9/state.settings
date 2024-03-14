@@ -63,21 +63,21 @@
     },
     "ext": {
         "counters": {
-            "@ace": 1,
-            "@acestatus": 1,
+            "@ace": 2,
+            "@acestatus": 2,
             "@base-step-wizard": 2,
             "@divider": 4,
-            "@document": 10,
-            "@editorswitch": 1,
+            "@document": 12,
+            "@editorswitch": 2,
             "@fico.vdl.attributes-panel": 1,
             "@fico.vdl.palette-panel": 1,
             "@form": 4,
             "@menu": 3,
             "@menuitem": 8,
-            "@pane": 2,
-            "@session": 10,
-            "@tab": 10,
-            "@undoManager": 10,
+            "@pane": 3,
+            "@session": 12,
+            "@tab": 12,
+            "@undoManager": 12,
             "@welcome": 1
         }
     },
@@ -93,7 +93,7 @@
             "@fullscreen": false,
             "@maximized": false,
             "@minimized": false,
-            "@position": "62:25",
+            "@position": "132:25",
             "@size": "1200:736"
         }
     },
@@ -105,6 +105,7 @@
     },
     "panecycle": {
         "json()": [
+            "tab11",
             "tab1",
             "tab2"
         ]
@@ -174,6 +175,7 @@
         },
         "search": {
             "json()": [
+                "MATH11135",
                 "ESB",
                 "CMB_Seminar Room 5",
                 "CMB_Seminar",
@@ -186,65 +188,83 @@
     },
     "tabs": {
         "json()": {
-            "focus": "/Checking_timetable.mos",
-            "meta": {
-                "accessList": [
-                    "tab1",
-                    "tab7"
-                ]
-            },
-            "name": "pane0",
+            "focus": "/xpress_test_data.txt",
             "nodes": [
                 {
-                    "type": "tab",
-                    "name": "tab1",
-                    "path": "/Checking_timetable.mos",
-                    "className": [
-                        "tab1",
-                        "focus"
+                    "type": "pane",
+                    "name": "pane0",
+                    "nodes": [
+                        {
+                            "type": "tab",
+                            "name": "tab1",
+                            "path": "/Checking_timetable.mos",
+                            "className": [
+                                "tab1"
+                            ],
+                            "document": {
+                                "changed": false,
+                                "meta": {
+                                    "timestamp": 1710442123681
+                                },
+                                "filter": true,
+                                "title": "Checking_timetable.mos",
+                                "tooltip": "/Checking_timetable.mos",
+                                "ace": {}
+                            },
+                            "editorType": "ace",
+                            "active": true
+                        }
                     ],
-                    "document": {
-                        "changed": false,
-                        "meta": {
-                            "timestamp": 1710436833453
-                        },
-                        "filter": true,
-                        "title": "Checking_timetable.mos",
-                        "tooltip": "/Checking_timetable.mos",
-                        "ace": {}
-                    },
-                    "editorType": "ace",
-                    "active": true
+                    "skin": "editor_tab",
+                    "skinset": "default",
+                    "meta": {
+                        "accessList": [
+                            "tab1"
+                        ]
+                    }
                 },
                 {
-                    "type": "tab",
-                    "name": "tab7",
-                    "path": "/xpress_test_data.txt",
-                    "className": [
-                        "tab7"
+                    "type": "pane",
+                    "name": "pane2",
+                    "nodes": [
+                        {
+                            "type": "tab",
+                            "name": "tab11",
+                            "path": "/xpress_test_data.txt",
+                            "className": [
+                                "tab11",
+                                "focus"
+                            ],
+                            "document": {
+                                "changed": false,
+                                "meta": {
+                                    "timestamp": 1710442934294
+                                },
+                                "filter": true,
+                                "title": "xpress_test_data.txt",
+                                "tooltip": "/xpress_test_data.txt",
+                                "ace": {}
+                            },
+                            "editorType": "ace",
+                            "active": true
+                        }
                     ],
-                    "document": {
-                        "changed": false,
-                        "meta": {
-                            "timestamp": 1710434402229
-                        },
-                        "filter": true,
-                        "title": "xpress_test_data.txt",
-                        "tooltip": "/xpress_test_data.txt",
-                        "ace": {}
-                    },
-                    "editorType": "ace",
-                    "active": false
+                    "width": "50%",
+                    "skin": "editor_tab",
+                    "skinset": "default",
+                    "meta": {
+                        "accessList": [
+                            "tab11"
+                        ]
+                    }
                 }
             ],
-            "skin": "editor_tab",
-            "skinset": "default",
-            "type": "pane"
+            "type": "hsplitbox"
         }
     },
     "tree_selection": {
         "json()": [
-            "/Initial_timetables/init_tt_s2w3.csv"
+            "/xpress_test_data.txt"
         ]
     },
     "welcome": {

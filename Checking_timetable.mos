@@ -33,10 +33,10 @@ model checking_constraints
       ! NumCourseCWS_pw:                   array(CourseID) of integer
       ! NumWSgroups:                      array(CourseID) of integer
       ! NumCWSgroups:                      array(CourseID) of integer
-      ! DegreeProgrammes:                 set of string
-      ! CompulsoryCourseGroupings:        array(DegreeProgrammes) of set of string
-      ! Categories:                       set of string
-      ! CategoryCourseGroupings:          array(Categories) of set of string
+      DegreeProgrammes:                 set of string
+      CompulsoryCourseGroupings:        array(DegreeProgrammes) of set of string
+      Categories:                       set of string
+      CategoryCourseGroupings:          array(Categories) of set of string
       Timetable:                        array(time_periods, days) of string
       x:                                array(CourseID, days, time_periods, Rooms) of integer
       y:                                array(CourseID, days, time_periods, Rooms) of integer
@@ -56,8 +56,8 @@ model checking_constraints
     ! CourseSizes CourseLectureSize CourseWorkshopGroupSize CourseCompWorkshopGroupSize
     ! NumCourseLecs_pw NumCourseWS_pw NumCourseCWS_pw
     ! NumWSgroups NumCWSgroups
-    ! DegreeProgrammes CompulsoryCourseGroupings
-    ! Categories CategoryCourseGroupings
+    DegreeProgrammes CompulsoryCourseGroupings
+    Categories CategoryCourseGroupings
   end-initializations
 
   initializations from csvfname
@@ -150,7 +150,6 @@ model checking_constraints
       check_status := "Not Good :("
       writeln("More than one class taking place at a time for course ", CourseName(c), " on day ", d, " at time period ", t)
       writeln("Lecture: ", sum(r in Rooms) x(c,d,t,r), ", Workshop: ", sum(r in Rooms) y(c,d,t,r), ", Computer Workshop: ", sum(r in Rooms) z(c,d,t,r))
-      writeln(sum(r in Rooms) minlist(1,x(c,d,t,r)), sum(r in Rooms) minlist(1,y(c,d,t,r)), sum(r in Rooms) minlist(1,z(c,d,t,r)))
     end-if
   end-do
 
@@ -175,6 +174,17 @@ model checking_constraints
     forall(c in CourseID, d in days, t in time_periods, r in non_cws_rooms | z(c,d,t,r) > 0)  writeln(CourseName(c), ", ", d, ", ", t, ", ", r, ", ",  z(c,d,t,r))
   end-if
 
+
+  !  Lectures within a group of compulsory courses should not have clashes
+  forall(t in time_periods, d in days, deg in DegreeProgrammes) do
+    if (sum(c in CompulsoryCourseGroupings(deg)) minlist(sum(r in Rooms) x(c,d,t,r), 1) <= 1) then
+      dummy_var += 0
+    else
+      check_status := "Not Good :("
+      writeln("On day ", d, " at time period ", t, "number of compulsory courses clashing in degree programme ", deg, ": ", sum(c in CompulsoryCourseGroupings(deg)) minlist(sum(r in Rooms) x(c,d,t,r), 1))
+    end-if
+  end-do
+
 end-model
 
 ! non_computer labs - need to change stuff here
@@ -190,4 +200,4 @@ end-model
 ! number of workshop groups (for the course)
 ! number of computer workshop groups (for the course)
 ! array of commpulsory course groupings indexed by degree programmes
-! array of caategory course groupings indexed by categories
+! array of category course groupings indexed by categories

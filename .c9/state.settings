@@ -1,7 +1,21 @@
 {
+    "ace": {
+        "search": {
+            "@backwards": "false",
+            "@highlightmatches": "true",
+            "@matchcase": "false",
+            "@preservecase": "false",
+            "@regex": "false",
+            "@wholeword": "false",
+            "@wraparound": "true"
+        }
+    },
+    "breakpoints": {
+        "json()": []
+    },
     "console": {
         "@expanded": true,
-        "@height": "300",
+        "@height": 373,
         "@maximized": "false",
         "json()": {
             "meta": {
@@ -16,7 +30,8 @@
                     "name": "tab2",
                     "path": "",
                     "className": [
-                        "tab2"
+                        "tab2",
+                        "running"
                     ],
                     "document": {
                         "changed": false,
@@ -24,17 +39,46 @@
                             "timestamp": 1710367171944
                         },
                         "filter": true,
-                        "title": "Checking_timetable.mos - Stopped",
-                        "tooltip": "Checking_timetable.mos - Stopped",
+                        "title": "Checking_timetable.mos - Running",
+                        "tooltip": "Checking_timetable.mos - Running",
                         "output": {
                             "id": "output571560",
-                            "width": 968,
-                            "height": 268,
+                            "width": 966,
+                            "height": 341,
                             "config": {
                                 "runner": "Mosel",
                                 "command": "Checking_timetable.mos",
                                 "debug": false,
                                 "toolbar": true
+                            },
+                            "running": {
+                                "pid": 39652,
+                                "name": "output571560",
+                                "running": 2,
+                                "runner": [
+                                    {
+                                        "caption": "Mosel",
+                                        "cmd": [
+                                            "/Applications/FICO Xpress/Xpress Workbench.app/Contents/Resources/.c9/node/bin/node",
+                                            "/Applications/FICO Xpress/Xpress Workbench.app/Contents/Resources/.c9/node_modules/mosel-runner/bin/mosel-runner",
+                                            "run",
+                                            "${debug?--debug=6167}",
+                                            "--basedir",
+                                            "$project_path",
+                                            "$file",
+                                            "--stack-trace=20",
+                                            "$args"
+                                        ],
+                                        "cmdCleanup": [
+                                            "true"
+                                        ],
+                                        "debugger": "mosel",
+                                        "debugport": 6167,
+                                        "selector": "\\.mos$",
+                                        "$builtin": true
+                                    }
+                                ],
+                                "debug": false
                             }
                         }
                     },
@@ -53,7 +97,7 @@
             "@acestatus": 1,
             "@base-step-wizard": 2,
             "@divider": 4,
-            "@document": 3,
+            "@document": 9,
             "@editorswitch": 1,
             "@fico.vdl.attributes-panel": 1,
             "@fico.vdl.palette-panel": 1,
@@ -61,9 +105,9 @@
             "@menu": 3,
             "@menuitem": 8,
             "@pane": 2,
-            "@session": 3,
-            "@tab": 3,
-            "@undoManager": 3,
+            "@session": 9,
+            "@tab": 9,
+            "@undoManager": 9,
             "@welcome": 1
         }
     },
@@ -77,8 +121,9 @@
     "local": {
         "window": {
             "@fullscreen": false,
-            "@minimized": true,
-            "@position": "0:25",
+            "@maximized": false,
+            "@minimized": false,
+            "@position": "62:25",
             "@size": "1200:736"
         }
     },
@@ -97,6 +142,7 @@
     "panels": {
         "@active-left": "tree",
         "@active-right": "none",
+        "@width-left": 182,
         "commands.panel": {
             "@enabled": "false",
             "@name": "commands.panel"
@@ -141,7 +187,25 @@
     "projecttree": {
         "expanded": {
             "json()": [
-                "/"
+                "/",
+                "/Keys",
+                "/Initial_timetables"
+            ]
+        }
+    },
+    "recentfiles": {
+        "json()": []
+    },
+    "search-history": {
+        "search": {
+            "json()": [
+                "ESB",
+                "CMB_Seminar Room 5",
+                "CMB_Seminar",
+                "AT_2.05",
+                "7-8CS_1.01",
+                "40GS_13.07",
+                "40GS"
             ]
         }
     },
@@ -151,32 +215,12 @@
             "meta": {
                 "accessList": [
                     "tab1",
-                    "tab0"
+                    "tab7",
+                    "tab8"
                 ]
             },
             "name": "pane0",
             "nodes": [
-                {
-                    "type": "tab",
-                    "name": "tab0",
-                    "path": "",
-                    "className": [
-                        "tab0"
-                    ],
-                    "document": {
-                        "changed": false,
-                        "meta": {
-                            "welcome": true,
-                            "newOnError": true,
-                            "timestamp": 1710367162984
-                        },
-                        "filter": true,
-                        "title": "Welcome",
-                        "welcome": {}
-                    },
-                    "editorType": "welcome",
-                    "active": false
-                },
                 {
                     "type": "tab",
                     "name": "tab1",
@@ -188,7 +232,7 @@
                     "document": {
                         "changed": false,
                         "meta": {
-                            "timestamp": 1710367112273
+                            "timestamp": 1710434321010
                         },
                         "filter": true,
                         "title": "Checking_timetable.mos",
@@ -197,6 +241,46 @@
                     },
                     "editorType": "ace",
                     "active": true
+                },
+                {
+                    "type": "tab",
+                    "name": "tab7",
+                    "path": "/xpress_test_data.txt",
+                    "className": [
+                        "tab7"
+                    ],
+                    "document": {
+                        "changed": false,
+                        "meta": {
+                            "timestamp": 1710434402229
+                        },
+                        "filter": true,
+                        "title": "xpress_test_data.txt",
+                        "tooltip": "/xpress_test_data.txt",
+                        "ace": {}
+                    },
+                    "editorType": "ace",
+                    "active": false
+                },
+                {
+                    "type": "tab",
+                    "name": "tab8",
+                    "path": "/Initial_timetables/init_tt_s2w4.csv",
+                    "className": [
+                        "tab8"
+                    ],
+                    "document": {
+                        "changed": false,
+                        "meta": {
+                            "timestamp": 1710434504111
+                        },
+                        "filter": true,
+                        "title": "init_tt_s2w4.csv",
+                        "tooltip": "/Initial_timetables/init_tt_s2w4.csv",
+                        "ace": {}
+                    },
+                    "editorType": "ace",
+                    "active": false
                 }
             ],
             "skin": "editor_tab",
@@ -205,7 +289,9 @@
         }
     },
     "tree_selection": {
-        "json()": []
+        "json()": [
+            "/Initial_timetables/init_tt_s2w4.csv"
+        ]
     },
     "welcome": {
         "@first": true

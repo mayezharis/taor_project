@@ -2,9 +2,9 @@ days: [ "Monday" "Tuesday" "Wednesday" "Thursday" "Friday" ]
 
 time_periods: [ "1" "2" "3" "4" "5" "6" "7" "8" "9" "10" "11" "12" "13" "14" "15" "16" "17" "18" ]
 
-DegreeProgrammes: [ "Scheduled Start Time" "Scheduled End Time" "Duration" "Total Hours" "Zone Name" "room_name" "Delivery Period" "Normal Year Taken" "Degrees Compulsory For" "Categories" "enrollment_number" "building" "capacity" "encoded_days" "Abbreviated Course Name" "time_periods" "duration_hours" "total_duration_hours" "course_classtype" "ws_groups" "no_of_agg_ws_groups" "aggregated_ws_groups" "sem1_pattern_one_hot" "sem2_pattern_one_hot" "ambsc" "ammmath" "cammsc" "cmfft" "cmfpt" "fmoft" "fmopt" "mbsc" "mma" "mmmath" "mnbi" "mnbu" "mnmu" "mnph" "mnst" "orco" "ords" "ormsc" "orwr" "stds" "storft" "storpt" ]
+DegreeProgrammes: [ "ambsc" "ammmath" "cammsc" "cmfft" "cmfpt" "fmoft" "fmopt" "mbsc" "mma" "mmmath" "mnbi" "mnbu" "mnmu" "mnph" "mnst" "orco" "ords" "ormsc" "orwr" "stds" "storft" "storpt" ]
 
-Categories: [ "Scheduled Start Time" "Scheduled End Time" "Duration" "Total Hours" "Zone Name" "room_name" "Delivery Period" "Normal Year Taken" "Degrees Compulsory For" "Categories" "enrollment_number" "building" "capacity" "encoded_days" "Abbreviated Course Name" "time_periods" "duration_hours" "total_duration_hours" "course_classtype" "ws_groups" "no_of_agg_ws_groups" "aggregated_ws_groups" "sem1_pattern_one_hot" "sem2_pattern_one_hot" "Algebra" "Analysis" "Applied & Computational" "Data Science" "Financial" "Geometry & Topology" "Mathematical Physics" "Optimization & Operational Research" "Probability" "Statistics" ]
+Categories: [ "Algebra" "Analysis" "Applied & Computational" "Data Science" "Financial" "Geometry & Topology" "Mathematical Physics" "Optimization & Operational Research" "Probability" "Statistics" ]
 
 
 

@@ -15,7 +15,7 @@
     },
     "console": {
         "@expanded": true,
-        "@height": 373,
+        "@height": 491,
         "@maximized": "false",
         "json()": {
             "meta": {
@@ -42,8 +42,8 @@
                         "tooltip": "Checking_timetable.mos - Stopped",
                         "output": {
                             "id": "output571560",
-                            "width": 966,
-                            "height": 341,
+                            "width": 1502,
+                            "height": 459,
                             "config": {
                                 "runner": "Mosel",
                                 "command": "Checking_timetable.mos",
@@ -67,7 +67,7 @@
             "@acestatus": 2,
             "@base-step-wizard": 2,
             "@divider": 4,
-            "@document": 12,
+            "@document": 17,
             "@editorswitch": 2,
             "@fico.vdl.attributes-panel": 1,
             "@fico.vdl.palette-panel": 1,
@@ -75,9 +75,9 @@
             "@menu": 3,
             "@menuitem": 8,
             "@pane": 3,
-            "@session": 12,
-            "@tab": 12,
-            "@undoManager": 12,
+            "@session": 17,
+            "@tab": 17,
+            "@undoManager": 17,
             "@welcome": 1
         }
     },
@@ -93,8 +93,8 @@
             "@fullscreen": false,
             "@maximized": false,
             "@minimized": false,
-            "@position": "132:25",
-            "@size": "1200:736"
+            "@position": "1568:25",
+            "@size": "1715:1064"
         }
     },
     "menus": {
@@ -105,7 +105,7 @@
     },
     "panecycle": {
         "json()": [
-            "tab11",
+            "tab14",
             "tab1",
             "tab2"
         ]
@@ -113,7 +113,7 @@
     "panels": {
         "@active-left": "tree",
         "@active-right": "none",
-        "@width-left": 182,
+        "@width-left": 161,
         "commands.panel": {
             "@enabled": "false",
             "@name": "commands.panel"
@@ -188,7 +188,7 @@
     },
     "tabs": {
         "json()": {
-            "focus": "/xpress_test_data.txt",
+            "focus": "/xpress_data.txt",
             "nodes": [
                 {
                     "type": "pane",
@@ -204,7 +204,7 @@
                             "document": {
                                 "changed": false,
                                 "meta": {
-                                    "timestamp": 1710442123681
+                                    "timestamp": 1710590858478
                                 },
                                 "filter": true,
                                 "title": "Checking_timetable.mos",
@@ -229,32 +229,32 @@
                     "nodes": [
                         {
                             "type": "tab",
-                            "name": "tab11",
-                            "path": "/xpress_test_data.txt",
+                            "name": "tab14",
+                            "path": "/xpress_data.txt",
                             "className": [
-                                "tab11",
+                                "tab14",
                                 "focus"
                             ],
                             "document": {
                                 "changed": false,
                                 "meta": {
-                                    "timestamp": 1710442934294
+                                    "timestamp": 1710590589517
                                 },
                                 "filter": true,
-                                "title": "xpress_test_data.txt",
-                                "tooltip": "/xpress_test_data.txt",
+                                "title": "xpress_data.txt",
+                                "tooltip": "/xpress_data.txt",
                                 "ace": {}
                             },
                             "editorType": "ace",
                             "active": true
                         }
                     ],
-                    "width": "50%",
+                    "width": "27.62982689747004%",
                     "skin": "editor_tab",
                     "skinset": "default",
                     "meta": {
                         "accessList": [
-                            "tab11"
+                            "tab14"
                         ]
                     }
                 }
@@ -264,7 +264,7 @@
     },
     "tree_selection": {
         "json()": [
-            "/xpress_test_data.txt"
+            "/Initial_timetables/init_tt_s2w4.csv"
         ]
     },
     "welcome": {

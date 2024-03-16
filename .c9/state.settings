@@ -49,6 +49,33 @@
                                 "command": "Checking_timetable.mos",
                                 "debug": false,
                                 "toolbar": true
+                            },
+                            "running": {
+                                "name": "output571560",
+                                "running": 1,
+                                "runner": [
+                                    {
+                                        "caption": "Mosel",
+                                        "cmd": [
+                                            "/Applications/FICO Xpress/Xpress Workbench.app/Contents/Resources/.c9/node/bin/node",
+                                            "/Applications/FICO Xpress/Xpress Workbench.app/Contents/Resources/.c9/node_modules/mosel-runner/bin/mosel-runner",
+                                            "run",
+                                            "${debug?--debug=6167}",
+                                            "--basedir",
+                                            "$project_path",
+                                            "$file",
+                                            "--stack-trace=20",
+                                            "$args"
+                                        ],
+                                        "cmdCleanup": [
+                                            "true"
+                                        ],
+                                        "debugger": "mosel",
+                                        "debugport": 6167,
+                                        "selector": "\\.mos$",
+                                        "$builtin": true
+                                    }
+                                ]
                             }
                         }
                     },
@@ -67,7 +94,7 @@
             "@acestatus": 2,
             "@base-step-wizard": 2,
             "@divider": 4,
-            "@document": 17,
+            "@document": 18,
             "@editorswitch": 2,
             "@fico.vdl.attributes-panel": 1,
             "@fico.vdl.palette-panel": 1,
@@ -75,9 +102,9 @@
             "@menu": 3,
             "@menuitem": 8,
             "@pane": 3,
-            "@session": 17,
-            "@tab": 17,
-            "@undoManager": 17,
+            "@session": 18,
+            "@tab": 18,
+            "@undoManager": 18,
             "@welcome": 1
         }
     },
@@ -105,7 +132,6 @@
     },
     "panecycle": {
         "json()": [
-            "tab14",
             "tab1",
             "tab2"
         ]
@@ -188,83 +214,65 @@
     },
     "tabs": {
         "json()": {
-            "focus": "/xpress_data.txt",
+            "focus": "/Checking_timetable.mos",
+            "meta": {
+                "accessList": [
+                    "tab1",
+                    "tab17"
+                ]
+            },
+            "name": "pane0",
             "nodes": [
                 {
-                    "type": "pane",
-                    "name": "pane0",
-                    "nodes": [
-                        {
-                            "type": "tab",
-                            "name": "tab1",
-                            "path": "/Checking_timetable.mos",
-                            "className": [
-                                "tab1"
-                            ],
-                            "document": {
-                                "changed": false,
-                                "meta": {
-                                    "timestamp": 1710590858478
-                                },
-                                "filter": true,
-                                "title": "Checking_timetable.mos",
-                                "tooltip": "/Checking_timetable.mos",
-                                "ace": {}
-                            },
-                            "editorType": "ace",
-                            "active": true
-                        }
+                    "type": "tab",
+                    "name": "tab1",
+                    "path": "/Checking_timetable.mos",
+                    "className": [
+                        "tab1",
+                        "focus"
                     ],
-                    "skin": "editor_tab",
-                    "skinset": "default",
-                    "meta": {
-                        "accessList": [
-                            "tab1"
-                        ]
-                    }
+                    "document": {
+                        "changed": false,
+                        "meta": {
+                            "timestamp": 1710592374268
+                        },
+                        "filter": true,
+                        "title": "Checking_timetable.mos",
+                        "tooltip": "/Checking_timetable.mos",
+                        "ace": {}
+                    },
+                    "editorType": "ace",
+                    "active": true
                 },
                 {
-                    "type": "pane",
-                    "name": "pane2",
-                    "nodes": [
-                        {
-                            "type": "tab",
-                            "name": "tab14",
-                            "path": "/xpress_data.txt",
-                            "className": [
-                                "tab14",
-                                "focus"
-                            ],
-                            "document": {
-                                "changed": false,
-                                "meta": {
-                                    "timestamp": 1710590589517
-                                },
-                                "filter": true,
-                                "title": "xpress_data.txt",
-                                "tooltip": "/xpress_data.txt",
-                                "ace": {}
-                            },
-                            "editorType": "ace",
-                            "active": true
-                        }
+                    "type": "tab",
+                    "name": "tab17",
+                    "path": "/xpress_data.txt",
+                    "className": [
+                        "tab17"
                     ],
-                    "width": "27.62982689747004%",
-                    "skin": "editor_tab",
-                    "skinset": "default",
-                    "meta": {
-                        "accessList": [
-                            "tab14"
-                        ]
-                    }
+                    "document": {
+                        "changed": false,
+                        "meta": {
+                            "timestamp": 1710606410391
+                        },
+                        "filter": true,
+                        "title": "xpress_data.txt",
+                        "tooltip": "/xpress_data.txt",
+                        "ace": {}
+                    },
+                    "editorType": "ace",
+                    "active": false
                 }
             ],
-            "type": "hsplitbox"
+            "skin": "editor_tab",
+            "skinset": "default",
+            "type": "pane"
         }
     },
     "tree_selection": {
         "json()": [
-            "/Initial_timetables/init_tt_s2w4.csv"
+            "/xpress_data.txt"
         ]
     },
     "welcome": {

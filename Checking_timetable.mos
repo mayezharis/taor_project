@@ -36,9 +36,9 @@ model checking_constraints
       ! NumWSgroups:                      array(CourseID) of integer
       ! NumCWSgroups:                     array(CourseID) of integer
       DegreeProgrammes:                 set of string
-      CompulsoryCourseGroupings:        array(DegreeProgrammes) of set of string
+      CompulsoryCourseGroupings:        array(DegreeProgrammes) of set of set of string
       Categories:                       set of string
-      CategoryCourseGroupings:          array(Categories) of set of string
+      CategoryCourseGroupings:          array(Categories) of set of set of string
       Timetable:                        array(days, time_periods) of string
       x:                                array(CourseID, days, time_periods, Rooms) of integer
       y:                                array(CourseID, days, time_periods, Rooms) of integer
@@ -186,32 +186,30 @@ model checking_constraints
 
   !  Lectures within a group of compulsory courses should not have clashes
   writeln; writeln; writeln("Lecture clashes within compulsory groupings")
-  forall(t in time_periods, d in days, deg in DegreeProgrammes) do
-    if (sum(c in CompulsoryCourseGroupings(deg)) minlist(sum(r in Rooms) x(c,d,t,r), 1) <= 1) then
+  forall(t in time_periods, d in days, deg in DegreeProgrammes, degyear in CompulsoryCourseGroupings(deg)) do
+    if (sum(c in degyear) minlist(sum(r in Rooms) x(c,d,t,r), 1) <= 1) then
       dummy_var += 1
     else
       check_status := "Not Good :("
-      writeln("On ", d, " at time period ", t, " the number of lectures clashing in degree programme ", deg, ": ", sum(c in CompulsoryCourseGroupings(deg)) minlist(1, sum(r in Rooms) x(c,d,t,r)))
+      writeln("On ", d, " at time period ", t, " the number of lectures clashing in degree programme ", deg, ": ", sum(c in degyear) minlist(1, sum(r in Rooms) x(c,d,t,r)))
       write("Courses: "  )
-      forall (c in CompulsoryCourseGroupings(deg) | minlist(1, sum(r in Rooms) x(c,d,t,r)) > 0) write(CourseName(c), ", ")
+      forall (c in degyear | minlist(1, sum(r in Rooms) x(c,d,t,r)) > 0) write(CourseName(c), ", ")
       writeln
     end-if
   end-do
 
 
-
-
   !  Lectures within a category of courses should not have clashes
-  writeln; writeln; writeln("Lecture clashes within compulsory categories")
-  forall(t in time_periods, d in days, cat in Categories) do
+  writeln; writeln; writeln("Lecture clashes within categories")
+  forall(t in time_periods, d in days, cat in Categories, cati in CategoryCourseGroupings(cat)) do
     ! writeln(t, ", ", d, ", ", cat)
-      if (sum(c in CategoryCourseGroupings(cat)) minlist(sum(r in Rooms) x(c,d,t,r), 1) <= 1) then
+      if (sum(c in cati) minlist(sum(r in Rooms) x(c,d,t,r), 1) <= 1) then
         dummy_var += 1
       else
         check_status := "Not Good :("
-        writeln("On ", d, " at time period ", t, " the number of lectures clashing in category ", cat, ": ", sum(c in CategoryCourseGroupings(cat)) minlist(1, sum(r in Rooms) x(c,d,t,r)))
+        writeln("On ", d, " at time period ", t, " the number of lectures clashing in category ", cat, ": ", sum(c in cati) minlist(1, sum(r in Rooms) x(c,d,t,r)))
         write("Courses: "  )
-        forall(c in CategoryCourseGroupings(cat) | minlist(1, sum(r in Rooms) x(c,d,t,r)) > 0) write(CourseName(c), " (", c, "), ")
+        forall(c in cati | minlist(1, sum(r in Rooms) x(c,d,t,r)) > 0) write(CourseName(c), " (", c, "), ")
         writeln
       end-if
   end-do

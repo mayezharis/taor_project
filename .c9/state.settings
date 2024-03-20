@@ -3,11 +3,11 @@
         "search": {
             "@backwards": "false",
             "@highlightmatches": "true",
-            "@matchcase": "false",
+            "@matchcase": true,
             "@preservecase": "false",
             "@regex": "false",
-            "@wholeword": "false",
-            "@wraparound": "true"
+            "@wholeword": false,
+            "@wraparound": false
         }
     },
     "breakpoints": {
@@ -15,67 +15,41 @@
     },
     "console": {
         "@expanded": true,
-        "@height": 491,
+        "@height": 317,
         "@maximized": "false",
         "json()": {
             "meta": {
                 "accessList": [
-                    "tab2"
+                    "tab27"
                 ]
             },
             "name": "pane1",
             "nodes": [
                 {
                     "type": "tab",
-                    "name": "tab2",
+                    "name": "tab27",
                     "path": "",
                     "className": [
-                        "tab2"
+                        "tab27"
                     ],
                     "document": {
                         "changed": false,
                         "meta": {
-                            "timestamp": 1710367171944
+                            "timestamp": 1710935013694
                         },
                         "filter": true,
                         "title": "Checking_timetable.mos - Stopped",
                         "tooltip": "Checking_timetable.mos - Stopped",
                         "output": {
-                            "id": "output571560",
-                            "width": 1502,
-                            "height": 459,
+                            "id": "output77004792",
+                            "width": 1110,
+                            "height": 285,
                             "config": {
                                 "runner": "Mosel",
                                 "command": "Checking_timetable.mos",
                                 "debug": false,
-                                "toolbar": true
-                            },
-                            "running": {
-                                "name": "output571560",
-                                "running": 1,
-                                "runner": [
-                                    {
-                                        "caption": "Mosel",
-                                        "cmd": [
-                                            "/Applications/FICO Xpress/Xpress Workbench.app/Contents/Resources/.c9/node/bin/node",
-                                            "/Applications/FICO Xpress/Xpress Workbench.app/Contents/Resources/.c9/node_modules/mosel-runner/bin/mosel-runner",
-                                            "run",
-                                            "${debug?--debug=6167}",
-                                            "--basedir",
-                                            "$project_path",
-                                            "$file",
-                                            "--stack-trace=20",
-                                            "$args"
-                                        ],
-                                        "cmdCleanup": [
-                                            "true"
-                                        ],
-                                        "debugger": "mosel",
-                                        "debugport": 6167,
-                                        "selector": "\\.mos$",
-                                        "$builtin": true
-                                    }
-                                ]
+                                "toolbar": true,
+                                "name": ""
                             }
                         }
                     },
@@ -93,18 +67,18 @@
             "@ace": 2,
             "@acestatus": 2,
             "@base-step-wizard": 2,
-            "@divider": 4,
-            "@document": 18,
+            "@divider": 7,
+            "@document": 29,
             "@editorswitch": 2,
             "@fico.vdl.attributes-panel": 1,
             "@fico.vdl.palette-panel": 1,
             "@form": 4,
-            "@menu": 3,
-            "@menuitem": 8,
+            "@menu": 5,
+            "@menuitem": 22,
             "@pane": 3,
-            "@session": 18,
-            "@tab": 18,
-            "@undoManager": 18,
+            "@session": 29,
+            "@tab": 29,
+            "@undoManager": 29,
             "@welcome": 1
         }
     },
@@ -120,8 +94,8 @@
             "@fullscreen": false,
             "@maximized": false,
             "@minimized": false,
-            "@position": "1568:25",
-            "@size": "1715:1064"
+            "@position": "171:25",
+            "@size": "1323:797"
         }
     },
     "menus": {
@@ -130,10 +104,13 @@
     "nak": {
         "@installed": true
     },
+    "od": {
+        "@last-run-config": "path:Checking_timetable.mos"
+    },
     "panecycle": {
         "json()": [
-            "tab1",
-            "tab2"
+            "tab25",
+            "tab27"
         ]
     },
     "panels": {
@@ -196,11 +173,65 @@
     "search-history": {
         "replace": {
             "json()": [
+                "i",
+                "c_",
+                "o_",
+                "cand",
+                "candidates",
+                "z_(c,",
+                "y_(c,",
+                "x_(",
+                "z_(",
+                "y_(",
+                "x_(",
+                "z(c,d,t,r)",
                 "Timetable(d,t)"
             ]
         },
         "search": {
             "json()": [
+                "candidates",
+                "start_time",
+                "daytime",
+                "Monday, period :1",
+                "_in",
+                "if print_violations then",
+                "x",
+                "Neighbourhood",
+                "potential",
+                "calculate_objective",
+                "10067",
+                "Hi i am writing xp now",
+                "cand_",
+                "org_",
+                "org",
+                "potential_course",
+                "potential",
+                "xp",
+                "{`MATH10077',`Monday',`1',`JCMB_5327'}",
+                "course_candidates",
+                "`MATH10077',`Monday',`1',`JCMB_5327'",
+                "`MATH10060',`Monday',`13',`JCMB_Lecture Theatre A']",
+                "[`MATH10077',`Monday',`1',`JCMB_5327'],[`MATH10077',`Monday',`2',`JCMB_5327']",
+                "`MATH10069',`Monday',`1',`NUC_1.14 - Oak Lecture Theatre'",
+                "`MATH10077',`Monday',`1',`JCMB_5327'",
+                "451",
+                "xp",
+                "x(c,",
+                "z(c,",
+                "y(c,",
+                "y(c,d",
+                "y(",
+                "x(",
+                "z(",
+                "y(",
+                "x(",
+                "z(",
+                "y(",
+                "x(",
+                "y(c,d,t,r)",
+                "On Monday at time period 1 the number of lectures clashing in category Algebra: 2",
+                "On Monday at time period 1",
                 "MATH11135",
                 "ESB",
                 "CMB_Seminar Room 5",
@@ -214,27 +245,25 @@
     },
     "tabs": {
         "json()": {
-            "focus": "/Checking_timetable.mos",
+            "focus": "tab27",
             "meta": {
                 "accessList": [
-                    "tab1",
-                    "tab17"
+                    "tab25"
                 ]
             },
             "name": "pane0",
             "nodes": [
                 {
                     "type": "tab",
-                    "name": "tab1",
+                    "name": "tab25",
                     "path": "/Checking_timetable.mos",
                     "className": [
-                        "tab1",
-                        "focus"
+                        "tab25"
                     ],
                     "document": {
                         "changed": false,
                         "meta": {
-                            "timestamp": 1710592374268
+                            "timestamp": 1710939656349
                         },
                         "filter": true,
                         "title": "Checking_timetable.mos",
@@ -243,26 +272,6 @@
                     },
                     "editorType": "ace",
                     "active": true
-                },
-                {
-                    "type": "tab",
-                    "name": "tab17",
-                    "path": "/xpress_data.txt",
-                    "className": [
-                        "tab17"
-                    ],
-                    "document": {
-                        "changed": false,
-                        "meta": {
-                            "timestamp": 1710606410391
-                        },
-                        "filter": true,
-                        "title": "xpress_data.txt",
-                        "tooltip": "/xpress_data.txt",
-                        "ace": {}
-                    },
-                    "editorType": "ace",
-                    "active": false
                 }
             ],
             "skin": "editor_tab",
@@ -272,7 +281,7 @@
     },
     "tree_selection": {
         "json()": [
-            "/xpress_data.txt"
+            "/Checking_timetable.mos"
         ]
     },
     "welcome": {

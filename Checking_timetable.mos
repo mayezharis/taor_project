@@ -1,15 +1,17 @@
 model checking_constraints
   uses "mmxprs", "mmsystem", "mmsheet"
 
-
   ! Choose a sem and week
   sem := 2
-  week := 4
+  week := 3
+  category_clash_penalty_weight := 10
+  wed_class_penalty_weight := 1
 
   ! Timetable file name
   csvfname := jointext(["mmsheet.csv:Initial_timetables/init_tt_s", sem, "w", week, ".csv"], "")
   datafname := "Course_groupings.txt"
   datafname := "xpress_data.txt"
+  outputfname := jointext(["Final_timetables/vns_tt_s", sem, "w", week, ".csv"], "")
 
   ! ---------------------------------------------------------------------------
   ! -------------------   Loading Problem Parameters   ------------------------
@@ -27,25 +29,46 @@ model checking_constraints
       RoomsLecture:                     set of string
       RoomsCompWorkshop:                set of string
       PseudoLecTheatres:                set of string
-      ! CourseLectureSize:                array(CourseID) of integer
-      ! CourseWorkshopGroupSize:          array(CourseID) of integer
-      ! CourseCompWorkshopGroupSize:      array(CourseID) of integer
-      ! NumCourseLecs_pw:                 array(CourseID) of integer
-      ! NumCourseWS_pw:                   array(CourseID) of integer
-      ! NumCourseCWS_pw:                  array(CourseID) of integer
-      ! NumWSgroups:                      array(CourseID) of integer
-      ! NumCWSgroups:                     array(CourseID) of integer
       DegreeProgrammes:                 set of string
       CompulsoryCourseGroupings:        array(DegreeProgrammes) of set of set of string
       Categories:                       set of string
       CategoryCourseGroupings:          array(Categories) of set of set of string
+      CategoryGroupingsWorkshop:        array(Categories) of set of set of string
       Timetable:                        array(days, time_periods) of string
-      x:                                array(CourseID, days, time_periods, Rooms) of integer
-      y:                                array(CourseID, days, time_periods, Rooms) of integer
-      z:                                array(CourseID, days, time_periods, Rooms) of integer
+      potential_course:                 array(Categories, days) of list of list of string
+      xi:                               array(CourseID, days, time_periods, Rooms) of integer
+      yi:                               array(CourseID, days, time_periods, Rooms) of integer
+      zi:                               array(CourseID, days, time_periods, Rooms) of integer
+      x_new:                            array(CourseID, days, time_periods, Rooms) of integer
+      y_new:                            array(CourseID, days, time_periods, Rooms) of integer
+      z_new:                            array(CourseID, days, time_periods, Rooms) of integer
+      xp:                               array(CourseID, days, time_periods, Rooms) of integer
+      yp:                               array(CourseID, days, time_periods, Rooms) of integer
+      zp:                               array(CourseID, days, time_periods, Rooms) of integer
+      Neighbourhoods:                   set of list of array(CourseID, days, time_periods, Rooms) of integer
+      Neighbourhoods_new:               set of array(days, time_periods) of list of string
   end-declarations
 
+forward function check_constraints(array(CourseID, days, time_periods, Rooms) of integer,
+  array(CourseID, days, time_periods, Rooms) of integer,
+  array(CourseID, days, time_periods, Rooms) of integer,
+  boolean) : integer
 
+forward function calculate_objective(array(CourseID, days, time_periods, Rooms) of integer,
+  array(CourseID, days, time_periods, Rooms) of integer,
+  array(CourseID, days, time_periods, Rooms) of integer,
+  boolean) : list of integer
+
+forward function daytime_swap_neighbourhoods(array(CourseID, days, time_periods, Rooms) of integer,
+  array(CourseID, days, time_periods, Rooms) of integer,
+  array(CourseID, days, time_periods, Rooms) of integer, boolean) : set of array(days, time_periods) of list of string
+
+forward function create_timetable(array(CourseID, days, time_periods, Rooms) of integer,
+                        array(CourseID, days, time_periods, Rooms) of integer,
+                        array(CourseID, days, time_periods, Rooms) of integer) : array(days, time_periods) of list of string
+
+
+forward function read_timetable(array(days, time_periods) of list of string) : list of array(CourseID, days, time_periods, Rooms) of integer
 
   ! ---------------------------------------------------------------------------
   ! ----------------------   Loading timetable data  --------------------------
@@ -56,11 +79,8 @@ model checking_constraints
     CourseID CourseName days time_periods
     Rooms RoomType RoomsLecture RoomsCompWorkshop PseudoLecTheatres
     EnrollmentNumber RoomCapacities
-    ! CourseLectureSize CourseWorkshopGroupSize CourseCompWorkshopGroupSize
-    ! NumCourseLecs_pw NumCourseWS_pw NumCourseCWS_pw
-    ! NumWSgroups NumCWSgroups
     DegreeProgrammes CompulsoryCourseGroupings
-    Categories CategoryCourseGroupings
+    Categories CategoryCourseGroupings CategoryGroupingsWorkshop
   end-initializations
 
   initializations from csvfname
@@ -74,9 +94,9 @@ model checking_constraints
 
   ! Initial value assignment
   forall(c in CourseID, d in days, t in time_periods, r in Rooms) do
-  x(c,d,t,r) := 0
-  y(c,d,t,r) := 0
-  z(c,d,t,r) := 0
+  xi(c,d,t,r) := 0
+  yi(c,d,t,r) := 0
+  zi(c,d,t,r) := 0
   end-do
 
   counting := 0
@@ -101,13 +121,13 @@ model checking_constraints
           if (c = coursecode) and (r = room_name) then
             ! writeln(jointext([coursecode, "_", class_type, "~", room_name], ""))
             if (class_type = "lec") then
-              x(c, d, t, r) := 1
+              xi(c, d, t, r) := 1
               counting += 1
             elif class_type = "ws" then
-              y(c, d, t, r) := 1
+              yi(c, d, t, r) := 1
               counting += 1
             elif class_type = "cws" then
-              z(c, d, t, r) := 1
+              zi(c, d, t, r) := 1
               counting += 1
             else
               writeln(t, ", ", d)
@@ -120,7 +140,8 @@ model checking_constraints
     ! writeln; writeln;
   end-do
 
-  writeln("Sum of all x, y, z: ", sum(c in CourseID, d in days, t in time_periods, r in Rooms) (x(c,d,t,r) + y(c,d,t,r) + z(c,d,t,r)))
+  num_classes := sum(c in CourseID, d in days, t in time_periods, r in Rooms) (xi(c,d,t,r) + yi(c,d,t,r) + zi(c,d,t,r))
+  writeln("Sum of all x, y, z: ", num_classes )
   writeln("count checker says: ", counting, ", ", checking)
 
 
@@ -128,23 +149,195 @@ model checking_constraints
   ! -----------------------   Checking Constraints  ---------------------------
   ! ---------------------------------------------------------------------------
   ! Check the Constraints
+  result := check_constraints(xi, yi, zi, TRUE)
 
-  writeln; writeln("------------------------------------------")
-  writeln("Checking Constraints")
-  writeln("------------------------------------------"); writeln
+
+  ! ---------------------------------------------------------------------------
+  ! ------------------------   Objective function  ----------------------------
+  ! ---------------------------------------------------------------------------
+  ! Calculate the objective function
+  objective_values := calculate_objective(xi, yi, zi, TRUE)
+  ClashPenalty_init := objective_values(1); WedPenalty_init := objective_values(2); TotalPenalty_init := objective_values(3)
+  ! write(potential_course)
+
+
+
+
+!   ! ---------------------------------------------------------------------------
+!   ! ------------------------   Implementing VNS  ----------------------------
+!   ! ---------------------------------------------------------------------------
+  start_time := gettime
+  x_new := xi; y_new := yi; z_new := zi
+  Neighbourhoods_new += daytime_swap_neighbourhoods(x_new, y_new, z_new, TRUE)
+  Neighbourhoods_new += daytime_swap_neighbourhoods(x_new, y_new, z_new, FALSE)
+  best_penalty := TotalPenalty_init
+  best_obj := objective_values
+  best_sol := {x_new, y_new, z_new}
+  vns_it := 1
+  while ((gettime - start_time < 100) and (getsize(Neighbourhoods_new) > 0)) do
+    writeln("=============== VNS iteration: ", vns_it, " ===============")
+    its := 0
+    forall(tt in Neighbourhoods_new) do
+      its += 1
+      write("Neighbourhood ", its, ": ")
+      out_tt := read_timetable(tt)
+      xp := out_tt(1); yp := out_tt(2); zp := out_tt(3)
+      obj_p := calculate_objective(xp, yp, zp, FALSE)
+      writeln(obj_p(3))
+      if (obj_p(3) < best_penalty) then
+        writeln("New best solution with objective:",  obj_p)
+        best_penalty := obj_p(3)
+        best_obj := obj_p
+        best_sol := {xp, yp, zp}
+      end-if
+    end-do
+    Neighbourhoods_new := {}
+    x_new := best_sol(1); y_new := best_sol(2); z_new := best_sol(3)
+    best_obj := calculate_objective(x_new, y_new, z_new, TRUE)
+    Neighbourhoods_new += daytime_swap_neighbourhoods(x_new, y_new, z_new, TRUE)
+    Neighbourhoods_new += daytime_swap_neighbourhoods(x_new, y_new, z_new, FALSE)
+    best_penalty := best_obj(3)
+    best_sol := {x_new, y_new, z_new}
+    writeln("Number of neighbourhoods: ", getsize(Neighbourhoods))
+    vns_it += 1
+  end-do
+end_time := gettime
+
+writeln("Penalties before VNS: ", objective_values)
+writeln("Penalties after VNS: ", best_obj)
+writeln("Time elapsed: ", end_time - start_time)
+
+
+
+
+xp := best_sol(1); yp := best_sol(2); zp := best_sol(3)
+
+
+  ! --------------------------------------------------------------------------
+  ! -------------------   Save results to a .csv file   ----------------------
+  ! --------------------------------------------------------------------------
+
+
+
+! Save model results to a .csv file to use for VNS (if applicable)
+fopen(outputfname, F_OUTPUT)
+
+  write("Time periods")
+  forall(t in time_periods) write(",", t)
+    writeln
+    forall (d in days) do
+      write(d)
+      forall(t in time_periods) do
+        write(",[")
+        forall(c in CourseID, r in Rooms | xp(c,d,t,r) > 0) do
+          write("[", string(jointext(["'", c,"_lec' '"], "")), r, "']")
+        end-do
+        forall(c in CourseID, r in Rooms | yp(c,d,t,r) > 0) do
+          write("[", string(jointext(["'", c,"_ws' '"], "")), r, "']")
+        end-do
+        forall(c in CourseID, r in Rooms | zp(c,d,t,r) > 0) do
+          write("[", string(jointext(["'", c,"_cws' '"], "")), r, "']")
+        end-do
+        write("]")
+      end-do
+    writeln
+    end-do
+    writeln
+
+  ! print_status
+  ! writeln
+  ! writeln("The minimised penalty = ", getobjval)
+  ! writeln("Time elapsed: ", strfmt(endtime - starttime, 2), "s.")
+
+fclose(F_OUTPUT)
+
+
+
+
+
+! writeln; writeln
+! ! writeln("candidates list: ", candidates); writeln; writeln
+! start_time := gettime
+! Neighbourhoods := {}
+! ! cand := candidates(1)
+! !   c_ := cand(1); d_ := cand(2); t_ := cand(3); r_ := cand(4)
+
+! !   forall(d in days, t in time_periods | sum(c in CourseID) x(c,d,t,r_) = 1) do
+! !     xp := x; yp := y; zp := z
+! !     xp(c_, d_, t_, r_) := 0
+! !     xp(c_, d, t, r_) := 1
+! !     ! writeln(sum(c in CourseID, day in days, tp in time_periods, r in Rooms) (xp(c,day,tp,r) + yp(c,day,tp,r) + zp(c,day,tp,r)))
+! !     new_obj := calculate_objective(xp, yp, zp, FALSE)
+! !     ! writeln("New objective: ", new_obj(3))
+! !     if (new_obj(3) < TotalPenalty_init) and (check_constraints(xp, y, z, FALSE) = 1) then
+! !       Neighbourhoods += {[xp, y, z]}
+! !     end-if
+! !   end-do
+! ! end_time := gettime
+! ! writeln("Time elapsed: ", end_time - start_time, " s.")
+
+! ! writeln("Number of neighbourhoods: ", getsize(Neighbourhoods))
+
+
+
+! writeln
+
+! writeln(potential_course)
+
+! ! forall(d in days, t in time_periods | sum(c in CourseID) x(c,d,t,r_) = 1) do
+! !   forall (c in CourseID | x(c,d,tp,r_) = 1 and c<>c_) writeln("Day: ", d, " time period: ", tp, " course ", c, " in Room: ", r_)
+! !   ! writeln(integer(t))
+! ! end-do
+
+
+! Neighbourhoods := {}
+! start_time := gettime
+! Neighbourhoods += daytime_swap_neighbourhoods(xi, yi, zi, TRUE)
+! end_time := gettime
+! writeln("Number of neighbourhoods: ", getsize(Neighbourhoods))
+! writeln("Time to construct neighbourhoods: ", end_time - start_time, " s.")
+! forall(sol in Neighbourhoods) writeln(check_constraints(sol(1), sol(2), sol(3), FALSE), calculate_objective(sol(1), sol(2),sol(3),FALSE))
+
+! ! start_time := gettime
+! ! daytime_swap_neighbourhoods(xi, yi, zi, FALSE)
+! ! end_time := gettime
+! ! writeln("Number of neighbourhoods: ", getsize(Neighbourhoods))
+! ! writeln("Time to construct neighbourhoods: ", end_time - start_time, " s.")
+! ! forall(sol in Neighbourhoods) writeln(check_constraints(sol(1), sol(2), sol(3), FALSE), calculate_objective(sol(1), sol(2),sol(3),FALSE))
+
+
+
+
+  ! ---------------------------------------------------------------------------
+  ! ------------------------   Defining Functions  ----------------------------
+  ! ---------------------------------------------------------------------------
+
+
+function check_constraints(x_: array(CourseID, days, time_periods, Rooms) of integer,
+                          y_: array(CourseID, days, time_periods, Rooms) of integer,
+                          z_: array(CourseID, days, time_periods, Rooms) of integer,
+                          print_violations: boolean) : integer
+
+  if print_violations then
+    writeln; writeln("------------------------------------------")
+    writeln("Checking Constraints")
+    writeln("------------------------------------------");
+  end-if
 
   check_status := "All good :)"
   dummy_var := 0
 
   ! Two classes cannot take place in the same room at the same time
   forall (t in time_periods, r in Rooms, d in days) do
-    if (sum(c in CourseID) (x(c,d,t,r) + y(c,d,t,r) + z(c,d,t,r)) <= 1) then
+    if (sum(c in CourseID) (x_(c,d,t,r) + y_(c,d,t,r) + z_(c,d,t,r)) <= 1) then
       dummy_var += 1
     else
       check_status := "Not Good :("
-      writeln("More than one class taking place in room ", r, " on day ", d, " at time period ", t)
-      write("Courses:")
-      forall(c in CourseID | x(c,d,t,r) + y(c,d,t,r) + z(c,d,t,r) > 0) writeln(c)
+      if print_violations then
+        writeln("More than one class taking place in room ", r, " on day ", d, " at time period ", t)
+        write("Courses:")
+        forall(c in CourseID | x_(c,d,t,r) + y_(c,d,t,r) + z_(c,d,t,r) > 0) writeln(c)
+      end-if
     end-if
   end-do
 
@@ -152,12 +345,14 @@ model checking_constraints
 
   ! Classes of each course must be assigned to distinct periods
   forall(t in time_periods, c in CourseID, d in days) do
-    if (minlist(1, sum(r in Rooms) x(c,d,t,r)) + minlist(1, sum(r in Rooms) y(c,d,t,r)) + minlist(1, sum(r in Rooms) z(c,d,t,r)) <= 1) then
+    if (minlist(1, sum(r in Rooms) x_(c,d,t,r)) + minlist(1, sum(r in Rooms) y_(c,d,t,r)) + minlist(1, sum(r in Rooms) z_(c,d,t,r)) <= 1) then
       dummy_var += 1
     else
       check_status := "Not Good :("
-      writeln("More than one class taking place at a time for course ", CourseName(c), " on day ", d, " at time period ", t)
-      writeln("Lecture: ", sum(r in Rooms) x(c,d,t,r), ", Workshop: ", sum(r in Rooms) y(c,d,t,r), ", Computer Workshop: ", sum(r in Rooms) z(c,d,t,r))
+      if print_violations then
+        writeln("More than one class taking place at a time for course ", CourseName(c), " on day ", d, " at time period ", t)
+        writeln("Lecture: ", sum(r in Rooms) x_(c,d,t,r), ", Workshop: ", sum(r in Rooms) y_(c,d,t,r), ", Computer Workshop: ", sum(r in Rooms) z_(c,d,t,r))
+      end-if
     end-if
   end-do
 
@@ -165,73 +360,367 @@ model checking_constraints
 
   ! Classes must be assigned to appropriate room types
   non_lec_rooms := Rooms - RoomsLecture
-  non_lec_rooms -= PseudoLecTheatres; writeln; writeln
-  if (sum(r in non_lec_rooms, c in CourseID, t in time_periods, d in days) x(c,d,t,r) = 0) then
+  non_lec_rooms -= PseudoLecTheatres;
+  if (sum(r in non_lec_rooms, c in CourseID, t in time_periods, d in days) x_(c,d,t,r) = 0) then
     dummy_var += 1
   else
-    writeln("Courses not assigned to lecture rooms for lectures")
     check_status := "Not Good :("
-    forall(c in CourseID, d in days, t in time_periods, r in non_lec_rooms | x(c,d,t,r) > 0)  writeln(CourseName(c), ", ", d, ", ", t, ", ", r, ", ",  x(c,d,t,r))
+    if print_violations then
+      writeln; writeln
+      writeln("Courses not assigned to lecture rooms for lectures")
+      forall(c in CourseID, d in days, t in time_periods, r in non_lec_rooms | x_(c,d,t,r) > 0)  writeln(CourseName(c), ", ", d, ", ", t, ", ", r, ", ",  x_(c,d,t,r))
+    end-if
   end-if
 
-  non_cws_rooms := Rooms - RoomsCompWorkshop - PseudoLecTheatres; writeln; writeln
-  if (sum(r in non_cws_rooms, c in CourseID, t in time_periods, d in days) z(c,d,t,r) = 0) then
+  non_cws_rooms := Rooms - RoomsCompWorkshop - PseudoLecTheatres;
+  if (sum(r in non_cws_rooms, c in CourseID, t in time_periods, d in days) z_(c,d,t,r) = 0) then
     dummy_var += 1
   else
-    writeln("Courses not assigned to cws rooms for cws")
     check_status := "Not Good :("
-    forall(c in CourseID, d in days, t in time_periods, r in non_cws_rooms | z(c,d,t,r) > 0)  writeln(CourseName(c), ", ", d, ", ", t, ", ", r, ", ",  z(c,d,t,r))
+    if print_violations then
+      writeln; writeln
+      writeln("Courses not assigned to cws rooms for cws")
+      forall(c in CourseID, d in days, t in time_periods, r in non_cws_rooms | z_(c,d,t,r) > 0)  writeln(CourseName(c), ", ", d, ", ", t, ", ", r, ", ",  z_(c,d,t,r))
+    end-if
   end-if
 
+
+  ! EnrollmentNumbers and room capacities - a course should not have more enrollment numbers than the room capacities times the classes of each type taking place in those rooms
+  forall(c in CourseID | sum(r in Rooms, d in days, t in time_periods) x_(c,d,t,r) >= 1) do
+    forall(d in days, t in time_periods) do
+      if minlist(1, sum(r in Rooms) x_(c,d,t,r))*EnrollmentNumber(c)*0.65 <= sum(r in Rooms | x_(c,d,t,r) >= 1) RoomCapacities(r) then
+        dummy_var += 1
+      else
+        check_status := "Not Good :("
+        if print_violations then
+          writeln("On ", d, " at time period ", t)
+          writeln("Class capacities are not sufficient for lectures of course ",  CourseName(c), " where capacity = ", sum(r in Rooms | x_(c,d,t,r) >= 1) RoomCapacities(r),
+          " and enrollment numbers = ", minlist(1, sum(r in Rooms) x_(c,d,t,r))*EnrollmentNumber(c) )
+        end-if
+      end-if
+    end-do
+  end-do
+
+
+
+
+  forall(c in CourseID | sum(r in Rooms, d in days, t in time_periods) y_(c,d,t,r) >= 1) do
+      if minlist(1, sum(r in Rooms, t in time_periods, d in days) y_(c,d,t,r))*EnrollmentNumber(c) <= sum(r in Rooms, t in time_periods, d in days | y_(c,d,t,r) >= 1) RoomCapacities(r) then
+        dummy_var += 1
+      else
+        check_status := "Not Good :("
+        if print_violations then
+          writeln("Class capacities are not sufficient for workshops of course ",  CourseName(c), " where capacity = ", sum(r in Rooms, t in time_periods, d in days | y_(c,d,t,r) >= 1) RoomCapacities(r),
+          " and enrollment numbers = ", minlist(1, sum(r in Rooms, t in time_periods, d in days) y_(c,d,t,r))*EnrollmentNumber(c) )
+        end-if
+      end-if
+  end-do
+
+  forall(c in CourseID | sum(r in Rooms, d in days, t in time_periods) z_(c,d,t,r) >= 1) do
+      if minlist(1, sum(r in Rooms, t in time_periods, d in days) z_(c,d,t,r))*EnrollmentNumber(c) <= sum(r in Rooms, t in time_periods, d in days | z_(c,d,t,r) >= 1) RoomCapacities(r) then
+        dummy_var += 1
+      else
+        check_status := "Not Good :("
+        if print_violations then
+          writeln("Class capacities are not sufficient for workshops of course ",  CourseName(c), " where capacity = ", sum(r in Rooms, t in time_periods, d in days | z_(c,d,t,r) >= 1) RoomCapacities(r),
+          " and enrollment numbers = ", minlist(1, sum(r in Rooms, t in time_periods, d in days) z_(c,d,t,r))*EnrollmentNumber(c) )
+        end-if
+      end-if
+  end-do
 
   !  Lectures within a group of compulsory courses should not have clashes
-  writeln; writeln; writeln("Lecture clashes within compulsory groupings")
   forall(t in time_periods, d in days, deg in DegreeProgrammes, degyear in CompulsoryCourseGroupings(deg)) do
-    if (sum(c in degyear) minlist(sum(r in Rooms) x(c,d,t,r), 1) <= 1) then
+    if (sum(c in degyear) minlist(sum(r in Rooms) x_(c,d,t,r), 1) <= 1) then
       dummy_var += 1
     else
       check_status := "Not Good :("
-      writeln("On ", d, " at time period ", t, " the number of lectures clashing in degree programme ", deg, ": ", sum(c in degyear) minlist(1, sum(r in Rooms) x(c,d,t,r)))
-      write("Courses: "  )
-      forall (c in degyear | minlist(1, sum(r in Rooms) x(c,d,t,r)) > 0) write(CourseName(c), ", ")
-      writeln
+      if print_violations then
+        writeln("On ", d, " at time period ", t, " the number of lectures clashing in degree programme ", deg, ": ", sum(c in degyear) minlist(1, sum(r in Rooms) x_(c,d,t,r)))
+        write("Courses: "  )
+        forall (c in degyear | minlist(1, sum(r in Rooms) x_(c,d,t,r)) > 0) write(CourseName(c), ", ")
+        writeln
+      end-if
     end-if
   end-do
 
 
-  !  Lectures within a category of courses should not have clashes
-  writeln; writeln; writeln("Lecture clashes within categories")
-  forall(t in time_periods, d in days, cat in Categories, cati in CategoryCourseGroupings(cat)) do
-    ! writeln(t, ", ", d, ", ", cat)
-      if (sum(c in cati) minlist(sum(r in Rooms) x(c,d,t,r), 1) <= 1) then
-        dummy_var += 1
-      else
-        check_status := "Not Good :("
-        writeln("On ", d, " at time period ", t, " the number of lectures clashing in category ", cat, ": ", sum(c in cati) minlist(1, sum(r in Rooms) x(c,d,t,r)))
-        write("Courses: "  )
-        forall(c in cati | minlist(1, sum(r in Rooms) x(c,d,t,r)) > 0) write(CourseName(c), " (", c, "), ")
-        writeln
-      end-if
+  if check_status = "All good :)" then
+    writeln("All constraints satisfied!")
+    returned := 1
+  else
+    writeln("Not all constraints satisfied.")
+    returned := 0
+  end-if
+
+end-function
+
+
+
+function calculate_objective(x_: array(CourseID, days, time_periods, Rooms) of integer,
+                              y_: array(CourseID, days, time_periods, Rooms) of integer,
+                              z_: array(CourseID, days, time_periods, Rooms) of integer,
+                              print_obj: boolean) : list of integer
+
+  if print_obj then
+    writeln; writeln("------------------------------------------")
+    writeln("Calculating objective function")
+    writeln("------------------------------------------"); writeln
+    forall(cat in Categories, d in days) potential_course(cat, d) := []
+  end-if
+  TotalPenalty := 0
+  ClashPenalty := 0
+  WedPenalty := 0
+  forall(cat in Categories, cati in CategoryCourseGroupings(cat), d in days, t in time_periods | sum(c in cati) minlist(sum(r in Rooms) x_(c,d,t,r), 1) > 1) do
+    ClashPenalty += category_clash_penalty_weight*(sum(c in cati) minlist(sum(r in Rooms) x_(c,d,t,r), 1) - 1)
+    if print_obj then
+      writeln; writeln;
+      writeln("On ", d, " at time period ", t, " the number of lectures clashing in category ", cat, ": ", sum(c in cati) minlist(1, sum(r in Rooms) x_(c,d,t,r)))
+      write("Courses: "  )
+      forall(c in cati | minlist(1, sum(r in Rooms) x_(c,d,t,r)) > 0) do
+        writeln; write(CourseName(c), " (", c, "), "); writeln
+        forall (r in Rooms | x_(c,d,t,r) > 0) do
+          potential_course(cat, d) += [[c,d,t,r]]
+        end-do
+      end-do
+    end-if
   end-do
 
 
-if check_status = "All good :)" then
-  writeln("All constraints satisfied!")
-end-if
+
+  forall(t in time_periods, d in days, cat in Categories, cati in CategoryGroupingsWorkshop(cat) | sum(c in cati) minlist(sum(r in Rooms) y_(c,d,t,r), 1) > 1) do
+    ClashPenalty += category_clash_penalty_weight*(sum(c in cati) minlist(sum(r in Rooms) y_(c,d,t,r), 1) - 1)
+    if print_obj then
+      writeln("On ", d, " at time period ", t, " the number of ws clashing in category ", cat, ": ", sum(c in cati) minlist(1, sum(r in Rooms) y_(c,d,t,r)))
+      write("Courses: "  )
+      forall(c in cati | minlist(1, sum(r in Rooms) z_(c,d,t,r)) > 0) write(CourseName(c), " (", c, "), ")
+      writeln; writeln
+    end-if
+  end-do
+
+  forall(t in time_periods, d in days, cat in Categories, cati in CategoryGroupingsWorkshop(cat) | sum(c in cati) minlist(sum(r in Rooms) z_(c,d,t,r), 1) > 1) do
+    ClashPenalty += category_clash_penalty_weight*(sum(c in cati) minlist(sum(r in Rooms) z_(c,d,t,r), 1) - 1)
+    if print_obj then
+      writeln("On ", d, " at time period ", t, " the number of cws clashing in category ",
+              cat, ": ", sum(c in cati) minlist(1, sum(r in Rooms) z_(c,d,t,r)))
+      write("Courses: "  )
+      forall(c in cati | minlist(1, sum(r in Rooms) z_(c,d,t,r)) > 0) write(CourseName(c), " (", c, "), ")
+      writeln
+    end-if
+  end-do
+
+  WedPenalty := wed_class_penalty_weight*sum(c in CourseID, r in Rooms, t in time_periods) (x_(c,"Wednesday", t, r) + y_(c,"Wednesday", t, r) + z_(c,"Wednesday", t, r) )
+
+  TotalPenalty += WedPenalty + ClashPenalty
+
+  if print_obj then
+    writeln("Category Clash Penalty: ", ClashPenalty)
+    writeln("Wednesday classes penalty: ", WedPenalty)
+    writeln("Total penalty in objective value: ", TotalPenalty)
+  end-if
+
+  returned := [ClashPenalty, WedPenalty, TotalPenalty]
+
+  end-function
+
+
+  ! ---------------------------------------------------------------------------
+  ! -----------------   Procedures to define neighbourhoods  ------------------
+  ! ---------------------------------------------------------------------------
+
+
+! function daytime_swap_neighbourhoods(x_in: array(CourseID, days, time_periods, Rooms) of integer,
+!   y_in: array(CourseID, days, time_periods, Rooms) of integer,
+!   z_in: array(CourseID, days, time_periods, Rooms) of integer, odd: boolean): set of list of array(CourseID, days, time_periods, Rooms) of integer
+! Neighbourhoods := {}
+! init_obj := calculate_objective(x_in, y_in, z_in, FALSE)
+! forall(cat in Categories, d in days | getsize(potential_course(cat, d)) > 0) do
+!   writeln("Category: ", cat)
+!   clash_courses := potential_course(cat, d)
+!   if odd then
+!     indices := sum(l in 1..integer(getsize(clash_courses)/2)) [l*2 - 1]
+!   else
+!     indices := sum(l in 1..integer(getsize(clash_courses)/2)) [l*2]
+!   end-if
+!   ! writeln(indices)
+!   working_list := sum(ind in indices) [clash_courses(ind)]
+!   writeln("working_list: ", working_list)
+!   indices_wlist := sum(l in 1..integer(getsize(working_list)/2)) [l*2 - 1]
+!   writeln(indices_wlist)
+!   forall(ind in indices_wlist) do
+!     info := working_list(ind)
+!     c_ := info(1); d_:= info(2); t_:= info(3); r_:= info(4)
+!     forall (c in CourseID | sum(da in days, t in time_periods) x_in(c,da,t,r_) > 0 and c<>c_) do
+!       writeln("replacing xp here")
+!       xp:= x_in; yp := y_in; zp := z_in
+!       p_list := sum(da in days, t in time_periods | x_in(c,da,t,r_) = 1) [[c,da,t,r_]]
+!       writeln("plist: ", p_list)
+! !       ! forall(da in days, t in time_periods | x_in(c,da,t,r_) = 1) do
+! !       !   ! writeln("Day: ", da, " time period: ", t, " course ", c, " in Room: ", r_)
+! !       ! end-do
+!       if getsize(p_list) = getsize(working_list) then
+!         forall(i in 1..getsize(p_list)) do
+!           org := working_list(i)
+!           cand := p_list(i)
+!           writeln("Stuff to exchange: ", org, cand)
+!           ! writeln("Original and candidates are in the same room: ", org(4) = cand(4))
+!           ! writeln("Original and candidate before reassignment on org dt: ", xp(org(1), org(2), org(3), org(4)), " and ", xp(cand(1), org(2), org(3), cand(4)))
+!           ! writeln("Original and candidate before reassignment on cand dt: ", xp(org(1), cand(2), cand(3), org(4)), " and ",xp(cand(1), cand(2), cand(3), cand(4)))
+!           xp(org(1), org(2), org(3), org(4)) := 0; xp(org(1), cand(2), cand(3), org(4)) := 1
+!           xp(cand(1), cand(2), cand(3), cand(4)) := 0; xp(cand(1), org(2), org(3), cand(4)) := 1
+!           ! writeln("Original and candidate after reassignment on org dt: ", xp(org(1), org(2), org(3), org(4)), " and ", xp(cand(1), org(2), org(3), cand(4)))
+!           ! writeln("Original and candidate after reassignment on cand dt: ", xp(org(1), cand(2), cand(3), org(4)), " and ",xp(cand(1), cand(2), cand(3), cand(4)))
+!         end-do
+!         new_obj := calculate_objective(xp,yp,zp,FALSE)
+!         old_sum := sum(cp in CourseID, dp in days, tp in time_periods, rp in Rooms) (x_in(cp,dp,tp,rp) + y_in(cp,dp,tp,rp) + z_in(cp,dp,tp,rp))
+!         new_sum := sum(cp in CourseID, dp in days, tp in time_periods, rp in Rooms) (xp(cp,dp,tp,rp) + yp(cp,dp,tp,rp) + zp(cp,dp,tp,rp))
+!         writeln("new info: ", new_obj, init_obj, old_sum, new_sum)
+!         if ((new_obj(3) < init_obj(3)) and boolean(check_constraints(xp, yp, zp, FALSE)) and (old_sum = new_sum)) then
+!           Neighbourhoods += {[xp, yp, zp]}
+!           writeln("obj: ", calculate_objective(xp,yp,zp,FALSE))
+!         end-if
+!         writeln
+!       end-if
+!     end-do
+!   end-do
+!   writeln; writeln
+! end-do
+! returned := Neighbourhoods
+! end-function
+
+
+
+
+
+function daytime_swap_neighbourhoods(x_in: array(CourseID, days, time_periods, Rooms) of integer,
+  y_in: array(CourseID, days, time_periods, Rooms) of integer,
+  z_in: array(CourseID, days, time_periods, Rooms) of integer, odd: boolean): set of array(days, time_periods) of list of string
+  init_obj := calculate_objective(x_in, y_in, z_in, FALSE)
+  forall(cat in Categories, d in days | getsize(potential_course(cat, d)) > 0) do
+    writeln("Category: ", cat)
+    clash_courses := potential_course(cat, d)
+    if odd then
+      indices := sum(l in 1..integer(getsize(clash_courses)/2)) [l*2 - 1]
+    else
+      indices := sum(l in 1..integer(getsize(clash_courses)/2)) [l*2]
+    end-if
+    ! writeln(indices)
+    working_list := sum(ind in indices) [clash_courses(ind)]
+    writeln("working_list: ", working_list)
+    indices_wlist := sum(l in 1..integer(getsize(working_list)/2)) [l*2 - 1]
+    writeln(indices_wlist)
+    forall(ind in indices_wlist) do
+      info := working_list(ind)
+      c_ := info(1); d_:= info(2); t_:= info(3); r_:= info(4)
+      forall (c in CourseID | sum(da in days, t in time_periods) x_in(c,da,t,r_) > 0 and c<>c_) do
+        writeln("replacing xp here")
+        xp:= x_in; yp := y_in; zp := z_in
+        p_list := sum(da in days, t in time_periods | x_in(c,da,t,r_) = 1) [[c,da,t,r_]]
+        writeln("plist: ", p_list)
+        ! forall(da in days, t in time_periods | x_in(c,da,t,r_) = 1) do
+        !   ! writeln("Day: ", da, " time period: ", t, " course ", c, " in Room: ", r_)
+        ! end-do
+        if getsize(p_list) = getsize(working_list) then
+          forall(i in 1..getsize(p_list)) do
+            org := working_list(i)
+            cand := p_list(i)
+            writeln("Stuff to exchange: ", org, cand)
+            ! writeln("Original and candidates are in the same room: ", org(4) = cand(4))
+            ! writeln("Original and candidate before reassignment on org dt: ", xp(org(1), org(2), org(3), org(4)), " and ", xp(cand(1), org(2), org(3), cand(4)))
+            ! writeln("Original and candidate before reassignment on cand dt: ", xp(org(1), cand(2), cand(3), org(4)), " and ",xp(cand(1), cand(2), cand(3), cand(4)))
+            xp(org(1), org(2), org(3), org(4)) := 0; xp(org(1), cand(2), cand(3), org(4)) := 1
+            xp(cand(1), cand(2), cand(3), cand(4)) := 0; xp(cand(1), org(2), org(3), cand(4)) := 1
+            ! writeln("Original and candidate after reassignment on org dt: ", xp(org(1), org(2), org(3), org(4)), " and ", xp(cand(1), org(2), org(3), cand(4)))
+            ! writeln("Original and candidate after reassignment on cand dt: ", xp(org(1), cand(2), cand(3), org(4)), " and ",xp(cand(1), cand(2), cand(3), cand(4)))
+          end-do
+          new_obj := calculate_objective(xp,yp,zp,FALSE)
+          old_sum := sum(cp in CourseID, dp in days, tp in time_periods, rp in Rooms) (x_in(cp,dp,tp,rp) + y_in(cp,dp,tp,rp) + z_in(cp,dp,tp,rp))
+          new_sum := sum(cp in CourseID, dp in days, tp in time_periods, rp in Rooms) (xp(cp,dp,tp,rp) + yp(cp,dp,tp,rp) + zp(cp,dp,tp,rp))
+          writeln("new info: ", new_obj, init_obj, old_sum, new_sum)
+          if ((new_obj(3) < init_obj(3)) and boolean(check_constraints(xp, yp, zp, FALSE)) and (old_sum = new_sum)) then
+            Neighbourhoods += {[xp, yp, zp]}
+            Neighbourhoods_new += {create_timetable(xp, yp, zp)}
+            writeln("obj: ", calculate_objective(xp,yp,zp,FALSE))
+          end-if
+          writeln
+        end-if
+      end-do
+    end-do
+    writeln; writeln
+  end-do
+  returned := Neighbourhoods_new
+end-function
+
+
+
+
+function create_timetable(x_: array(CourseID, days, time_periods, Rooms) of integer,
+                        y_: array(CourseID, days, time_periods, Rooms) of integer,
+                        z_: array(CourseID, days, time_periods, Rooms) of integer) : array(days, time_periods) of list of string
+declarations
+  output_tt: array(days, time_periods) of list of string
+end-declarations
+forall(d in days, t in time_periods) do
+  ! writeln(d, ", period :", t)
+  output_tt(d, t) := []
+  forall(c in CourseID, r in Rooms | x_(c,d,t,r) > 0) do
+    output_tt(d, t) += [string(jointext([c,"_lec"], "")), r]
+    ! writeln(CourseName(c), "(", c, "_lec) in ", r)
+  end-do
+  forall(c in CourseID, r in Rooms | y_(c,d,t,r) > 0) do
+    output_tt(d, t) += [string(jointext([c,"_ws"],"")), r]
+    ! writeln(CourseName(c), "(", c, "_ws) in ", r)
+  end-do
+  forall(c in CourseID, r in Rooms | z_(c,d,t,r) > 0) do
+    output_tt(d, t) += [string(jointext([c,"_cws"], "")), r]
+    ! writeln(CourseName(c), "(", c, "_cws) in ", r)
+  end-do
+end-do
+returned := output_tt
+end-function
+
+
+
+
+
+function read_timetable(tt: array(days, time_periods) of list of string) : list of array(CourseID, days, time_periods, Rooms) of integer
+  declarations
+    xw: array(CourseID, days, time_periods, Rooms) of integer
+    yw: array(CourseID, days, time_periods, Rooms) of integer
+    zw: array(CourseID, days, time_periods, Rooms) of integer
+  end-declarations
+
+  forall(c in CourseID, d in days, t in time_periods, r in Rooms) do
+    xw(c,d,t,r) := 0; yw(c,d,t,r) := 0; zw(c,d,t,r) := 0
+  end-do
+
+  forall(d in days, t in time_periods | getsize(tt(d,t)) > 0) do
+    ! writeln(d, ", period :", t)
+    dt := tt(d,t)
+    indices := sum(l in 1..integer(getsize(dt)/2)) [l*2 - 1]
+    forall(ind in indices) do
+      course_classtype := splittext(dt(ind), "_")
+      room := string(dt(ind+1))
+      course := string(course_classtype(1))
+      classtype := string(course_classtype(2))
+      if (classtype = "lec") then
+        xw(course, d, t, room) := 1
+        counting += 1
+      elif classtype = "ws" then
+        yw(course, d, t, room) := 1
+        counting += 1
+      elif classtype = "cws" then
+        zw(course, d, t, room) := 1
+      else
+        writeln("Something is wrong here")
+      end-if
+    end-do
+  end-do
+
+  writeln("sum total: ", sum(c in CourseID, d in days, t in time_periods, r in Rooms) (xw(c,d,t,r) + yw(c,d,t,r) + zw(c,d,t,r)))
+  returned := [xw, yw, zw]
+end-function
+
 
 end-model
 
-! non_computer labs - need to change stuff here
-! non_lecturer rooms - need to change stuff here
-! course sizes (course enrolment numbers)
-! room capacities (for all rooms, so similar to roomtype)
-! size of a lecture
-! size of a workshop (on average?)
-! size of a computer lab (on average?)
-! number of lectures per week (that each student needs to attend)
-! number of workshops per week
-! number of computer labs per week
-! number of workshop groups (for the course)
-! number of computer workshop groups (for the course)
-! array of commpulsory course groupings indexed by degree programmes
-! array of category course groupings indexed by categories
+

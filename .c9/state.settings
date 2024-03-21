@@ -6,7 +6,7 @@
             "@matchcase": true,
             "@preservecase": "false",
             "@regex": "false",
-            "@wholeword": false,
+            "@wholeword": true,
             "@wraparound": false
         }
     },
@@ -15,7 +15,7 @@
     },
     "console": {
         "@expanded": true,
-        "@height": 317,
+        "@height": 399,
         "@maximized": "false",
         "json()": {
             "meta": {
@@ -43,7 +43,7 @@
                         "output": {
                             "id": "output77004792",
                             "width": 1110,
-                            "height": 285,
+                            "height": 367,
                             "config": {
                                 "runner": "Mosel",
                                 "command": "Checking_timetable.mos",
@@ -94,7 +94,7 @@
             "@fullscreen": false,
             "@maximized": false,
             "@minimized": false,
-            "@position": "171:25",
+            "@position": "110:25",
             "@size": "1323:797"
         }
     },
@@ -173,6 +173,8 @@
     "search-history": {
         "replace": {
             "json()": [
+                "better_obj",
+                "clashing_course",
                 "i",
                 "c_",
                 "o_",
@@ -190,6 +192,8 @@
         },
         "search": {
             "json()": [
+                "best_obj",
+                "obj",
                 "candidates",
                 "start_time",
                 "daytime",

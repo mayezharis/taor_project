@@ -1,0 +1,1745 @@
+Thu Mar 21 2024 01:42:44 GMT+0000 (Greenwich Mean Time)
+FICO Xpress Mosel 64-bit v6.2.0, FICO Xpress v9.0.0
+(c) Copyright Fair Isaac Corporation 2001-2022. All rights reserved
+Compiling Checking_timetable.mos to out/Checking_timetable.bim with -g
+Running model
+Sum of all x, y, z: 468
+count checker says: 468, 468
+
+------------------------------------------
+Checking Constraints
+------------------------------------------
+All constraints satisfied!
+
+------------------------------------------
+Calculating objective function
+------------------------------------------
+
+
+
+On Monday at time period 1 the number of lectures clashing in category Algebra: 2
+Courses: 
+AlgTop (MATH10077), 
+
+HAlg (MATH10069), 
+
+
+On Monday at time period 2 the number of lectures clashing in category Algebra: 2
+Courses: 
+AlgTop (MATH10077), 
+
+HAlg (MATH10069), 
+
+
+On Thursday at time period 1 the number of lectures clashing in category Algebra: 2
+Courses: 
+AlgTop (MATH10077), 
+
+HAlg (MATH10069), 
+
+
+On Thursday at time period 2 the number of lectures clashing in category Algebra: 2
+Courses: 
+AlgTop (MATH10077), 
+
+HAlg (MATH10069), 
+
+
+On Monday at time period 13 the number of lectures clashing in category Applied & Computational: 2
+Courses: 
+NODE (MATH10060), 
+
+TMB (MATH10083), 
+
+
+On Monday at time period 14 the number of lectures clashing in category Applied & Computational: 2
+Courses: 
+NODE (MATH10060), 
+
+TMB (MATH10083), 
+
+
+On Monday at time period 7 the number of lectures clashing in category Applied & Computational: 2
+Courses: 
+MLP (MATH11205), 
+
+NPDE (MATH11207), 
+
+
+On Monday at time period 8 the number of lectures clashing in category Applied & Computational: 2
+Courses: 
+MLP (MATH11205), 
+
+NPDE (MATH11207), 
+
+
+On Monday at time period 7 the number of lectures clashing in category Statistics: 2
+Courses: 
+CS (MATH11148), 
+
+MLP (MATH11205), 
+
+
+On Monday at time period 8 the number of lectures clashing in category Statistics: 2
+Courses: 
+CS (MATH11148), 
+
+MLP (MATH11205), 
+Category Clash Penalty: 100
+Wednesday classes penalty: 37
+Total penalty in objective value: 137
+Category: Algebra
+working_list: [[`MATH10077',`Monday',`1',`JCMB_5327'],[`MATH10077',`Monday',`2',`JCMB_5327']]
+[1]
+replacing xp here
+plist: [[`MATH11120',`Thursday',`3',`JCMB_5327'],[`MATH11120',`Thursday',`4',`JCMB_5327']]
+Stuff to exchange: [`MATH10077',`Monday',`1',`JCMB_5327'][`MATH11120',`Thursday',`3',`JCMB_5327']
+Stuff to exchange: [`MATH10077',`Monday',`2',`JCMB_5327'][`MATH11120',`Thursday',`4',`JCMB_5327']
+new info: [80,37,117][100,37,137]468468
+All constraints satisfied!
+obj: [80,37,117]
+
+replacing xp here
+plist: [[`MATH11233',`Monday',`9',`JCMB_5327'],[`MATH11233',`Monday',`10',`JCMB_5327'],[`MATH11233',`Thursday',`9',`JCMB_5327'],[`MATH11233',`Thursday',`10',`JCMB_5327']]
+replacing xp here
+plist: [[`MATH10080',`Thursday',`7',`JCMB_5327'],[`MATH10080',`Thursday',`8',`JCMB_5327']]
+Stuff to exchange: [`MATH10077',`Monday',`1',`JCMB_5327'][`MATH10080',`Thursday',`7',`JCMB_5327']
+Stuff to exchange: [`MATH10077',`Monday',`2',`JCMB_5327'][`MATH10080',`Thursday',`8',`JCMB_5327']
+new info: [100,37,137][100,37,137]468468
+
+replacing xp here
+plist: [[`MATH11138',`Friday',`5',`JCMB_5327'],[`MATH11138',`Friday',`6',`JCMB_5327']]
+Stuff to exchange: [`MATH10077',`Monday',`1',`JCMB_5327'][`MATH11138',`Friday',`5',`JCMB_5327']
+Stuff to exchange: [`MATH10077',`Monday',`2',`JCMB_5327'][`MATH11138',`Friday',`6',`JCMB_5327']
+new info: [80,37,117][100,37,137]468468
+All constraints satisfied!
+obj: [80,37,117]
+
+replacing xp here
+plist: [[`MATH11145',`Thursday',`5',`JCMB_5327'],[`MATH11145',`Thursday',`6',`JCMB_5327']]
+Stuff to exchange: [`MATH10077',`Monday',`1',`JCMB_5327'][`MATH11145',`Thursday',`5',`JCMB_5327']
+Stuff to exchange: [`MATH10077',`Monday',`2',`JCMB_5327'][`MATH11145',`Thursday',`6',`JCMB_5327']
+new info: [80,37,117][100,37,137]468468
+All constraints satisfied!
+obj: [80,37,117]
+
+replacing xp here
+plist: [[`MATH11240',`Tuesday',`1',`JCMB_5327'],[`MATH11240',`Tuesday',`2',`JCMB_5327'],[`MATH11240',`Tuesday',`3',`JCMB_5327'],[`MATH11240',`Tuesday',`4',`JCMB_5327']]
+replacing xp here
+plist: [[`MATH11193',`Tuesday',`9',`JCMB_5327'],[`MATH11193',`Tuesday',`10',`JCMB_5327']]
+Stuff to exchange: [`MATH10077',`Monday',`1',`JCMB_5327'][`MATH11193',`Tuesday',`9',`JCMB_5327']
+Stuff to exchange: [`MATH10077',`Monday',`2',`JCMB_5327'][`MATH11193',`Tuesday',`10',`JCMB_5327']
+new info: [80,37,117][100,37,137]468468
+All constraints satisfied!
+obj: [80,37,117]
+
+replacing xp here
+plist: [[`MATH11157',`Wednesday',`7',`JCMB_5327'],[`MATH11157',`Wednesday',`8',`JCMB_5327'],[`MATH11157',`Wednesday',`9',`JCMB_5327'],[`MATH11157',`Wednesday',`10',`JCMB_5327']]
+
+
+Category: Algebra
+working_list: [[`MATH10077',`Thursday',`1',`JCMB_6206'],[`MATH10077',`Thursday',`2',`JCMB_6206']]
+[1]
+replacing xp here
+plist: [[`MATH11206',`Wednesday',`7',`JCMB_6206'],[`MATH11206',`Wednesday',`8',`JCMB_6206']]
+Stuff to exchange: [`MATH10077',`Thursday',`1',`JCMB_6206'][`MATH11206',`Wednesday',`7',`JCMB_6206']
+Stuff to exchange: [`MATH10077',`Thursday',`2',`JCMB_6206'][`MATH11206',`Wednesday',`8',`JCMB_6206']
+new info: [80,37,117][100,37,137]468468
+All constraints satisfied!
+obj: [80,37,117]
+
+replacing xp here
+plist: [[`MATH10051',`Monday',`15',`JCMB_6206'],[`MATH10051',`Monday',`16',`JCMB_6206'],[`MATH10051',`Thursday',`13',`JCMB_6206'],[`MATH10051',`Thursday',`14',`JCMB_6206']]
+
+
+Category: Applied & Computational
+working_list: [[`MATH10060',`Monday',`13',`JCMB_Lecture Theatre A'],[`MATH10060',`Monday',`14',`JCMB_Lecture Theatre A'],[`MATH11205',`Monday',`7',`NUC_B.01 - Alder Lecture Theatre'],[`MATH11205',`Monday',`8',`NUC_B.01 - Alder Lecture Theatre']]
+[1,3]
+replacing xp here
+plist: [[`MATH10086',`Tuesday',`5',`JCMB_Lecture Theatre A'],[`MATH10086',`Tuesday',`6',`JCMB_Lecture Theatre A']]
+replacing xp here
+plist: [[`MATH11148',`Monday',`5',`JCMB_Lecture Theatre A'],[`MATH11148',`Monday',`6',`JCMB_Lecture Theatre A'],[`MATH11148',`Monday',`7',`JCMB_Lecture Theatre A'],[`MATH11148',`Monday',`8',`JCMB_Lecture Theatre A']]
+Stuff to exchange: [`MATH10060',`Monday',`13',`JCMB_Lecture Theatre A'][`MATH11148',`Monday',`5',`JCMB_Lecture Theatre A']
+Stuff to exchange: [`MATH10060',`Monday',`14',`JCMB_Lecture Theatre A'][`MATH11148',`Monday',`6',`JCMB_Lecture Theatre A']
+Stuff to exchange: [`MATH11205',`Monday',`7',`NUC_B.01 - Alder Lecture Theatre'][`MATH11148',`Monday',`7',`JCMB_Lecture Theatre A']
+Stuff to exchange: [`MATH11205',`Monday',`8',`NUC_B.01 - Alder Lecture Theatre'][`MATH11148',`Monday',`8',`JCMB_Lecture Theatre A']
+new info: [80,37,117][100,37,137]468468
+Not all constraints satisfied.
+
+replacing xp here
+plist: [[`MATH10003',`Thursday',`11',`JCMB_Lecture Theatre A'],[`MATH10003',`Thursday',`12',`JCMB_Lecture Theatre A'],[`MATH10003',`Thursday',`13',`JCMB_Lecture Theatre A'],[`MATH10003',`Thursday',`14',`JCMB_Lecture Theatre A']]
+Stuff to exchange: [`MATH10060',`Monday',`13',`JCMB_Lecture Theatre A'][`MATH10003',`Thursday',`11',`JCMB_Lecture Theatre A']
+Stuff to exchange: [`MATH10060',`Monday',`14',`JCMB_Lecture Theatre A'][`MATH10003',`Thursday',`12',`JCMB_Lecture Theatre A']
+Stuff to exchange: [`MATH11205',`Monday',`7',`NUC_B.01 - Alder Lecture Theatre'][`MATH10003',`Thursday',`13',`JCMB_Lecture Theatre A']
+Stuff to exchange: [`MATH11205',`Monday',`8',`NUC_B.01 - Alder Lecture Theatre'][`MATH10003',`Thursday',`14',`JCMB_Lecture Theatre A']
+new info: [40,37,77][100,37,137]468468
+Not all constraints satisfied.
+
+replacing xp here
+plist: [[`MATH08064',`Tuesday',`7',`JCMB_Lecture Theatre A'],[`MATH08064',`Tuesday',`8',`JCMB_Lecture Theatre A']]
+replacing xp here
+plist: [[`MATH11185',`Monday',`15',`JCMB_Lecture Theatre A'],[`MATH11185',`Monday',`16',`JCMB_Lecture Theatre A'],[`MATH11185',`Thursday',`15',`JCMB_Lecture Theatre A'],[`MATH11185',`Thursday',`16',`JCMB_Lecture Theatre A']]
+Stuff to exchange: [`MATH10060',`Monday',`13',`JCMB_Lecture Theatre A'][`MATH11185',`Monday',`15',`JCMB_Lecture Theatre A']
+Stuff to exchange: [`MATH10060',`Monday',`14',`JCMB_Lecture Theatre A'][`MATH11185',`Monday',`16',`JCMB_Lecture Theatre A']
+Stuff to exchange: [`MATH11205',`Monday',`7',`NUC_B.01 - Alder Lecture Theatre'][`MATH11185',`Thursday',`15',`JCMB_Lecture Theatre A']
+Stuff to exchange: [`MATH11205',`Monday',`8',`NUC_B.01 - Alder Lecture Theatre'][`MATH11185',`Thursday',`16',`JCMB_Lecture Theatre A']
+new info: [60,37,97][100,37,137]468468
+Not all constraints satisfied.
+
+replacing xp here
+plist: [[`MATH11158',`Friday',`9',`JCMB_Lecture Theatre A'],[`MATH11158',`Friday',`10',`JCMB_Lecture Theatre A'],[`MATH11158',`Friday',`11',`JCMB_Lecture Theatre A'],[`MATH11158',`Friday',`12',`JCMB_Lecture Theatre A']]
+Stuff to exchange: [`MATH10060',`Monday',`13',`JCMB_Lecture Theatre A'][`MATH11158',`Friday',`9',`JCMB_Lecture Theatre A']
+Stuff to exchange: [`MATH10060',`Monday',`14',`JCMB_Lecture Theatre A'][`MATH11158',`Friday',`10',`JCMB_Lecture Theatre A']
+Stuff to exchange: [`MATH11205',`Monday',`7',`NUC_B.01 - Alder Lecture Theatre'][`MATH11158',`Friday',`11',`JCMB_Lecture Theatre A']
+Stuff to exchange: [`MATH11205',`Monday',`8',`NUC_B.01 - Alder Lecture Theatre'][`MATH11158',`Friday',`12',`JCMB_Lecture Theatre A']
+new info: [60,37,97][100,37,137]468468
+Not all constraints satisfied.
+
+replacing xp here
+plist: [[`MATH10093',`Tuesday',`15',`JCMB_Lecture Theatre A'],[`MATH10093',`Tuesday',`16',`JCMB_Lecture Theatre A']]
+replacing xp here
+plist: [[`MATH10067',`Thursday',`7',`NUC_B.01 - Alder Lecture Theatre'],[`MATH10067',`Thursday',`8',`NUC_B.01 - Alder Lecture Theatre']]
+
+
+Category: Statistics
+working_list: [[`MATH11148',`Monday',`7',`JCMB_Lecture Theatre A'],[`MATH11148',`Monday',`8',`JCMB_Lecture Theatre A']]
+[1]
+replacing xp here
+plist: [[`MATH10086',`Tuesday',`5',`JCMB_Lecture Theatre A'],[`MATH10086',`Tuesday',`6',`JCMB_Lecture Theatre A']]
+Stuff to exchange: [`MATH11148',`Monday',`7',`JCMB_Lecture Theatre A'][`MATH10086',`Tuesday',`5',`JCMB_Lecture Theatre A']
+Stuff to exchange: [`MATH11148',`Monday',`8',`JCMB_Lecture Theatre A'][`MATH10086',`Tuesday',`6',`JCMB_Lecture Theatre A']
+new info: [80,37,117][100,37,137]468468
+All constraints satisfied!
+obj: [80,37,117]
+
+replacing xp here
+plist: [[`MATH10003',`Thursday',`11',`JCMB_Lecture Theatre A'],[`MATH10003',`Thursday',`12',`JCMB_Lecture Theatre A'],[`MATH10003',`Thursday',`13',`JCMB_Lecture Theatre A'],[`MATH10003',`Thursday',`14',`JCMB_Lecture Theatre A']]
+replacing xp here
+plist: [[`MATH08064',`Tuesday',`7',`JCMB_Lecture Theatre A'],[`MATH08064',`Tuesday',`8',`JCMB_Lecture Theatre A']]
+Stuff to exchange: [`MATH11148',`Monday',`7',`JCMB_Lecture Theatre A'][`MATH08064',`Tuesday',`7',`JCMB_Lecture Theatre A']
+Stuff to exchange: [`MATH11148',`Monday',`8',`JCMB_Lecture Theatre A'][`MATH08064',`Tuesday',`8',`JCMB_Lecture Theatre A']
+new info: [80,37,117][100,37,137]468468
+Not all constraints satisfied.
+
+replacing xp here
+plist: [[`MATH11185',`Monday',`15',`JCMB_Lecture Theatre A'],[`MATH11185',`Monday',`16',`JCMB_Lecture Theatre A'],[`MATH11185',`Thursday',`15',`JCMB_Lecture Theatre A'],[`MATH11185',`Thursday',`16',`JCMB_Lecture Theatre A']]
+replacing xp here
+plist: [[`MATH10060',`Monday',`13',`JCMB_Lecture Theatre A'],[`MATH10060',`Monday',`14',`JCMB_Lecture Theatre A']]
+Stuff to exchange: [`MATH11148',`Monday',`7',`JCMB_Lecture Theatre A'][`MATH10060',`Monday',`13',`JCMB_Lecture Theatre A']
+Stuff to exchange: [`MATH11148',`Monday',`8',`JCMB_Lecture Theatre A'][`MATH10060',`Monday',`14',`JCMB_Lecture Theatre A']
+new info: [60,37,97][100,37,137]468468
+Not all constraints satisfied.
+
+replacing xp here
+plist: [[`MATH11158',`Friday',`9',`JCMB_Lecture Theatre A'],[`MATH11158',`Friday',`10',`JCMB_Lecture Theatre A'],[`MATH11158',`Friday',`11',`JCMB_Lecture Theatre A'],[`MATH11158',`Friday',`12',`JCMB_Lecture Theatre A']]
+replacing xp here
+plist: [[`MATH10093',`Tuesday',`15',`JCMB_Lecture Theatre A'],[`MATH10093',`Tuesday',`16',`JCMB_Lecture Theatre A']]
+Stuff to exchange: [`MATH11148',`Monday',`7',`JCMB_Lecture Theatre A'][`MATH10093',`Tuesday',`15',`JCMB_Lecture Theatre A']
+Stuff to exchange: [`MATH11148',`Monday',`8',`JCMB_Lecture Theatre A'][`MATH10093',`Tuesday',`16',`JCMB_Lecture Theatre A']
+new info: [100,37,137][100,37,137]468468
+
+
+
+Category: Algebra
+working_list: [[`MATH10069',`Monday',`1',`NUC_1.14 - Oak Lecture Theatre'],[`MATH10069',`Monday',`2',`NUC_1.14 - Oak Lecture Theatre']]
+[1]
+replacing xp here
+plist: [[`MATH08065',`Wednesday',`5',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08065',`Wednesday',`6',`NUC_1.14 - Oak Lecture Theatre']]
+Stuff to exchange: [`MATH10069',`Monday',`1',`NUC_1.14 - Oak Lecture Theatre'][`MATH08065',`Wednesday',`5',`NUC_1.14 - Oak Lecture Theatre']
+Stuff to exchange: [`MATH10069',`Monday',`2',`NUC_1.14 - Oak Lecture Theatre'][`MATH08065',`Wednesday',`6',`NUC_1.14 - Oak Lecture Theatre']
+new info: [80,37,117][100,37,137]468468
+All constraints satisfied!
+obj: [80,37,117]
+
+replacing xp here
+plist: [[`MATH08075',`Tuesday',`7',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08075',`Tuesday',`8',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08075',`Thursday',`7',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08075',`Thursday',`8',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08075',`Friday',`7',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08075',`Friday',`8',`NUC_1.14 - Oak Lecture Theatre']]
+replacing xp here
+plist: [[`MATH08064',`Wednesday',`7',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08064',`Wednesday',`8',`NUC_1.14 - Oak Lecture Theatre']]
+Stuff to exchange: [`MATH10069',`Monday',`1',`NUC_1.14 - Oak Lecture Theatre'][`MATH08064',`Wednesday',`7',`NUC_1.14 - Oak Lecture Theatre']
+Stuff to exchange: [`MATH10069',`Monday',`2',`NUC_1.14 - Oak Lecture Theatre'][`MATH08064',`Wednesday',`8',`NUC_1.14 - Oak Lecture Theatre']
+new info: [80,37,117][100,37,137]468468
+Not all constraints satisfied.
+
+replacing xp here
+plist: [[`MATH10067',`Friday',`15',`NUC_1.14 - Oak Lecture Theatre'],[`MATH10067',`Friday',`16',`NUC_1.14 - Oak Lecture Theatre']]
+Stuff to exchange: [`MATH10069',`Monday',`1',`NUC_1.14 - Oak Lecture Theatre'][`MATH10067',`Friday',`15',`NUC_1.14 - Oak Lecture Theatre']
+Stuff to exchange: [`MATH10069',`Monday',`2',`NUC_1.14 - Oak Lecture Theatre'][`MATH10067',`Friday',`16',`NUC_1.14 - Oak Lecture Theatre']
+new info: [80,37,117][100,37,137]468468
+All constraints satisfied!
+obj: [80,37,117]
+
+replacing xp here
+plist: [[`MATH08051',`Monday',`11',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08051',`Monday',`12',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08051',`Thursday',`11',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08051',`Thursday',`12',`NUC_1.14 - Oak Lecture Theatre']]
+
+
+Category: Algebra
+working_list: [[`MATH10069',`Thursday',`1',`NUC_1.14 - Oak Lecture Theatre'],[`MATH10069',`Thursday',`2',`NUC_1.14 - Oak Lecture Theatre']]
+[1]
+replacing xp here
+plist: [[`MATH08065',`Wednesday',`5',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08065',`Wednesday',`6',`NUC_1.14 - Oak Lecture Theatre']]
+Stuff to exchange: [`MATH10069',`Thursday',`1',`NUC_1.14 - Oak Lecture Theatre'][`MATH08065',`Wednesday',`5',`NUC_1.14 - Oak Lecture Theatre']
+Stuff to exchange: [`MATH10069',`Thursday',`2',`NUC_1.14 - Oak Lecture Theatre'][`MATH08065',`Wednesday',`6',`NUC_1.14 - Oak Lecture Theatre']
+new info: [80,37,117][100,37,137]468468
+All constraints satisfied!
+obj: [80,37,117]
+
+replacing xp here
+plist: [[`MATH08075',`Tuesday',`7',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08075',`Tuesday',`8',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08075',`Thursday',`7',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08075',`Thursday',`8',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08075',`Friday',`7',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08075',`Friday',`8',`NUC_1.14 - Oak Lecture Theatre']]
+replacing xp here
+plist: [[`MATH08064',`Wednesday',`7',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08064',`Wednesday',`8',`NUC_1.14 - Oak Lecture Theatre']]
+Stuff to exchange: [`MATH10069',`Thursday',`1',`NUC_1.14 - Oak Lecture Theatre'][`MATH08064',`Wednesday',`7',`NUC_1.14 - Oak Lecture Theatre']
+Stuff to exchange: [`MATH10069',`Thursday',`2',`NUC_1.14 - Oak Lecture Theatre'][`MATH08064',`Wednesday',`8',`NUC_1.14 - Oak Lecture Theatre']
+new info: [80,37,117][100,37,137]468468
+Not all constraints satisfied.
+
+replacing xp here
+plist: [[`MATH10067',`Friday',`15',`NUC_1.14 - Oak Lecture Theatre'],[`MATH10067',`Friday',`16',`NUC_1.14 - Oak Lecture Theatre']]
+Stuff to exchange: [`MATH10069',`Thursday',`1',`NUC_1.14 - Oak Lecture Theatre'][`MATH10067',`Friday',`15',`NUC_1.14 - Oak Lecture Theatre']
+Stuff to exchange: [`MATH10069',`Thursday',`2',`NUC_1.14 - Oak Lecture Theatre'][`MATH10067',`Friday',`16',`NUC_1.14 - Oak Lecture Theatre']
+new info: [80,37,117][100,37,137]468468
+All constraints satisfied!
+obj: [80,37,117]
+
+replacing xp here
+plist: [[`MATH08051',`Monday',`11',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08051',`Monday',`12',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08051',`Thursday',`11',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08051',`Thursday',`12',`NUC_1.14 - Oak Lecture Theatre']]
+
+
+Category: Applied & Computational
+working_list: [[`MATH10083',`Monday',`13',`JCMB_5328'],[`MATH10083',`Monday',`14',`JCMB_5328'],[`MATH11207',`Monday',`7',`JCMB_Lecture Theatre C'],[`MATH11207',`Monday',`8',`JCMB_Lecture Theatre C']]
+[1,3]
+replacing xp here
+plist: [[`MATH11145',`Monday',`5',`JCMB_5328'],[`MATH11145',`Monday',`6',`JCMB_5328']]
+replacing xp here
+plist: [[`MATH10024',`Thursday',`5',`JCMB_5328'],[`MATH10024',`Thursday',`6',`JCMB_5328']]
+replacing xp here
+plist: [[`MATH10086',`Thursday',`3',`JCMB_Lecture Theatre C'],[`MATH10086',`Thursday',`4',`JCMB_Lecture Theatre C'],[`MATH10086',`Friday',`3',`JCMB_Lecture Theatre C'],[`MATH10086',`Friday',`4',`JCMB_Lecture Theatre C']]
+Stuff to exchange: [`MATH10083',`Monday',`13',`JCMB_5328'][`MATH10086',`Thursday',`3',`JCMB_Lecture Theatre C']
+Stuff to exchange: [`MATH10083',`Monday',`14',`JCMB_5328'][`MATH10086',`Thursday',`4',`JCMB_Lecture Theatre C']
+Stuff to exchange: [`MATH11207',`Monday',`7',`JCMB_Lecture Theatre C'][`MATH10086',`Friday',`3',`JCMB_Lecture Theatre C']
+Stuff to exchange: [`MATH11207',`Monday',`8',`JCMB_Lecture Theatre C'][`MATH10086',`Friday',`4',`JCMB_Lecture Theatre C']
+new info: [80,37,117][100,37,137]468468
+All constraints satisfied!
+obj: [80,37,117]
+
+replacing xp here
+plist: [[`MATH11174',`Wednesday',`15',`JCMB_Lecture Theatre C'],[`MATH11174',`Wednesday',`16',`JCMB_Lecture Theatre C'],[`MATH11174',`Wednesday',`17',`JCMB_Lecture Theatre C'],[`MATH11174',`Wednesday',`18',`JCMB_Lecture Theatre C']]
+Stuff to exchange: [`MATH10083',`Monday',`13',`JCMB_5328'][`MATH11174',`Wednesday',`15',`JCMB_Lecture Theatre C']
+Stuff to exchange: [`MATH10083',`Monday',`14',`JCMB_5328'][`MATH11174',`Wednesday',`16',`JCMB_Lecture Theatre C']
+Stuff to exchange: [`MATH11207',`Monday',`7',`JCMB_Lecture Theatre C'][`MATH11174',`Wednesday',`17',`JCMB_Lecture Theatre C']
+Stuff to exchange: [`MATH11207',`Monday',`8',`JCMB_Lecture Theatre C'][`MATH11174',`Wednesday',`18',`JCMB_Lecture Theatre C']
+new info: [60,37,97][100,37,137]468468
+All constraints satisfied!
+obj: [60,37,97]
+
+replacing xp here
+plist: [[`MATH08064',`Wednesday',`7',`JCMB_Lecture Theatre C'],[`MATH08064',`Wednesday',`8',`JCMB_Lecture Theatre C']]
+replacing xp here
+plist: [[`MATH11147',`Tuesday',`5',`JCMB_Lecture Theatre C'],[`MATH11147',`Tuesday',`6',`JCMB_Lecture Theatre C'],[`MATH11147',`Tuesday',`7',`JCMB_Lecture Theatre C'],[`MATH11147',`Tuesday',`8',`JCMB_Lecture Theatre C']]
+Stuff to exchange: [`MATH10083',`Monday',`13',`JCMB_5328'][`MATH11147',`Tuesday',`5',`JCMB_Lecture Theatre C']
+Stuff to exchange: [`MATH10083',`Monday',`14',`JCMB_5328'][`MATH11147',`Tuesday',`6',`JCMB_Lecture Theatre C']
+Stuff to exchange: [`MATH11207',`Monday',`7',`JCMB_Lecture Theatre C'][`MATH11147',`Tuesday',`7',`JCMB_Lecture Theatre C']
+Stuff to exchange: [`MATH11207',`Monday',`8',`JCMB_Lecture Theatre C'][`MATH11147',`Tuesday',`8',`JCMB_Lecture Theatre C']
+new info: [100,37,137][100,37,137]468468
+
+replacing xp here
+plist: [[`MATH11181',`Monday',`1',`JCMB_Lecture Theatre C'],[`MATH11181',`Monday',`2',`JCMB_Lecture Theatre C'],[`MATH11181',`Monday',`3',`JCMB_Lecture Theatre C'],[`MATH11181',`Monday',`4',`JCMB_Lecture Theatre C']]
+Stuff to exchange: [`MATH10083',`Monday',`13',`JCMB_5328'][`MATH11181',`Monday',`1',`JCMB_Lecture Theatre C']
+Stuff to exchange: [`MATH10083',`Monday',`14',`JCMB_5328'][`MATH11181',`Monday',`2',`JCMB_Lecture Theatre C']
+Stuff to exchange: [`MATH11207',`Monday',`7',`JCMB_Lecture Theatre C'][`MATH11181',`Monday',`3',`JCMB_Lecture Theatre C']
+Stuff to exchange: [`MATH11207',`Monday',`8',`JCMB_Lecture Theatre C'][`MATH11181',`Monday',`4',`JCMB_Lecture Theatre C']
+new info: [60,37,97][100,37,137]468468
+Not all constraints satisfied.
+
+replacing xp here
+plist: [[`MATH10024',`Monday',`5',`JCMB_Lecture Theatre C'],[`MATH10024',`Monday',`6',`JCMB_Lecture Theatre C']]
+replacing xp here
+plist: [[`MATH11028',`Tuesday',`1',`JCMB_Lecture Theatre C'],[`MATH11028',`Tuesday',`2',`JCMB_Lecture Theatre C'],[`MATH11028',`Tuesday',`3',`JCMB_Lecture Theatre C'],[`MATH11028',`Tuesday',`4',`JCMB_Lecture Theatre C']]
+Stuff to exchange: [`MATH10083',`Monday',`13',`JCMB_5328'][`MATH11028',`Tuesday',`1',`JCMB_Lecture Theatre C']
+Stuff to exchange: [`MATH10083',`Monday',`14',`JCMB_5328'][`MATH11028',`Tuesday',`2',`JCMB_Lecture Theatre C']
+Stuff to exchange: [`MATH11207',`Monday',`7',`JCMB_Lecture Theatre C'][`MATH11028',`Tuesday',`3',`JCMB_Lecture Theatre C']
+Stuff to exchange: [`MATH11207',`Monday',`8',`JCMB_Lecture Theatre C'][`MATH11028',`Tuesday',`4',`JCMB_Lecture Theatre C']
+new info: [100,37,137][100,37,137]468468
+
+replacing xp here
+plist: [[`MATH11131',`Wednesday',`3',`JCMB_Lecture Theatre C'],[`MATH11131',`Wednesday',`4',`JCMB_Lecture Theatre C'],[`MATH11131',`Wednesday',`5',`JCMB_Lecture Theatre C'],[`MATH11131',`Wednesday',`6',`JCMB_Lecture Theatre C']]
+Stuff to exchange: [`MATH10083',`Monday',`13',`JCMB_5328'][`MATH11131',`Wednesday',`3',`JCMB_Lecture Theatre C']
+Stuff to exchange: [`MATH10083',`Monday',`14',`JCMB_5328'][`MATH11131',`Wednesday',`4',`JCMB_Lecture Theatre C']
+Stuff to exchange: [`MATH11207',`Monday',`7',`JCMB_Lecture Theatre C'][`MATH11131',`Wednesday',`5',`JCMB_Lecture Theatre C']
+Stuff to exchange: [`MATH11207',`Monday',`8',`JCMB_Lecture Theatre C'][`MATH11131',`Wednesday',`6',`JCMB_Lecture Theatre C']
+new info: [100,37,137][100,37,137]468468
+
+replacing xp here
+plist: [[`MATH11183',`Tuesday',`11',`JCMB_Lecture Theatre C'],[`MATH11183',`Tuesday',`12',`JCMB_Lecture Theatre C'],[`MATH11183',`Tuesday',`13',`JCMB_Lecture Theatre C'],[`MATH11183',`Tuesday',`14',`JCMB_Lecture Theatre C']]
+Stuff to exchange: [`MATH10083',`Monday',`13',`JCMB_5328'][`MATH11183',`Tuesday',`11',`JCMB_Lecture Theatre C']
+Stuff to exchange: [`MATH10083',`Monday',`14',`JCMB_5328'][`MATH11183',`Tuesday',`12',`JCMB_Lecture Theatre C']
+Stuff to exchange: [`MATH11207',`Monday',`7',`JCMB_Lecture Theatre C'][`MATH11183',`Tuesday',`13',`JCMB_Lecture Theatre C']
+Stuff to exchange: [`MATH11207',`Monday',`8',`JCMB_Lecture Theatre C'][`MATH11183',`Tuesday',`14',`JCMB_Lecture Theatre C']
+new info: [60,37,97][100,37,137]468468
+All constraints satisfied!
+obj: [60,37,97]
+
+
+
+Category: Statistics
+working_list: [[`MATH11205',`Monday',`7',`NUC_B.01 - Alder Lecture Theatre'],[`MATH11205',`Monday',`8',`NUC_B.01 - Alder Lecture Theatre']]
+[1]
+replacing xp here
+plist: [[`MATH10067',`Thursday',`7',`NUC_B.01 - Alder Lecture Theatre'],[`MATH10067',`Thursday',`8',`NUC_B.01 - Alder Lecture Theatre']]
+Stuff to exchange: [`MATH11205',`Monday',`7',`NUC_B.01 - Alder Lecture Theatre'][`MATH10067',`Thursday',`7',`NUC_B.01 - Alder Lecture Theatre']
+Stuff to exchange: [`MATH11205',`Monday',`8',`NUC_B.01 - Alder Lecture Theatre'][`MATH10067',`Thursday',`8',`NUC_B.01 - Alder Lecture Theatre']
+new info: [80,37,117][100,37,137]468468
+Not all constraints satisfied.
+
+
+
+=============== VNS iteration: 1 ===============
+Neighbourhood 1: sum total: 468
+117
+New best solution with objective:[80,37,117]
+Neighbourhood 2: sum total: 468
+117
+Neighbourhood 3: sum total: 468
+117
+Neighbourhood 4: sum total: 468
+117
+Neighbourhood 5: sum total: 468
+117
+Neighbourhood 6: sum total: 468
+117
+Neighbourhood 7: sum total: 468
+117
+Neighbourhood 8: sum total: 468
+117
+Neighbourhood 9: sum total: 468
+117
+Neighbourhood 10: sum total: 468
+117
+Neighbourhood 11: sum total: 468
+117
+Neighbourhood 12: sum total: 468
+97
+New best solution with objective:[60,37,97]
+Neighbourhood 13: sum total: 468
+97
+
+------------------------------------------
+Calculating objective function
+------------------------------------------
+
+
+
+On Monday at time period 1 the number of lectures clashing in category Algebra: 2
+Courses: 
+AlgTop (MATH10077), 
+
+HAlg (MATH10069), 
+
+
+On Monday at time period 2 the number of lectures clashing in category Algebra: 2
+Courses: 
+AlgTop (MATH10077), 
+
+HAlg (MATH10069), 
+
+
+On Thursday at time period 1 the number of lectures clashing in category Algebra: 2
+Courses: 
+AlgTop (MATH10077), 
+
+HAlg (MATH10069), 
+
+
+On Thursday at time period 2 the number of lectures clashing in category Algebra: 2
+Courses: 
+AlgTop (MATH10077), 
+
+HAlg (MATH10069), 
+
+
+On Monday at time period 7 the number of lectures clashing in category Statistics: 2
+Courses: 
+CS (MATH11148), 
+
+MLP (MATH11205), 
+
+
+On Monday at time period 8 the number of lectures clashing in category Statistics: 2
+Courses: 
+CS (MATH11148), 
+
+MLP (MATH11205), 
+Category Clash Penalty: 60
+Wednesday classes penalty: 37
+Total penalty in objective value: 97
+Category: Algebra
+working_list: [[`MATH10077',`Monday',`1',`JCMB_5327'],[`MATH10077',`Monday',`2',`JCMB_5327']]
+[1]
+replacing xp here
+plist: [[`MATH11120',`Thursday',`3',`JCMB_5327'],[`MATH11120',`Thursday',`4',`JCMB_5327']]
+Stuff to exchange: [`MATH10077',`Monday',`1',`JCMB_5327'][`MATH11120',`Thursday',`3',`JCMB_5327']
+Stuff to exchange: [`MATH10077',`Monday',`2',`JCMB_5327'][`MATH11120',`Thursday',`4',`JCMB_5327']
+new info: [40,37,77][60,37,97]468468
+All constraints satisfied!
+obj: [40,37,77]
+
+replacing xp here
+plist: [[`MATH11233',`Monday',`9',`JCMB_5327'],[`MATH11233',`Monday',`10',`JCMB_5327'],[`MATH11233',`Thursday',`9',`JCMB_5327'],[`MATH11233',`Thursday',`10',`JCMB_5327']]
+replacing xp here
+plist: [[`MATH10080',`Thursday',`7',`JCMB_5327'],[`MATH10080',`Thursday',`8',`JCMB_5327']]
+Stuff to exchange: [`MATH10077',`Monday',`1',`JCMB_5327'][`MATH10080',`Thursday',`7',`JCMB_5327']
+Stuff to exchange: [`MATH10077',`Monday',`2',`JCMB_5327'][`MATH10080',`Thursday',`8',`JCMB_5327']
+new info: [60,37,97][60,37,97]468468
+
+replacing xp here
+plist: [[`MATH11138',`Friday',`5',`JCMB_5327'],[`MATH11138',`Friday',`6',`JCMB_5327']]
+Stuff to exchange: [`MATH10077',`Monday',`1',`JCMB_5327'][`MATH11138',`Friday',`5',`JCMB_5327']
+Stuff to exchange: [`MATH10077',`Monday',`2',`JCMB_5327'][`MATH11138',`Friday',`6',`JCMB_5327']
+new info: [40,37,77][60,37,97]468468
+All constraints satisfied!
+obj: [40,37,77]
+
+replacing xp here
+plist: [[`MATH11145',`Thursday',`5',`JCMB_5327'],[`MATH11145',`Thursday',`6',`JCMB_5327']]
+Stuff to exchange: [`MATH10077',`Monday',`1',`JCMB_5327'][`MATH11145',`Thursday',`5',`JCMB_5327']
+Stuff to exchange: [`MATH10077',`Monday',`2',`JCMB_5327'][`MATH11145',`Thursday',`6',`JCMB_5327']
+new info: [40,37,77][60,37,97]468468
+All constraints satisfied!
+obj: [40,37,77]
+
+replacing xp here
+plist: [[`MATH11240',`Tuesday',`1',`JCMB_5327'],[`MATH11240',`Tuesday',`2',`JCMB_5327'],[`MATH11240',`Tuesday',`3',`JCMB_5327'],[`MATH11240',`Tuesday',`4',`JCMB_5327']]
+replacing xp here
+plist: [[`MATH11193',`Tuesday',`9',`JCMB_5327'],[`MATH11193',`Tuesday',`10',`JCMB_5327']]
+Stuff to exchange: [`MATH10077',`Monday',`1',`JCMB_5327'][`MATH11193',`Tuesday',`9',`JCMB_5327']
+Stuff to exchange: [`MATH10077',`Monday',`2',`JCMB_5327'][`MATH11193',`Tuesday',`10',`JCMB_5327']
+new info: [40,37,77][60,37,97]468468
+All constraints satisfied!
+obj: [40,37,77]
+
+replacing xp here
+plist: [[`MATH11157',`Wednesday',`7',`JCMB_5327'],[`MATH11157',`Wednesday',`8',`JCMB_5327'],[`MATH11157',`Wednesday',`9',`JCMB_5327'],[`MATH11157',`Wednesday',`10',`JCMB_5327']]
+
+
+Category: Algebra
+working_list: [[`MATH10077',`Thursday',`1',`JCMB_6206'],[`MATH10077',`Thursday',`2',`JCMB_6206']]
+[1]
+replacing xp here
+plist: [[`MATH11206',`Wednesday',`7',`JCMB_6206'],[`MATH11206',`Wednesday',`8',`JCMB_6206']]
+Stuff to exchange: [`MATH10077',`Thursday',`1',`JCMB_6206'][`MATH11206',`Wednesday',`7',`JCMB_6206']
+Stuff to exchange: [`MATH10077',`Thursday',`2',`JCMB_6206'][`MATH11206',`Wednesday',`8',`JCMB_6206']
+new info: [40,37,77][60,37,97]468468
+All constraints satisfied!
+obj: [40,37,77]
+
+replacing xp here
+plist: [[`MATH10051',`Monday',`15',`JCMB_6206'],[`MATH10051',`Monday',`16',`JCMB_6206'],[`MATH10051',`Thursday',`13',`JCMB_6206'],[`MATH10051',`Thursday',`14',`JCMB_6206']]
+
+
+Category: Statistics
+working_list: [[`MATH11148',`Monday',`7',`JCMB_Lecture Theatre A'],[`MATH11148',`Monday',`8',`JCMB_Lecture Theatre A']]
+[1]
+replacing xp here
+plist: [[`MATH10086',`Tuesday',`5',`JCMB_Lecture Theatre A'],[`MATH10086',`Tuesday',`6',`JCMB_Lecture Theatre A']]
+Stuff to exchange: [`MATH11148',`Monday',`7',`JCMB_Lecture Theatre A'][`MATH10086',`Tuesday',`5',`JCMB_Lecture Theatre A']
+Stuff to exchange: [`MATH11148',`Monday',`8',`JCMB_Lecture Theatre A'][`MATH10086',`Tuesday',`6',`JCMB_Lecture Theatre A']
+new info: [40,37,77][60,37,97]468468
+All constraints satisfied!
+obj: [40,37,77]
+
+replacing xp here
+plist: [[`MATH10003',`Thursday',`11',`JCMB_Lecture Theatre A'],[`MATH10003',`Thursday',`12',`JCMB_Lecture Theatre A'],[`MATH10003',`Thursday',`13',`JCMB_Lecture Theatre A'],[`MATH10003',`Thursday',`14',`JCMB_Lecture Theatre A']]
+replacing xp here
+plist: [[`MATH08064',`Tuesday',`7',`JCMB_Lecture Theatre A'],[`MATH08064',`Tuesday',`8',`JCMB_Lecture Theatre A']]
+Stuff to exchange: [`MATH11148',`Monday',`7',`JCMB_Lecture Theatre A'][`MATH08064',`Tuesday',`7',`JCMB_Lecture Theatre A']
+Stuff to exchange: [`MATH11148',`Monday',`8',`JCMB_Lecture Theatre A'][`MATH08064',`Tuesday',`8',`JCMB_Lecture Theatre A']
+new info: [40,37,77][60,37,97]468468
+Not all constraints satisfied.
+
+replacing xp here
+plist: [[`MATH11185',`Monday',`15',`JCMB_Lecture Theatre A'],[`MATH11185',`Monday',`16',`JCMB_Lecture Theatre A'],[`MATH11185',`Thursday',`15',`JCMB_Lecture Theatre A'],[`MATH11185',`Thursday',`16',`JCMB_Lecture Theatre A']]
+replacing xp here
+plist: [[`MATH10060',`Monday',`13',`JCMB_Lecture Theatre A'],[`MATH10060',`Monday',`14',`JCMB_Lecture Theatre A']]
+Stuff to exchange: [`MATH11148',`Monday',`7',`JCMB_Lecture Theatre A'][`MATH10060',`Monday',`13',`JCMB_Lecture Theatre A']
+Stuff to exchange: [`MATH11148',`Monday',`8',`JCMB_Lecture Theatre A'][`MATH10060',`Monday',`14',`JCMB_Lecture Theatre A']
+new info: [40,37,77][60,37,97]468468
+Not all constraints satisfied.
+
+replacing xp here
+plist: [[`MATH11158',`Friday',`9',`JCMB_Lecture Theatre A'],[`MATH11158',`Friday',`10',`JCMB_Lecture Theatre A'],[`MATH11158',`Friday',`11',`JCMB_Lecture Theatre A'],[`MATH11158',`Friday',`12',`JCMB_Lecture Theatre A']]
+replacing xp here
+plist: [[`MATH10093',`Tuesday',`15',`JCMB_Lecture Theatre A'],[`MATH10093',`Tuesday',`16',`JCMB_Lecture Theatre A']]
+Stuff to exchange: [`MATH11148',`Monday',`7',`JCMB_Lecture Theatre A'][`MATH10093',`Tuesday',`15',`JCMB_Lecture Theatre A']
+Stuff to exchange: [`MATH11148',`Monday',`8',`JCMB_Lecture Theatre A'][`MATH10093',`Tuesday',`16',`JCMB_Lecture Theatre A']
+new info: [60,37,97][60,37,97]468468
+
+
+
+Category: Algebra
+working_list: [[`MATH10069',`Monday',`1',`NUC_1.14 - Oak Lecture Theatre'],[`MATH10069',`Monday',`2',`NUC_1.14 - Oak Lecture Theatre']]
+[1]
+replacing xp here
+plist: [[`MATH08065',`Wednesday',`5',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08065',`Wednesday',`6',`NUC_1.14 - Oak Lecture Theatre']]
+Stuff to exchange: [`MATH10069',`Monday',`1',`NUC_1.14 - Oak Lecture Theatre'][`MATH08065',`Wednesday',`5',`NUC_1.14 - Oak Lecture Theatre']
+Stuff to exchange: [`MATH10069',`Monday',`2',`NUC_1.14 - Oak Lecture Theatre'][`MATH08065',`Wednesday',`6',`NUC_1.14 - Oak Lecture Theatre']
+new info: [40,37,77][60,37,97]468468
+All constraints satisfied!
+obj: [40,37,77]
+
+replacing xp here
+plist: [[`MATH08075',`Tuesday',`7',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08075',`Tuesday',`8',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08075',`Thursday',`7',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08075',`Thursday',`8',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08075',`Friday',`7',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08075',`Friday',`8',`NUC_1.14 - Oak Lecture Theatre']]
+replacing xp here
+plist: [[`MATH08064',`Wednesday',`7',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08064',`Wednesday',`8',`NUC_1.14 - Oak Lecture Theatre']]
+Stuff to exchange: [`MATH10069',`Monday',`1',`NUC_1.14 - Oak Lecture Theatre'][`MATH08064',`Wednesday',`7',`NUC_1.14 - Oak Lecture Theatre']
+Stuff to exchange: [`MATH10069',`Monday',`2',`NUC_1.14 - Oak Lecture Theatre'][`MATH08064',`Wednesday',`8',`NUC_1.14 - Oak Lecture Theatre']
+new info: [40,37,77][60,37,97]468468
+Not all constraints satisfied.
+
+replacing xp here
+plist: [[`MATH10067',`Friday',`15',`NUC_1.14 - Oak Lecture Theatre'],[`MATH10067',`Friday',`16',`NUC_1.14 - Oak Lecture Theatre']]
+Stuff to exchange: [`MATH10069',`Monday',`1',`NUC_1.14 - Oak Lecture Theatre'][`MATH10067',`Friday',`15',`NUC_1.14 - Oak Lecture Theatre']
+Stuff to exchange: [`MATH10069',`Monday',`2',`NUC_1.14 - Oak Lecture Theatre'][`MATH10067',`Friday',`16',`NUC_1.14 - Oak Lecture Theatre']
+new info: [40,37,77][60,37,97]468468
+All constraints satisfied!
+obj: [40,37,77]
+
+replacing xp here
+plist: [[`MATH08051',`Monday',`11',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08051',`Monday',`12',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08051',`Thursday',`11',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08051',`Thursday',`12',`NUC_1.14 - Oak Lecture Theatre']]
+
+
+Category: Algebra
+working_list: [[`MATH10069',`Thursday',`1',`NUC_1.14 - Oak Lecture Theatre'],[`MATH10069',`Thursday',`2',`NUC_1.14 - Oak Lecture Theatre']]
+[1]
+replacing xp here
+plist: [[`MATH08065',`Wednesday',`5',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08065',`Wednesday',`6',`NUC_1.14 - Oak Lecture Theatre']]
+Stuff to exchange: [`MATH10069',`Thursday',`1',`NUC_1.14 - Oak Lecture Theatre'][`MATH08065',`Wednesday',`5',`NUC_1.14 - Oak Lecture Theatre']
+Stuff to exchange: [`MATH10069',`Thursday',`2',`NUC_1.14 - Oak Lecture Theatre'][`MATH08065',`Wednesday',`6',`NUC_1.14 - Oak Lecture Theatre']
+new info: [40,37,77][60,37,97]468468
+All constraints satisfied!
+obj: [40,37,77]
+
+replacing xp here
+plist: [[`MATH08075',`Tuesday',`7',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08075',`Tuesday',`8',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08075',`Thursday',`7',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08075',`Thursday',`8',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08075',`Friday',`7',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08075',`Friday',`8',`NUC_1.14 - Oak Lecture Theatre']]
+replacing xp here
+plist: [[`MATH08064',`Wednesday',`7',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08064',`Wednesday',`8',`NUC_1.14 - Oak Lecture Theatre']]
+Stuff to exchange: [`MATH10069',`Thursday',`1',`NUC_1.14 - Oak Lecture Theatre'][`MATH08064',`Wednesday',`7',`NUC_1.14 - Oak Lecture Theatre']
+Stuff to exchange: [`MATH10069',`Thursday',`2',`NUC_1.14 - Oak Lecture Theatre'][`MATH08064',`Wednesday',`8',`NUC_1.14 - Oak Lecture Theatre']
+new info: [40,37,77][60,37,97]468468
+Not all constraints satisfied.
+
+replacing xp here
+plist: [[`MATH10067',`Friday',`15',`NUC_1.14 - Oak Lecture Theatre'],[`MATH10067',`Friday',`16',`NUC_1.14 - Oak Lecture Theatre']]
+Stuff to exchange: [`MATH10069',`Thursday',`1',`NUC_1.14 - Oak Lecture Theatre'][`MATH10067',`Friday',`15',`NUC_1.14 - Oak Lecture Theatre']
+Stuff to exchange: [`MATH10069',`Thursday',`2',`NUC_1.14 - Oak Lecture Theatre'][`MATH10067',`Friday',`16',`NUC_1.14 - Oak Lecture Theatre']
+new info: [40,37,77][60,37,97]468468
+All constraints satisfied!
+obj: [40,37,77]
+
+replacing xp here
+plist: [[`MATH08051',`Monday',`11',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08051',`Monday',`12',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08051',`Thursday',`11',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08051',`Thursday',`12',`NUC_1.14 - Oak Lecture Theatre']]
+
+
+Category: Statistics
+working_list: [[`MATH11205',`Monday',`7',`NUC_B.01 - Alder Lecture Theatre'],[`MATH11205',`Monday',`8',`NUC_B.01 - Alder Lecture Theatre']]
+[1]
+replacing xp here
+plist: [[`MATH10067',`Thursday',`7',`NUC_B.01 - Alder Lecture Theatre'],[`MATH10067',`Thursday',`8',`NUC_B.01 - Alder Lecture Theatre']]
+Stuff to exchange: [`MATH11205',`Monday',`7',`NUC_B.01 - Alder Lecture Theatre'][`MATH10067',`Thursday',`7',`NUC_B.01 - Alder Lecture Theatre']
+Stuff to exchange: [`MATH11205',`Monday',`8',`NUC_B.01 - Alder Lecture Theatre'][`MATH10067',`Thursday',`8',`NUC_B.01 - Alder Lecture Theatre']
+new info: [60,37,97][60,37,97]468468
+
+
+
+Number of neighbourhoods: 0
+=============== VNS iteration: 2 ===============
+Neighbourhood 1: sum total: 468
+77
+New best solution with objective:[40,37,77]
+Neighbourhood 2: sum total: 468
+77
+Neighbourhood 3: sum total: 468
+77
+Neighbourhood 4: sum total: 468
+77
+Neighbourhood 5: sum total: 468
+77
+Neighbourhood 6: sum total: 468
+77
+Neighbourhood 7: sum total: 468
+77
+Neighbourhood 8: sum total: 468
+77
+Neighbourhood 9: sum total: 468
+77
+Neighbourhood 10: sum total: 468
+77
+
+------------------------------------------
+Calculating objective function
+------------------------------------------
+
+
+
+On Monday at time period 1 the number of lectures clashing in category Algebra: 2
+Courses: 
+AlgTop (MATH10077), 
+
+HAlg (MATH10069), 
+
+
+On Monday at time period 2 the number of lectures clashing in category Algebra: 2
+Courses: 
+AlgTop (MATH10077), 
+
+HAlg (MATH10069), 
+
+
+On Monday at time period 7 the number of lectures clashing in category Statistics: 2
+Courses: 
+CS (MATH11148), 
+
+MLP (MATH11205), 
+
+
+On Monday at time period 8 the number of lectures clashing in category Statistics: 2
+Courses: 
+CS (MATH11148), 
+
+MLP (MATH11205), 
+Category Clash Penalty: 40
+Wednesday classes penalty: 37
+Total penalty in objective value: 77
+Category: Algebra
+working_list: [[`MATH10077',`Monday',`1',`JCMB_5327'],[`MATH10077',`Monday',`2',`JCMB_5327']]
+[1]
+replacing xp here
+plist: [[`MATH11120',`Thursday',`3',`JCMB_5327'],[`MATH11120',`Thursday',`4',`JCMB_5327']]
+Stuff to exchange: [`MATH10077',`Monday',`1',`JCMB_5327'][`MATH11120',`Thursday',`3',`JCMB_5327']
+Stuff to exchange: [`MATH10077',`Monday',`2',`JCMB_5327'][`MATH11120',`Thursday',`4',`JCMB_5327']
+new info: [20,37,57][40,37,77]468468
+All constraints satisfied!
+obj: [20,37,57]
+
+replacing xp here
+plist: [[`MATH11233',`Monday',`9',`JCMB_5327'],[`MATH11233',`Monday',`10',`JCMB_5327'],[`MATH11233',`Thursday',`9',`JCMB_5327'],[`MATH11233',`Thursday',`10',`JCMB_5327']]
+replacing xp here
+plist: [[`MATH10080',`Thursday',`7',`JCMB_5327'],[`MATH10080',`Thursday',`8',`JCMB_5327']]
+Stuff to exchange: [`MATH10077',`Monday',`1',`JCMB_5327'][`MATH10080',`Thursday',`7',`JCMB_5327']
+Stuff to exchange: [`MATH10077',`Monday',`2',`JCMB_5327'][`MATH10080',`Thursday',`8',`JCMB_5327']
+new info: [40,37,77][40,37,77]468468
+
+replacing xp here
+plist: [[`MATH11138',`Friday',`5',`JCMB_5327'],[`MATH11138',`Friday',`6',`JCMB_5327']]
+Stuff to exchange: [`MATH10077',`Monday',`1',`JCMB_5327'][`MATH11138',`Friday',`5',`JCMB_5327']
+Stuff to exchange: [`MATH10077',`Monday',`2',`JCMB_5327'][`MATH11138',`Friday',`6',`JCMB_5327']
+new info: [20,37,57][40,37,77]468468
+All constraints satisfied!
+obj: [20,37,57]
+
+replacing xp here
+plist: [[`MATH11145',`Thursday',`5',`JCMB_5327'],[`MATH11145',`Thursday',`6',`JCMB_5327']]
+Stuff to exchange: [`MATH10077',`Monday',`1',`JCMB_5327'][`MATH11145',`Thursday',`5',`JCMB_5327']
+Stuff to exchange: [`MATH10077',`Monday',`2',`JCMB_5327'][`MATH11145',`Thursday',`6',`JCMB_5327']
+new info: [20,37,57][40,37,77]468468
+All constraints satisfied!
+obj: [20,37,57]
+
+replacing xp here
+plist: [[`MATH11240',`Tuesday',`1',`JCMB_5327'],[`MATH11240',`Tuesday',`2',`JCMB_5327'],[`MATH11240',`Tuesday',`3',`JCMB_5327'],[`MATH11240',`Tuesday',`4',`JCMB_5327']]
+replacing xp here
+plist: [[`MATH11193',`Tuesday',`9',`JCMB_5327'],[`MATH11193',`Tuesday',`10',`JCMB_5327']]
+Stuff to exchange: [`MATH10077',`Monday',`1',`JCMB_5327'][`MATH11193',`Tuesday',`9',`JCMB_5327']
+Stuff to exchange: [`MATH10077',`Monday',`2',`JCMB_5327'][`MATH11193',`Tuesday',`10',`JCMB_5327']
+new info: [20,37,57][40,37,77]468468
+All constraints satisfied!
+obj: [20,37,57]
+
+replacing xp here
+plist: [[`MATH11157',`Wednesday',`7',`JCMB_5327'],[`MATH11157',`Wednesday',`8',`JCMB_5327'],[`MATH11157',`Wednesday',`9',`JCMB_5327'],[`MATH11157',`Wednesday',`10',`JCMB_5327']]
+
+
+Category: Statistics
+working_list: [[`MATH11148',`Monday',`7',`JCMB_Lecture Theatre A'],[`MATH11148',`Monday',`8',`JCMB_Lecture Theatre A']]
+[1]
+replacing xp here
+plist: [[`MATH10086',`Tuesday',`5',`JCMB_Lecture Theatre A'],[`MATH10086',`Tuesday',`6',`JCMB_Lecture Theatre A']]
+Stuff to exchange: [`MATH11148',`Monday',`7',`JCMB_Lecture Theatre A'][`MATH10086',`Tuesday',`5',`JCMB_Lecture Theatre A']
+Stuff to exchange: [`MATH11148',`Monday',`8',`JCMB_Lecture Theatre A'][`MATH10086',`Tuesday',`6',`JCMB_Lecture Theatre A']
+new info: [20,37,57][40,37,77]468468
+All constraints satisfied!
+obj: [20,37,57]
+
+replacing xp here
+plist: [[`MATH10003',`Thursday',`11',`JCMB_Lecture Theatre A'],[`MATH10003',`Thursday',`12',`JCMB_Lecture Theatre A'],[`MATH10003',`Thursday',`13',`JCMB_Lecture Theatre A'],[`MATH10003',`Thursday',`14',`JCMB_Lecture Theatre A']]
+replacing xp here
+plist: [[`MATH08064',`Tuesday',`7',`JCMB_Lecture Theatre A'],[`MATH08064',`Tuesday',`8',`JCMB_Lecture Theatre A']]
+Stuff to exchange: [`MATH11148',`Monday',`7',`JCMB_Lecture Theatre A'][`MATH08064',`Tuesday',`7',`JCMB_Lecture Theatre A']
+Stuff to exchange: [`MATH11148',`Monday',`8',`JCMB_Lecture Theatre A'][`MATH08064',`Tuesday',`8',`JCMB_Lecture Theatre A']
+new info: [20,37,57][40,37,77]468468
+Not all constraints satisfied.
+
+replacing xp here
+plist: [[`MATH11185',`Monday',`15',`JCMB_Lecture Theatre A'],[`MATH11185',`Monday',`16',`JCMB_Lecture Theatre A'],[`MATH11185',`Thursday',`15',`JCMB_Lecture Theatre A'],[`MATH11185',`Thursday',`16',`JCMB_Lecture Theatre A']]
+replacing xp here
+plist: [[`MATH10060',`Monday',`13',`JCMB_Lecture Theatre A'],[`MATH10060',`Monday',`14',`JCMB_Lecture Theatre A']]
+Stuff to exchange: [`MATH11148',`Monday',`7',`JCMB_Lecture Theatre A'][`MATH10060',`Monday',`13',`JCMB_Lecture Theatre A']
+Stuff to exchange: [`MATH11148',`Monday',`8',`JCMB_Lecture Theatre A'][`MATH10060',`Monday',`14',`JCMB_Lecture Theatre A']
+new info: [20,37,57][40,37,77]468468
+Not all constraints satisfied.
+
+replacing xp here
+plist: [[`MATH11158',`Friday',`9',`JCMB_Lecture Theatre A'],[`MATH11158',`Friday',`10',`JCMB_Lecture Theatre A'],[`MATH11158',`Friday',`11',`JCMB_Lecture Theatre A'],[`MATH11158',`Friday',`12',`JCMB_Lecture Theatre A']]
+replacing xp here
+plist: [[`MATH10093',`Tuesday',`15',`JCMB_Lecture Theatre A'],[`MATH10093',`Tuesday',`16',`JCMB_Lecture Theatre A']]
+Stuff to exchange: [`MATH11148',`Monday',`7',`JCMB_Lecture Theatre A'][`MATH10093',`Tuesday',`15',`JCMB_Lecture Theatre A']
+Stuff to exchange: [`MATH11148',`Monday',`8',`JCMB_Lecture Theatre A'][`MATH10093',`Tuesday',`16',`JCMB_Lecture Theatre A']
+new info: [40,37,77][40,37,77]468468
+
+
+
+Category: Algebra
+working_list: [[`MATH10069',`Monday',`1',`NUC_1.14 - Oak Lecture Theatre'],[`MATH10069',`Monday',`2',`NUC_1.14 - Oak Lecture Theatre']]
+[1]
+replacing xp here
+plist: [[`MATH08065',`Wednesday',`5',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08065',`Wednesday',`6',`NUC_1.14 - Oak Lecture Theatre']]
+Stuff to exchange: [`MATH10069',`Monday',`1',`NUC_1.14 - Oak Lecture Theatre'][`MATH08065',`Wednesday',`5',`NUC_1.14 - Oak Lecture Theatre']
+Stuff to exchange: [`MATH10069',`Monday',`2',`NUC_1.14 - Oak Lecture Theatre'][`MATH08065',`Wednesday',`6',`NUC_1.14 - Oak Lecture Theatre']
+new info: [20,37,57][40,37,77]468468
+All constraints satisfied!
+obj: [20,37,57]
+
+replacing xp here
+plist: [[`MATH08075',`Tuesday',`7',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08075',`Tuesday',`8',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08075',`Thursday',`7',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08075',`Thursday',`8',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08075',`Friday',`7',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08075',`Friday',`8',`NUC_1.14 - Oak Lecture Theatre']]
+replacing xp here
+plist: [[`MATH08064',`Wednesday',`7',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08064',`Wednesday',`8',`NUC_1.14 - Oak Lecture Theatre']]
+Stuff to exchange: [`MATH10069',`Monday',`1',`NUC_1.14 - Oak Lecture Theatre'][`MATH08064',`Wednesday',`7',`NUC_1.14 - Oak Lecture Theatre']
+Stuff to exchange: [`MATH10069',`Monday',`2',`NUC_1.14 - Oak Lecture Theatre'][`MATH08064',`Wednesday',`8',`NUC_1.14 - Oak Lecture Theatre']
+new info: [20,37,57][40,37,77]468468
+Not all constraints satisfied.
+
+replacing xp here
+plist: [[`MATH10067',`Thursday',`1',`NUC_1.14 - Oak Lecture Theatre'],[`MATH10067',`Thursday',`2',`NUC_1.14 - Oak Lecture Theatre']]
+Stuff to exchange: [`MATH10069',`Monday',`1',`NUC_1.14 - Oak Lecture Theatre'][`MATH10067',`Thursday',`1',`NUC_1.14 - Oak Lecture Theatre']
+Stuff to exchange: [`MATH10069',`Monday',`2',`NUC_1.14 - Oak Lecture Theatre'][`MATH10067',`Thursday',`2',`NUC_1.14 - Oak Lecture Theatre']
+new info: [40,37,77][40,37,77]468468
+
+replacing xp here
+plist: [[`MATH08051',`Monday',`11',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08051',`Monday',`12',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08051',`Thursday',`11',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08051',`Thursday',`12',`NUC_1.14 - Oak Lecture Theatre']]
+
+
+Category: Statistics
+working_list: [[`MATH11205',`Monday',`7',`NUC_B.01 - Alder Lecture Theatre'],[`MATH11205',`Monday',`8',`NUC_B.01 - Alder Lecture Theatre']]
+[1]
+replacing xp here
+plist: [[`MATH10067',`Thursday',`7',`NUC_B.01 - Alder Lecture Theatre'],[`MATH10067',`Thursday',`8',`NUC_B.01 - Alder Lecture Theatre']]
+Stuff to exchange: [`MATH11205',`Monday',`7',`NUC_B.01 - Alder Lecture Theatre'][`MATH10067',`Thursday',`7',`NUC_B.01 - Alder Lecture Theatre']
+Stuff to exchange: [`MATH11205',`Monday',`8',`NUC_B.01 - Alder Lecture Theatre'][`MATH10067',`Thursday',`8',`NUC_B.01 - Alder Lecture Theatre']
+new info: [40,37,77][40,37,77]468468
+
+
+
+Number of neighbourhoods: 0
+=============== VNS iteration: 3 ===============
+Neighbourhood 1: sum total: 468
+57
+New best solution with objective:[20,37,57]
+Neighbourhood 2: sum total: 468
+57
+Neighbourhood 3: sum total: 468
+57
+Neighbourhood 4: sum total: 468
+57
+Neighbourhood 5: sum total: 468
+57
+Neighbourhood 6: sum total: 468
+57
+
+------------------------------------------
+Calculating objective function
+------------------------------------------
+
+
+
+On Monday at time period 7 the number of lectures clashing in category Statistics: 2
+Courses: 
+CS (MATH11148), 
+
+MLP (MATH11205), 
+
+
+On Monday at time period 8 the number of lectures clashing in category Statistics: 2
+Courses: 
+CS (MATH11148), 
+
+MLP (MATH11205), 
+Category Clash Penalty: 20
+Wednesday classes penalty: 37
+Total penalty in objective value: 57
+Category: Statistics
+working_list: [[`MATH11148',`Monday',`7',`JCMB_Lecture Theatre A'],[`MATH11148',`Monday',`8',`JCMB_Lecture Theatre A']]
+[1]
+replacing xp here
+plist: [[`MATH10086',`Tuesday',`5',`JCMB_Lecture Theatre A'],[`MATH10086',`Tuesday',`6',`JCMB_Lecture Theatre A']]
+Stuff to exchange: [`MATH11148',`Monday',`7',`JCMB_Lecture Theatre A'][`MATH10086',`Tuesday',`5',`JCMB_Lecture Theatre A']
+Stuff to exchange: [`MATH11148',`Monday',`8',`JCMB_Lecture Theatre A'][`MATH10086',`Tuesday',`6',`JCMB_Lecture Theatre A']
+new info: [0,37,37][20,37,57]468468
+All constraints satisfied!
+obj: [0,37,37]
+
+replacing xp here
+plist: [[`MATH10003',`Thursday',`11',`JCMB_Lecture Theatre A'],[`MATH10003',`Thursday',`12',`JCMB_Lecture Theatre A'],[`MATH10003',`Thursday',`13',`JCMB_Lecture Theatre A'],[`MATH10003',`Thursday',`14',`JCMB_Lecture Theatre A']]
+replacing xp here
+plist: [[`MATH08064',`Tuesday',`7',`JCMB_Lecture Theatre A'],[`MATH08064',`Tuesday',`8',`JCMB_Lecture Theatre A']]
+Stuff to exchange: [`MATH11148',`Monday',`7',`JCMB_Lecture Theatre A'][`MATH08064',`Tuesday',`7',`JCMB_Lecture Theatre A']
+Stuff to exchange: [`MATH11148',`Monday',`8',`JCMB_Lecture Theatre A'][`MATH08064',`Tuesday',`8',`JCMB_Lecture Theatre A']
+new info: [0,37,37][20,37,57]468468
+Not all constraints satisfied.
+
+replacing xp here
+plist: [[`MATH11185',`Monday',`15',`JCMB_Lecture Theatre A'],[`MATH11185',`Monday',`16',`JCMB_Lecture Theatre A'],[`MATH11185',`Thursday',`15',`JCMB_Lecture Theatre A'],[`MATH11185',`Thursday',`16',`JCMB_Lecture Theatre A']]
+replacing xp here
+plist: [[`MATH10060',`Monday',`13',`JCMB_Lecture Theatre A'],[`MATH10060',`Monday',`14',`JCMB_Lecture Theatre A']]
+Stuff to exchange: [`MATH11148',`Monday',`7',`JCMB_Lecture Theatre A'][`MATH10060',`Monday',`13',`JCMB_Lecture Theatre A']
+Stuff to exchange: [`MATH11148',`Monday',`8',`JCMB_Lecture Theatre A'][`MATH10060',`Monday',`14',`JCMB_Lecture Theatre A']
+new info: [0,37,37][20,37,57]468468
+Not all constraints satisfied.
+
+replacing xp here
+plist: [[`MATH11158',`Friday',`9',`JCMB_Lecture Theatre A'],[`MATH11158',`Friday',`10',`JCMB_Lecture Theatre A'],[`MATH11158',`Friday',`11',`JCMB_Lecture Theatre A'],[`MATH11158',`Friday',`12',`JCMB_Lecture Theatre A']]
+replacing xp here
+plist: [[`MATH10093',`Tuesday',`15',`JCMB_Lecture Theatre A'],[`MATH10093',`Tuesday',`16',`JCMB_Lecture Theatre A']]
+Stuff to exchange: [`MATH11148',`Monday',`7',`JCMB_Lecture Theatre A'][`MATH10093',`Tuesday',`15',`JCMB_Lecture Theatre A']
+Stuff to exchange: [`MATH11148',`Monday',`8',`JCMB_Lecture Theatre A'][`MATH10093',`Tuesday',`16',`JCMB_Lecture Theatre A']
+new info: [20,37,57][20,37,57]468468
+
+
+
+Category: Statistics
+working_list: [[`MATH11205',`Monday',`7',`NUC_B.01 - Alder Lecture Theatre'],[`MATH11205',`Monday',`8',`NUC_B.01 - Alder Lecture Theatre']]
+[1]
+replacing xp here
+plist: [[`MATH10067',`Thursday',`7',`NUC_B.01 - Alder Lecture Theatre'],[`MATH10067',`Thursday',`8',`NUC_B.01 - Alder Lecture Theatre']]
+Stuff to exchange: [`MATH11205',`Monday',`7',`NUC_B.01 - Alder Lecture Theatre'][`MATH10067',`Thursday',`7',`NUC_B.01 - Alder Lecture Theatre']
+Stuff to exchange: [`MATH11205',`Monday',`8',`NUC_B.01 - Alder Lecture Theatre'][`MATH10067',`Thursday',`8',`NUC_B.01 - Alder Lecture Theatre']
+new info: [20,37,57][20,37,57]468468
+
+
+
+Number of neighbourhoods: 0
+=============== VNS iteration: 4 ===============
+Neighbourhood 1: sum total: 468
+37
+New best solution with objective:[0,37,37]
+
+------------------------------------------
+Calculating objective function
+------------------------------------------
+
+Category Clash Penalty: 0
+Wednesday classes penalty: 37
+Total penalty in objective value: 37
+Number of neighbourhoods: 0
+Penalties before VNS: [100,37,137]
+Penalties after VNS: [0,37,37]
+Time elapsed: 49.36976065
+working_list: [[`MATH11174',`Wednesday',`15',`JCMB_Lecture Theatre C'],[`MATH11174',`Wednesday',`16',`JCMB_Lecture Theatre C'],[`MATH11174',`Wednesday',`17',`JCMB_Lecture Theatre C'],[`MATH11174',`Wednesday',`18',`JCMB_Lecture Theatre C']]
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+All constraints satisfied!
+obj: [0,35,35]
+working_list: [[`MATH11206',`Wednesday',`7',`JCMB_6206'],[`MATH11206',`Wednesday',`8',`JCMB_6206']]
+working_list: [[`MATH08064',`Wednesday',`7',`JCMB_Lecture Theatre C'],[`MATH08064',`Wednesday',`8',`JCMB_Lecture Theatre C']]
+working_list: [[`MATH08064',`Wednesday',`7',`NUC_1.14 - Oak Lecture Theatre'],[`MATH08064',`Wednesday',`8',`NUC_1.14 - Oak Lecture Theatre']]
+working_list: [[`MATH10069',`Wednesday',`5',`NUC_1.14 - Oak Lecture Theatre'],[`MATH10069',`Wednesday',`6',`NUC_1.14 - Oak Lecture Theatre']]
+working_list: [[`MATH11192',`Wednesday',`1',`JCMB_Lecture Theatre B'],[`MATH11192',`Wednesday',`2',`JCMB_Lecture Theatre B'],[`MATH11192',`Wednesday',`3',`JCMB_Lecture Theatre B'],[`MATH11192',`Wednesday',`4',`JCMB_Lecture Theatre B']]
+working_list: [[`MATH10010',`Wednesday',`5',`JCMB_1501'],[`MATH10010',`Wednesday',`6',`JCMB_1501'],[`MATH10010',`Wednesday',`7',`JCMB_1501'],[`MATH10010',`Wednesday',`8',`JCMB_1501']]
+working_list: [[`MATH11157',`Wednesday',`7',`JCMB_5327'],[`MATH11157',`Wednesday',`8',`JCMB_5327'],[`MATH11157',`Wednesday',`9',`JCMB_5327'],[`MATH11157',`Wednesday',`10',`JCMB_5327']]
+working_list: [[`MATH11131',`Wednesday',`3',`JCMB_Lecture Theatre C'],[`MATH11131',`Wednesday',`4',`JCMB_Lecture Theatre C'],[`MATH11131',`Wednesday',`5',`JCMB_Lecture Theatre C'],[`MATH11131',`Wednesday',`6',`JCMB_Lecture Theatre C']]
+=============== VNS iteration: 1 ===============
+Time elapsed: 119.7751181
+Neighbourhood 1: sum total: 468
+35
+New best solution with objective:[0,35,35]
+
+------------------------------------------
+Calculating objective function
+------------------------------------------
+
+Category Clash Penalty: 0
+Wednesday classes penalty: 35
+Total penalty in objective value: 35
+working_list: [[`MATH08075',`Wednesday',`9',`JCMB_3211 - Teaching Studio'],[`MATH08075',`Wednesday',`10',`JCMB_3211 - Teaching Studio']]
+All constraints satisfied!
+obj: [0,34,34]
+working_list: [[`MATH08075',`Wednesday',`1',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`2',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`3',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`4',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`5',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`6',`NUC_2.03 - Hawthorn Teaching Studio']]
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+working_list: [[`MATH10051',`Wednesday',`3',`JCMB_3211 - Teaching Studio'],[`MATH10051',`Wednesday',`4',`JCMB_3211 - Teaching Studio']]
+working_list: [[`MATH10067',`Wednesday',`5',`JCMB_1206c - Teaching Studio'],[`MATH10067',`Wednesday',`6',`JCMB_1206c - Teaching Studio'],[`MATH10067',`Wednesday',`7',`JCMB_1206c - Teaching Studio'],[`MATH10067',`Wednesday',`8',`JCMB_1206c - Teaching Studio']]
+All constraints satisfied!
+obj: [0,33,33]
+working_list: [[`MATH10067',`Wednesday',`5',`JCMB_3217 - Teaching Studio'],[`MATH10067',`Wednesday',`6',`JCMB_3217 - Teaching Studio'],[`MATH10067',`Wednesday',`7',`JCMB_3217 - Teaching Studio'],[`MATH10067',`Wednesday',`8',`JCMB_3217 - Teaching Studio']]
+working_list: [[`MATH11192',`Wednesday',`9',`JCMB_Lecture Theatre C'],[`MATH11192',`Wednesday',`10',`JCMB_Lecture Theatre C']]
+working_list: [[`MATH11205',`Wednesday',`1',`JCMB_1501'],[`MATH11205',`Wednesday',`2',`JCMB_1501']]
+working_list: [[`MATH11205',`Wednesday',`3',`JCMB_3212 - Teaching Studio'],[`MATH11205',`Wednesday',`4',`JCMB_3212 - Teaching Studio']]
+working_list: [[`MATH11205',`Wednesday',`1',`MH_G.07 - Teaching Studio'],[`MATH11205',`Wednesday',`2',`MH_G.07 - Teaching Studio']]
+working_list: [[`MATH10010',`Wednesday',`11',`JCMB_3211 - Teaching Studio'],[`MATH10010',`Wednesday',`12',`JCMB_3211 - Teaching Studio'],[`MATH10010',`Wednesday',`13',`JCMB_3211 - Teaching Studio'],[`MATH10010',`Wednesday',`14',`JCMB_3211 - Teaching Studio']]
+working_list: [[`MATH08073',`Wednesday',`7',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08073',`Wednesday',`8',`NUC_2.03 - Hawthorn Teaching Studio']]
+working_list: [[`MATH11207',`Wednesday',`1',`JCMB_1206c - Teaching Studio'],[`MATH11207',`Wednesday',`2',`JCMB_1206c - Teaching Studio']]
+working_list: [[`MATH10093',`Wednesday',`1',`MH_G.09 - Teaching Studio'],[`MATH10093',`Wednesday',`2',`MH_G.09 - Teaching Studio'],[`MATH10093',`Wednesday',`3',`MH_G.09 - Teaching Studio'],[`MATH10093',`Wednesday',`4',`MH_G.09 - Teaching Studio']]
+working_list: [[`MATH10093',`Wednesday',`1',`JCMB_5205'],[`MATH10093',`Wednesday',`2',`JCMB_5205'],[`MATH10093',`Wednesday',`3',`JCMB_5205'],[`MATH10093',`Wednesday',`4',`JCMB_5205']]
+working_list: [[`MATH10093',`Wednesday',`1',`MH_LG.12 - Open Access Computer Lab'],[`MATH10093',`Wednesday',`2',`MH_LG.12 - Open Access Computer Lab'],[`MATH10093',`Wednesday',`3',`MH_LG.12 - Open Access Computer Lab'],[`MATH10093',`Wednesday',`4',`MH_LG.12 - Open Access Computer Lab']]
+Number of neighbourhoods: 2
+=============== VNS iteration: 2 ===============
+Time elapsed: 250.1413557
+Neighbourhood 1: sum total: 468
+34
+New best solution with objective:[0,34,34]
+Neighbourhood 2: sum total: 468
+33
+New best solution with objective:[0,33,33]
+
+------------------------------------------
+Calculating objective function
+------------------------------------------
+
+Category Clash Penalty: 0
+Wednesday classes penalty: 33
+Total penalty in objective value: 33
+working_list: [[`MATH08075',`Wednesday',`9',`JCMB_3211 - Teaching Studio'],[`MATH08075',`Wednesday',`10',`JCMB_3211 - Teaching Studio']]
+All constraints satisfied!
+obj: [0,32,32]
+working_list: [[`MATH08075',`Wednesday',`1',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`2',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`3',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`4',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`5',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`6',`NUC_2.03 - Hawthorn Teaching Studio']]
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+working_list: [[`MATH10051',`Wednesday',`3',`JCMB_3211 - Teaching Studio'],[`MATH10051',`Wednesday',`4',`JCMB_3211 - Teaching Studio']]
+working_list: [[`MATH10067',`Wednesday',`5',`JCMB_3217 - Teaching Studio'],[`MATH10067',`Wednesday',`6',`JCMB_3217 - Teaching Studio'],[`MATH10067',`Wednesday',`7',`JCMB_3217 - Teaching Studio'],[`MATH10067',`Wednesday',`8',`JCMB_3217 - Teaching Studio']]
+All constraints satisfied!
+obj: [0,31,31]
+working_list: [[`MATH11192',`Wednesday',`9',`JCMB_Lecture Theatre C'],[`MATH11192',`Wednesday',`10',`JCMB_Lecture Theatre C']]
+working_list: [[`MATH11205',`Wednesday',`1',`JCMB_1501'],[`MATH11205',`Wednesday',`2',`JCMB_1501']]
+working_list: [[`MATH11205',`Wednesday',`3',`JCMB_3212 - Teaching Studio'],[`MATH11205',`Wednesday',`4',`JCMB_3212 - Teaching Studio']]
+working_list: [[`MATH11205',`Wednesday',`1',`MH_G.07 - Teaching Studio'],[`MATH11205',`Wednesday',`2',`MH_G.07 - Teaching Studio']]
+working_list: [[`MATH10010',`Wednesday',`11',`JCMB_3211 - Teaching Studio'],[`MATH10010',`Wednesday',`12',`JCMB_3211 - Teaching Studio'],[`MATH10010',`Wednesday',`13',`JCMB_3211 - Teaching Studio'],[`MATH10010',`Wednesday',`14',`JCMB_3211 - Teaching Studio']]
+working_list: [[`MATH08073',`Wednesday',`7',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08073',`Wednesday',`8',`NUC_2.03 - Hawthorn Teaching Studio']]
+working_list: [[`MATH11207',`Wednesday',`1',`JCMB_1206c - Teaching Studio'],[`MATH11207',`Wednesday',`2',`JCMB_1206c - Teaching Studio']]
+working_list: [[`MATH10093',`Wednesday',`1',`MH_G.09 - Teaching Studio'],[`MATH10093',`Wednesday',`2',`MH_G.09 - Teaching Studio'],[`MATH10093',`Wednesday',`3',`MH_G.09 - Teaching Studio'],[`MATH10093',`Wednesday',`4',`MH_G.09 - Teaching Studio']]
+working_list: [[`MATH10093',`Wednesday',`1',`JCMB_5205'],[`MATH10093',`Wednesday',`2',`JCMB_5205'],[`MATH10093',`Wednesday',`3',`JCMB_5205'],[`MATH10093',`Wednesday',`4',`JCMB_5205']]
+working_list: [[`MATH10093',`Wednesday',`1',`MH_LG.12 - Open Access Computer Lab'],[`MATH10093',`Wednesday',`2',`MH_LG.12 - Open Access Computer Lab'],[`MATH10093',`Wednesday',`3',`MH_LG.12 - Open Access Computer Lab'],[`MATH10093',`Wednesday',`4',`MH_LG.12 - Open Access Computer Lab']]
+Number of neighbourhoods: 2
+=============== VNS iteration: 3 ===============
+Time elapsed: 373.0462407
+Neighbourhood 1: sum total: 468
+32
+New best solution with objective:[0,32,32]
+Neighbourhood 2: sum total: 468
+31
+New best solution with objective:[0,31,31]
+
+------------------------------------------
+Calculating objective function
+------------------------------------------
+
+Category Clash Penalty: 0
+Wednesday classes penalty: 31
+Total penalty in objective value: 31
+working_list: [[`MATH08075',`Wednesday',`9',`JCMB_3211 - Teaching Studio'],[`MATH08075',`Wednesday',`10',`JCMB_3211 - Teaching Studio']]
+All constraints satisfied!
+obj: [0,30,30]
+working_list: [[`MATH08075',`Wednesday',`1',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`2',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`3',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`4',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`5',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`6',`NUC_2.03 - Hawthorn Teaching Studio']]
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+working_list: [[`MATH10051',`Wednesday',`3',`JCMB_3211 - Teaching Studio'],[`MATH10051',`Wednesday',`4',`JCMB_3211 - Teaching Studio']]
+working_list: [[`MATH11192',`Wednesday',`9',`JCMB_Lecture Theatre C'],[`MATH11192',`Wednesday',`10',`JCMB_Lecture Theatre C']]
+working_list: [[`MATH11205',`Wednesday',`1',`JCMB_1501'],[`MATH11205',`Wednesday',`2',`JCMB_1501']]
+working_list: [[`MATH11205',`Wednesday',`3',`JCMB_3212 - Teaching Studio'],[`MATH11205',`Wednesday',`4',`JCMB_3212 - Teaching Studio']]
+working_list: [[`MATH11205',`Wednesday',`1',`MH_G.07 - Teaching Studio'],[`MATH11205',`Wednesday',`2',`MH_G.07 - Teaching Studio']]
+working_list: [[`MATH10010',`Wednesday',`11',`JCMB_3211 - Teaching Studio'],[`MATH10010',`Wednesday',`12',`JCMB_3211 - Teaching Studio'],[`MATH10010',`Wednesday',`13',`JCMB_3211 - Teaching Studio'],[`MATH10010',`Wednesday',`14',`JCMB_3211 - Teaching Studio']]
+All constraints satisfied!
+obj: [0,29,29]
+working_list: [[`MATH08073',`Wednesday',`7',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08073',`Wednesday',`8',`NUC_2.03 - Hawthorn Teaching Studio']]
+working_list: [[`MATH11207',`Wednesday',`1',`JCMB_1206c - Teaching Studio'],[`MATH11207',`Wednesday',`2',`JCMB_1206c - Teaching Studio']]
+working_list: [[`MATH10093',`Wednesday',`1',`MH_G.09 - Teaching Studio'],[`MATH10093',`Wednesday',`2',`MH_G.09 - Teaching Studio'],[`MATH10093',`Wednesday',`3',`MH_G.09 - Teaching Studio'],[`MATH10093',`Wednesday',`4',`MH_G.09 - Teaching Studio']]
+working_list: [[`MATH10093',`Wednesday',`1',`JCMB_5205'],[`MATH10093',`Wednesday',`2',`JCMB_5205'],[`MATH10093',`Wednesday',`3',`JCMB_5205'],[`MATH10093',`Wednesday',`4',`JCMB_5205']]
+working_list: [[`MATH10093',`Wednesday',`1',`MH_LG.12 - Open Access Computer Lab'],[`MATH10093',`Wednesday',`2',`MH_LG.12 - Open Access Computer Lab'],[`MATH10093',`Wednesday',`3',`MH_LG.12 - Open Access Computer Lab'],[`MATH10093',`Wednesday',`4',`MH_LG.12 - Open Access Computer Lab']]
+Number of neighbourhoods: 2
+=============== VNS iteration: 4 ===============
+Time elapsed: 488.2275813
+Neighbourhood 1: sum total: 468
+30
+New best solution with objective:[0,30,30]
+Neighbourhood 2: sum total: 468
+29
+New best solution with objective:[0,29,29]
+
+------------------------------------------
+Calculating objective function
+------------------------------------------
+
+Category Clash Penalty: 0
+Wednesday classes penalty: 29
+Total penalty in objective value: 29
+working_list: [[`MATH08075',`Wednesday',`9',`JCMB_3211 - Teaching Studio'],[`MATH08075',`Wednesday',`10',`JCMB_3211 - Teaching Studio']]
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+All constraints satisfied!
+obj: [0,28,28]
+working_list: [[`MATH08075',`Wednesday',`1',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`2',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`3',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`4',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`5',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`6',`NUC_2.03 - Hawthorn Teaching Studio']]
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+working_list: [[`MATH10051',`Wednesday',`3',`JCMB_3211 - Teaching Studio'],[`MATH10051',`Wednesday',`4',`JCMB_3211 - Teaching Studio']]
+working_list: [[`MATH11192',`Wednesday',`9',`JCMB_Lecture Theatre C'],[`MATH11192',`Wednesday',`10',`JCMB_Lecture Theatre C']]
+working_list: [[`MATH11205',`Wednesday',`1',`JCMB_1501'],[`MATH11205',`Wednesday',`2',`JCMB_1501']]
+working_list: [[`MATH11205',`Wednesday',`3',`JCMB_3212 - Teaching Studio'],[`MATH11205',`Wednesday',`4',`JCMB_3212 - Teaching Studio']]
+working_list: [[`MATH11205',`Wednesday',`1',`MH_G.07 - Teaching Studio'],[`MATH11205',`Wednesday',`2',`MH_G.07 - Teaching Studio']]
+working_list: [[`MATH08073',`Wednesday',`7',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08073',`Wednesday',`8',`NUC_2.03 - Hawthorn Teaching Studio']]
+working_list: [[`MATH11207',`Wednesday',`1',`JCMB_1206c - Teaching Studio'],[`MATH11207',`Wednesday',`2',`JCMB_1206c - Teaching Studio']]
+working_list: [[`MATH10093',`Wednesday',`1',`MH_G.09 - Teaching Studio'],[`MATH10093',`Wednesday',`2',`MH_G.09 - Teaching Studio'],[`MATH10093',`Wednesday',`3',`MH_G.09 - Teaching Studio'],[`MATH10093',`Wednesday',`4',`MH_G.09 - Teaching Studio']]
+All constraints satisfied!
+obj: [0,27,27]
+working_list: [[`MATH10093',`Wednesday',`1',`JCMB_5205'],[`MATH10093',`Wednesday',`2',`JCMB_5205'],[`MATH10093',`Wednesday',`3',`JCMB_5205'],[`MATH10093',`Wednesday',`4',`JCMB_5205']]
+working_list: [[`MATH10093',`Wednesday',`1',`MH_LG.12 - Open Access Computer Lab'],[`MATH10093',`Wednesday',`2',`MH_LG.12 - Open Access Computer Lab'],[`MATH10093',`Wednesday',`3',`MH_LG.12 - Open Access Computer Lab'],[`MATH10093',`Wednesday',`4',`MH_LG.12 - Open Access Computer Lab']]
+Number of neighbourhoods: 2
+=============== VNS iteration: 5 ===============
+Time elapsed: 596.2646674
+Neighbourhood 1: sum total: 468
+28
+New best solution with objective:[0,28,28]
+Neighbourhood 2: sum total: 468
+27
+New best solution with objective:[0,27,27]
+
+------------------------------------------
+Calculating objective function
+------------------------------------------
+
+Category Clash Penalty: 0
+Wednesday classes penalty: 27
+Total penalty in objective value: 27
+working_list: [[`MATH08075',`Wednesday',`9',`JCMB_3211 - Teaching Studio'],[`MATH08075',`Wednesday',`10',`JCMB_3211 - Teaching Studio']]
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+All constraints satisfied!
+obj: [0,26,26]
+working_list: [[`MATH08075',`Wednesday',`1',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`2',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`3',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`4',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`5',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`6',`NUC_2.03 - Hawthorn Teaching Studio']]
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+working_list: [[`MATH10051',`Wednesday',`3',`JCMB_3211 - Teaching Studio'],[`MATH10051',`Wednesday',`4',`JCMB_3211 - Teaching Studio']]
+working_list: [[`MATH11192',`Wednesday',`9',`JCMB_Lecture Theatre C'],[`MATH11192',`Wednesday',`10',`JCMB_Lecture Theatre C']]
+working_list: [[`MATH11205',`Wednesday',`1',`JCMB_1501'],[`MATH11205',`Wednesday',`2',`JCMB_1501']]
+working_list: [[`MATH11205',`Wednesday',`3',`JCMB_3212 - Teaching Studio'],[`MATH11205',`Wednesday',`4',`JCMB_3212 - Teaching Studio']]
+working_list: [[`MATH11205',`Wednesday',`1',`MH_G.07 - Teaching Studio'],[`MATH11205',`Wednesday',`2',`MH_G.07 - Teaching Studio']]
+working_list: [[`MATH08073',`Wednesday',`7',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08073',`Wednesday',`8',`NUC_2.03 - Hawthorn Teaching Studio']]
+working_list: [[`MATH11207',`Wednesday',`1',`JCMB_1206c - Teaching Studio'],[`MATH11207',`Wednesday',`2',`JCMB_1206c - Teaching Studio']]
+working_list: [[`MATH10093',`Wednesday',`1',`JCMB_5205'],[`MATH10093',`Wednesday',`2',`JCMB_5205'],[`MATH10093',`Wednesday',`3',`JCMB_5205'],[`MATH10093',`Wednesday',`4',`JCMB_5205']]
+All constraints satisfied!
+obj: [0,25,25]
+working_list: [[`MATH10093',`Wednesday',`1',`MH_LG.12 - Open Access Computer Lab'],[`MATH10093',`Wednesday',`2',`MH_LG.12 - Open Access Computer Lab'],[`MATH10093',`Wednesday',`3',`MH_LG.12 - Open Access Computer Lab'],[`MATH10093',`Wednesday',`4',`MH_LG.12 - Open Access Computer Lab']]
+Number of neighbourhoods: 2
+=============== VNS iteration: 6 ===============
+Time elapsed: 696.2997835
+Neighbourhood 1: sum total: 468
+26
+New best solution with objective:[0,26,26]
+Neighbourhood 2: sum total: 468
+25
+New best solution with objective:[0,25,25]
+
+------------------------------------------
+Calculating objective function
+------------------------------------------
+
+Category Clash Penalty: 0
+Wednesday classes penalty: 25
+Total penalty in objective value: 25
+working_list: [[`MATH08075',`Wednesday',`9',`JCMB_3211 - Teaching Studio'],[`MATH08075',`Wednesday',`10',`JCMB_3211 - Teaching Studio']]
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+All constraints satisfied!
+obj: [0,24,24]
+working_list: [[`MATH08075',`Wednesday',`1',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`2',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`3',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`4',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`5',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`6',`NUC_2.03 - Hawthorn Teaching Studio']]
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+working_list: [[`MATH10051',`Wednesday',`3',`JCMB_3211 - Teaching Studio'],[`MATH10051',`Wednesday',`4',`JCMB_3211 - Teaching Studio']]
+working_list: [[`MATH11192',`Wednesday',`9',`JCMB_Lecture Theatre C'],[`MATH11192',`Wednesday',`10',`JCMB_Lecture Theatre C']]
+working_list: [[`MATH11205',`Wednesday',`1',`JCMB_1501'],[`MATH11205',`Wednesday',`2',`JCMB_1501']]
+working_list: [[`MATH11205',`Wednesday',`3',`JCMB_3212 - Teaching Studio'],[`MATH11205',`Wednesday',`4',`JCMB_3212 - Teaching Studio']]
+working_list: [[`MATH11205',`Wednesday',`1',`MH_G.07 - Teaching Studio'],[`MATH11205',`Wednesday',`2',`MH_G.07 - Teaching Studio']]
+working_list: [[`MATH08073',`Wednesday',`7',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08073',`Wednesday',`8',`NUC_2.03 - Hawthorn Teaching Studio']]
+working_list: [[`MATH11207',`Wednesday',`1',`JCMB_1206c - Teaching Studio'],[`MATH11207',`Wednesday',`2',`JCMB_1206c - Teaching Studio']]
+working_list: [[`MATH10093',`Wednesday',`1',`MH_LG.12 - Open Access Computer Lab'],[`MATH10093',`Wednesday',`2',`MH_LG.12 - Open Access Computer Lab'],[`MATH10093',`Wednesday',`3',`MH_LG.12 - Open Access Computer Lab'],[`MATH10093',`Wednesday',`4',`MH_LG.12 - Open Access Computer Lab']]
+All constraints satisfied!
+obj: [0,23,23]
+Number of neighbourhoods: 2
+=============== VNS iteration: 7 ===============
+Time elapsed: 789.6797937
+Neighbourhood 1: sum total: 468
+24
+New best solution with objective:[0,24,24]
+Neighbourhood 2: sum total: 468
+23
+New best solution with objective:[0,23,23]
+
+------------------------------------------
+Calculating objective function
+------------------------------------------
+
+Category Clash Penalty: 0
+Wednesday classes penalty: 23
+Total penalty in objective value: 23
+working_list: [[`MATH08075',`Wednesday',`9',`JCMB_3211 - Teaching Studio'],[`MATH08075',`Wednesday',`10',`JCMB_3211 - Teaching Studio']]
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+All constraints satisfied!
+obj: [0,22,22]
+working_list: [[`MATH08075',`Wednesday',`1',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`2',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`3',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`4',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`5',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`6',`NUC_2.03 - Hawthorn Teaching Studio']]
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+working_list: [[`MATH10051',`Wednesday',`3',`JCMB_3211 - Teaching Studio'],[`MATH10051',`Wednesday',`4',`JCMB_3211 - Teaching Studio']]
+working_list: [[`MATH11192',`Wednesday',`9',`JCMB_Lecture Theatre C'],[`MATH11192',`Wednesday',`10',`JCMB_Lecture Theatre C']]
+working_list: [[`MATH11205',`Wednesday',`1',`JCMB_1501'],[`MATH11205',`Wednesday',`2',`JCMB_1501']]
+working_list: [[`MATH11205',`Wednesday',`3',`JCMB_3212 - Teaching Studio'],[`MATH11205',`Wednesday',`4',`JCMB_3212 - Teaching Studio']]
+working_list: [[`MATH11205',`Wednesday',`1',`MH_G.07 - Teaching Studio'],[`MATH11205',`Wednesday',`2',`MH_G.07 - Teaching Studio']]
+working_list: [[`MATH08073',`Wednesday',`7',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08073',`Wednesday',`8',`NUC_2.03 - Hawthorn Teaching Studio']]
+working_list: [[`MATH11207',`Wednesday',`1',`JCMB_1206c - Teaching Studio'],[`MATH11207',`Wednesday',`2',`JCMB_1206c - Teaching Studio']]
+Number of neighbourhoods: 1
+=============== VNS iteration: 8 ===============
+Time elapsed: 876.7639684
+Neighbourhood 1: sum total: 468
+22
+New best solution with objective:[0,22,22]
+
+------------------------------------------
+Calculating objective function
+------------------------------------------
+
+Category Clash Penalty: 0
+Wednesday classes penalty: 22
+Total penalty in objective value: 22
+working_list: [[`MATH08075',`Wednesday',`1',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`2',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`3',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`4',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`5',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`6',`NUC_2.03 - Hawthorn Teaching Studio']]
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+working_list: [[`MATH10051',`Wednesday',`3',`JCMB_3211 - Teaching Studio'],[`MATH10051',`Wednesday',`4',`JCMB_3211 - Teaching Studio']]
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+All constraints satisfied!
+obj: [0,21,21]
+working_list: [[`MATH11192',`Wednesday',`9',`JCMB_Lecture Theatre C'],[`MATH11192',`Wednesday',`10',`JCMB_Lecture Theatre C']]
+working_list: [[`MATH11205',`Wednesday',`1',`JCMB_1501'],[`MATH11205',`Wednesday',`2',`JCMB_1501']]
+working_list: [[`MATH11205',`Wednesday',`3',`JCMB_3212 - Teaching Studio'],[`MATH11205',`Wednesday',`4',`JCMB_3212 - Teaching Studio']]
+working_list: [[`MATH11205',`Wednesday',`1',`MH_G.07 - Teaching Studio'],[`MATH11205',`Wednesday',`2',`MH_G.07 - Teaching Studio']]
+working_list: [[`MATH08073',`Wednesday',`7',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08073',`Wednesday',`8',`NUC_2.03 - Hawthorn Teaching Studio']]
+working_list: [[`MATH11207',`Wednesday',`1',`JCMB_1206c - Teaching Studio'],[`MATH11207',`Wednesday',`2',`JCMB_1206c - Teaching Studio']]
+Number of neighbourhoods: 1
+=============== VNS iteration: 9 ===============
+Time elapsed: 955.7795615
+Neighbourhood 1: sum total: 468
+21
+New best solution with objective:[0,21,21]
+
+------------------------------------------
+Calculating objective function
+------------------------------------------
+
+Category Clash Penalty: 0
+Wednesday classes penalty: 21
+Total penalty in objective value: 21
+working_list: [[`MATH08075',`Wednesday',`1',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`2',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`3',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`4',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`5',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`6',`NUC_2.03 - Hawthorn Teaching Studio']]
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+working_list: [[`MATH11192',`Wednesday',`9',`JCMB_Lecture Theatre C'],[`MATH11192',`Wednesday',`10',`JCMB_Lecture Theatre C']]
+All constraints satisfied!
+obj: [0,20,20]
+working_list: [[`MATH11205',`Wednesday',`1',`JCMB_1501'],[`MATH11205',`Wednesday',`2',`JCMB_1501']]
+working_list: [[`MATH11205',`Wednesday',`3',`JCMB_3212 - Teaching Studio'],[`MATH11205',`Wednesday',`4',`JCMB_3212 - Teaching Studio']]
+working_list: [[`MATH11205',`Wednesday',`1',`MH_G.07 - Teaching Studio'],[`MATH11205',`Wednesday',`2',`MH_G.07 - Teaching Studio']]
+working_list: [[`MATH08073',`Wednesday',`7',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08073',`Wednesday',`8',`NUC_2.03 - Hawthorn Teaching Studio']]
+working_list: [[`MATH11207',`Wednesday',`1',`JCMB_1206c - Teaching Studio'],[`MATH11207',`Wednesday',`2',`JCMB_1206c - Teaching Studio']]
+Number of neighbourhoods: 1
+=============== VNS iteration: 10 ===============
+Time elapsed: 1022.712261
+Neighbourhood 1: sum total: 468
+20
+New best solution with objective:[0,20,20]
+
+------------------------------------------
+Calculating objective function
+------------------------------------------
+
+Category Clash Penalty: 0
+Wednesday classes penalty: 20
+Total penalty in objective value: 20
+working_list: [[`MATH08075',`Wednesday',`1',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`2',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`3',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`4',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`5',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`6',`NUC_2.03 - Hawthorn Teaching Studio']]
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+working_list: [[`MATH11205',`Wednesday',`1',`JCMB_1501'],[`MATH11205',`Wednesday',`2',`JCMB_1501']]
+All constraints satisfied!
+obj: [0,19,19]
+working_list: [[`MATH11205',`Wednesday',`3',`JCMB_3212 - Teaching Studio'],[`MATH11205',`Wednesday',`4',`JCMB_3212 - Teaching Studio']]
+working_list: [[`MATH11205',`Wednesday',`1',`MH_G.07 - Teaching Studio'],[`MATH11205',`Wednesday',`2',`MH_G.07 - Teaching Studio']]
+working_list: [[`MATH08073',`Wednesday',`7',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08073',`Wednesday',`8',`NUC_2.03 - Hawthorn Teaching Studio']]
+working_list: [[`MATH11207',`Wednesday',`1',`JCMB_1206c - Teaching Studio'],[`MATH11207',`Wednesday',`2',`JCMB_1206c - Teaching Studio']]
+Number of neighbourhoods: 1
+=============== VNS iteration: 11 ===============
+Time elapsed: 1083.360165
+Neighbourhood 1: sum total: 468
+19
+New best solution with objective:[0,19,19]
+
+------------------------------------------
+Calculating objective function
+------------------------------------------
+
+Category Clash Penalty: 0
+Wednesday classes penalty: 19
+Total penalty in objective value: 19
+working_list: [[`MATH08075',`Wednesday',`1',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`2',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`3',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`4',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`5',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`6',`NUC_2.03 - Hawthorn Teaching Studio']]
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+working_list: [[`MATH11205',`Wednesday',`3',`JCMB_3212 - Teaching Studio'],[`MATH11205',`Wednesday',`4',`JCMB_3212 - Teaching Studio']]
+All constraints satisfied!
+obj: [0,18,18]
+working_list: [[`MATH11205',`Wednesday',`1',`MH_G.07 - Teaching Studio'],[`MATH11205',`Wednesday',`2',`MH_G.07 - Teaching Studio']]
+working_list: [[`MATH08073',`Wednesday',`7',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08073',`Wednesday',`8',`NUC_2.03 - Hawthorn Teaching Studio']]
+working_list: [[`MATH11207',`Wednesday',`1',`JCMB_1206c - Teaching Studio'],[`MATH11207',`Wednesday',`2',`JCMB_1206c - Teaching Studio']]
+Number of neighbourhoods: 1
+=============== VNS iteration: 12 ===============
+Time elapsed: 1134.954234
+Neighbourhood 1: sum total: 468
+18
+New best solution with objective:[0,18,18]
+
+------------------------------------------
+Calculating objective function
+------------------------------------------
+
+Category Clash Penalty: 0
+Wednesday classes penalty: 18
+Total penalty in objective value: 18
+working_list: [[`MATH08075',`Wednesday',`1',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`2',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`3',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`4',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`5',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`6',`NUC_2.03 - Hawthorn Teaching Studio']]
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+working_list: [[`MATH11205',`Wednesday',`1',`MH_G.07 - Teaching Studio'],[`MATH11205',`Wednesday',`2',`MH_G.07 - Teaching Studio']]
+All constraints satisfied!
+obj: [0,17,17]
+working_list: [[`MATH08073',`Wednesday',`7',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08073',`Wednesday',`8',`NUC_2.03 - Hawthorn Teaching Studio']]
+working_list: [[`MATH11207',`Wednesday',`1',`JCMB_1206c - Teaching Studio'],[`MATH11207',`Wednesday',`2',`JCMB_1206c - Teaching Studio']]
+Number of neighbourhoods: 1
+=============== VNS iteration: 13 ===============
+Time elapsed: 1178.265075
+Neighbourhood 1: sum total: 468
+17
+New best solution with objective:[0,17,17]
+
+------------------------------------------
+Calculating objective function
+------------------------------------------
+
+Category Clash Penalty: 0
+Wednesday classes penalty: 17
+Total penalty in objective value: 17
+working_list: [[`MATH08075',`Wednesday',`1',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`2',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`3',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`4',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`5',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`6',`NUC_2.03 - Hawthorn Teaching Studio']]
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+working_list: [[`MATH08073',`Wednesday',`7',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08073',`Wednesday',`8',`NUC_2.03 - Hawthorn Teaching Studio']]
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+All constraints satisfied!
+obj: [0,16,16]
+working_list: [[`MATH11207',`Wednesday',`1',`JCMB_1206c - Teaching Studio'],[`MATH11207',`Wednesday',`2',`JCMB_1206c - Teaching Studio']]
+Number of neighbourhoods: 1
+=============== VNS iteration: 14 ===============
+Time elapsed: 1215.583229
+Neighbourhood 1: sum total: 468
+16
+New best solution with objective:[0,16,16]
+
+------------------------------------------
+Calculating objective function
+------------------------------------------
+
+Category Clash Penalty: 0
+Wednesday classes penalty: 16
+Total penalty in objective value: 16
+working_list: [[`MATH08075',`Wednesday',`1',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`2',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`3',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`4',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`5',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`6',`NUC_2.03 - Hawthorn Teaching Studio']]
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+working_list: [[`MATH11207',`Wednesday',`1',`JCMB_1206c - Teaching Studio'],[`MATH11207',`Wednesday',`2',`JCMB_1206c - Teaching Studio']]
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+All constraints satisfied!
+obj: [0,15,15]
+Number of neighbourhoods: 1
+=============== VNS iteration: 15 ===============
+Time elapsed: 1244.809237
+Neighbourhood 1: sum total: 468
+15
+New best solution with objective:[0,15,15]
+
+------------------------------------------
+Calculating objective function
+------------------------------------------
+
+Category Clash Penalty: 0
+Wednesday classes penalty: 15
+Total penalty in objective value: 15
+working_list: [[`MATH08075',`Wednesday',`1',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`2',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`3',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`4',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`5',`NUC_2.03 - Hawthorn Teaching Studio'],[`MATH08075',`Wednesday',`6',`NUC_2.03 - Hawthorn Teaching Studio']]
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Not all constraints satisfied.
+Number of neighbourhoods: 0
+Penalties before VNS: [100,37,137]
+Penalties after VNS: [0,15,15]
+Time elapsed: 1213.305561
+
+Process exited with code: 0

@@ -3,15 +3,15 @@ model checking_constraints
 
   ! Choose a sem and week
   sem := 2
-  week := 3
+  week := 4
   category_clash_penalty_weight := 10
-  wed_class_penalty_weight := 1
+  wed_class_penalty_weight := 0.5
 
   ! Timetable file name
   csvfname := jointext(["mmsheet.csv:Initial_timetables/init_tt_s", sem, "w", week, ".csv"], "")
-  datafname := "Course_groupings.txt"
   datafname := "xpress_data.txt"
-  outputfname := jointext(["Final_timetables/vns_tt_s", sem, "w", week, ".csv"], "")
+  outputfnamevns1 := jointext(["Final_timetables/vns_tt_s", sem, "w", week, ".csv"], "")
+  outputfnamevns2 := jointext(["Final_timetables/vns2_tt_s", sem, "w", week, ".csv"], "")
 
   ! ---------------------------------------------------------------------------
   ! -------------------   Loading Problem Parameters   ------------------------
@@ -35,7 +35,7 @@ model checking_constraints
       CategoryCourseGroupings:          array(Categories) of set of set of string
       CategoryGroupingsWorkshop:        array(Categories) of set of set of string
       Timetable:                        array(days, time_periods) of string
-      potential_course:                 array(Categories, days) of list of list of string
+      clashing_course:                 array(Categories, days) of list of list of string
       xi:                               array(CourseID, days, time_periods, Rooms) of integer
       yi:                               array(CourseID, days, time_periods, Rooms) of integer
       zi:                               array(CourseID, days, time_periods, Rooms) of integer
@@ -63,12 +63,27 @@ forward function daytime_swap_neighbourhoods(array(CourseID, days, time_periods,
   array(CourseID, days, time_periods, Rooms) of integer,
   array(CourseID, days, time_periods, Rooms) of integer, boolean) : set of array(days, time_periods) of list of string
 
+forward function wednesday_lecture_neighbourhoods(array(CourseID, days, time_periods, Rooms) of integer,
+  array(CourseID, days, time_periods, Rooms) of integer,
+  array(CourseID, days, time_periods, Rooms) of integer): set of array(days, time_periods) of list of string
+
+forward function wednesday_workshop_neighbourhoods(array(CourseID, days, time_periods, Rooms) of integer,
+  array(CourseID, days, time_periods, Rooms) of integer,
+  array(CourseID, days, time_periods, Rooms) of integer): set of array(days, time_periods) of list of string
+
+forward function wednesday_cws_neighbourhoods(array(CourseID, days, time_periods, Rooms) of integer,
+  array(CourseID, days, time_periods, Rooms) of integer,
+  array(CourseID, days, time_periods, Rooms) of integer): set of array(days, time_periods) of list of string
+
 forward function create_timetable(array(CourseID, days, time_periods, Rooms) of integer,
                         array(CourseID, days, time_periods, Rooms) of integer,
                         array(CourseID, days, time_periods, Rooms) of integer) : array(days, time_periods) of list of string
 
-
 forward function read_timetable(array(days, time_periods) of list of string) : list of array(CourseID, days, time_periods, Rooms) of integer
+
+forward procedure write_csv(array(CourseID, days, time_periods, Rooms) of integer,
+                          array(CourseID, days, time_periods, Rooms) of integer,
+                          array(CourseID, days, time_periods, Rooms) of integer, text)
 
   ! ---------------------------------------------------------------------------
   ! ----------------------   Loading timetable data  --------------------------
@@ -112,29 +127,24 @@ forward function read_timetable(array(days, time_periods) of list of string) : l
       if getsize(dtcr) > 2 then
         dtcr -= [cutlast(dtcr), cutfirst(dtcr)]
         course_classtype := splittext(getfirst(dtcr), "_")
-        coursecode := getfirst(course_classtype)
+        coursecode := string(getfirst(course_classtype))
         class_type := getlast(course_classtype)
-        room_name := getlast(dtcr)
+        room_name := string(getlast(dtcr))
         ! writeln("Course: ", coursecode, ", class type: ", class_type, ", Room: ", room_name)
         checking += 1
-        forall (c in CourseID, r in Rooms) do
-          if (c = coursecode) and (r = room_name) then
-            ! writeln(jointext([coursecode, "_", class_type, "~", room_name], ""))
             if (class_type = "lec") then
-              xi(c, d, t, r) := 1
+              xi(coursecode, d, t, room_name) := 1
               counting += 1
             elif class_type = "ws" then
-              yi(c, d, t, r) := 1
+              yi(coursecode, d, t, room_name) := 1
               counting += 1
             elif class_type = "cws" then
-              zi(c, d, t, r) := 1
+              zi(coursecode, d, t, room_name) := 1
               counting += 1
             else
               writeln(t, ", ", d)
-              writeln("Course: ", CourseName(c), ", class type: ", class_type, ", Room: ", room_name)
+              writeln("Course: ", CourseName(coursecode), ", class type: ", class_type, ", Room: ", room_name)
             end-if
-          end-if
-        end-do
       end-if
     end-do
     ! writeln; writeln;
@@ -158,14 +168,14 @@ forward function read_timetable(array(days, time_periods) of list of string) : l
   ! Calculate the objective function
   objective_values := calculate_objective(xi, yi, zi, TRUE)
   ClashPenalty_init := objective_values(1); WedPenalty_init := objective_values(2); TotalPenalty_init := objective_values(3)
-  ! write(potential_course)
+  ! write(clashing_course)
 
 
 
 
-!   ! ---------------------------------------------------------------------------
-!   ! ------------------------   Implementing VNS  ----------------------------
-!   ! ---------------------------------------------------------------------------
+  ! ---------------------------------------------------------------------------
+  ! -------------------------   Implementing VNS  -----------------------------
+  ! ---------------------------------------------------------------------------
   start_time := gettime
   x_new := xi; y_new := yi; z_new := zi
   Neighbourhoods_new += daytime_swap_neighbourhoods(x_new, y_new, z_new, TRUE)
@@ -208,9 +218,62 @@ writeln("Penalties after VNS: ", best_obj)
 writeln("Time elapsed: ", end_time - start_time)
 
 
+xp := best_sol(1); yp := best_sol(2); zp := best_sol(3)
+write_csv(xp, yp, zp, outputfnamevns1)
+
+
+  ! ---------------------------------------------------------------------------
+  ! ----------------------   Implementing VNS pt2.  ---------------------------
+  ! ---------------------------------------------------------------------------
+  start_time := gettime
+  x_new := xp; y_new := yp; z_new := zp
+  Neighbourhoods_new += wednesday_lecture_neighbourhoods(x_new, y_new, z_new)
+  best_penalty := best_penalty
+  best_obj := best_obj
+  best_sol := {x_new, y_new, z_new}
+  vns_it := 1
+  while ((gettime - start_time < 3600) and (getsize(Neighbourhoods_new) > 0)) do
+    writeln("=============== VNS iteration: ", vns_it, " ===============")
+    writeln("Time elapsed: ", gettime - start_time + end_time)
+    its := 0
+    forall(tt in Neighbourhoods_new) do
+      its += 1
+      write("Neighbourhood ", its, ": ")
+      out_tt := read_timetable(tt)
+      xp := out_tt(1); yp := out_tt(2); zp := out_tt(3)
+      obj_p := calculate_objective(xp, yp, zp, FALSE)
+      writeln(obj_p(3))
+      if (obj_p(3) < best_penalty) then
+        writeln("New best solution with objective:",  obj_p)
+        best_penalty := obj_p(3)
+        best_obj := obj_p
+        best_sol := {xp, yp, zp}
+      end-if
+    end-do
+    Neighbourhoods_new := {}
+    x_new := best_sol(1); y_new := best_sol(2); z_new := best_sol(3)
+    best_obj := calculate_objective(x_new, y_new, z_new, TRUE)
+    ! Neighbourhoods_new += wednesday_lecture_neighbourhoods(x_new, y_new, z_new)
+    if getsize(Neighbourhoods_new) = 0 then
+      Neighbourhoods_new += wednesday_workshop_neighbourhoods(x_new, y_new, z_new)
+      if getsize(Neighbourhoods_new) = 0 then
+        Neighbourhoods_new += wednesday_cws_neighbourhoods(x_new, y_new, z_new)
+      end-if
+    end-if
+    best_penalty := best_obj(3)
+    best_sol := {x_new, y_new, z_new}
+    writeln("Number of neighbourhoods: ", getsize(Neighbourhoods_new))
+    vns_it += 1
+  end-do
+end_time := gettime
+
+writeln("Penalties before VNS: ", objective_values)
+writeln("Penalties after VNS: ", best_obj)
+writeln("Time elapsed: ", end_time - start_time)
 
 
 xp := best_sol(1); yp := best_sol(2); zp := best_sol(3)
+write_csv(xp, yp, zp, outputfnamevns2)
 
 
   ! --------------------------------------------------------------------------
@@ -220,8 +283,11 @@ xp := best_sol(1); yp := best_sol(2); zp := best_sol(3)
 
 
 ! Save model results to a .csv file to use for VNS (if applicable)
-fopen(outputfname, F_OUTPUT)
+procedure write_csv(x_: array(CourseID, days, time_periods, Rooms) of integer,
+                        y_: array(CourseID, days, time_periods, Rooms) of integer,
+                        z_: array(CourseID, days, time_periods, Rooms) of integer, fname: text)
 
+fopen(fname, F_OUTPUT)
   write("Time periods")
   forall(t in time_periods) write(",", t)
     writeln
@@ -229,27 +295,26 @@ fopen(outputfname, F_OUTPUT)
       write(d)
       forall(t in time_periods) do
         write(",[")
-        forall(c in CourseID, r in Rooms | xp(c,d,t,r) > 0) do
-          write("[", string(jointext(["'", c,"_lec' '"], "")), r, "']")
+        forall(c in CourseID, r in Rooms | x_(c,d,t,r) > 0) do
+          write("[", string(jointext(["'", c,"_lec''"], "")), r, "']")
         end-do
-        forall(c in CourseID, r in Rooms | yp(c,d,t,r) > 0) do
-          write("[", string(jointext(["'", c,"_ws' '"], "")), r, "']")
+        forall(c in CourseID, r in Rooms | y_(c,d,t,r) > 0) do
+          write("[", string(jointext(["'", c,"_ws''"], "")), r, "']")
         end-do
-        forall(c in CourseID, r in Rooms | zp(c,d,t,r) > 0) do
-          write("[", string(jointext(["'", c,"_cws' '"], "")), r, "']")
+        forall(c in CourseID, r in Rooms | z_(c,d,t,r) > 0) do
+          write("[", string(jointext(["'", c,"_cws''"], "")), r, "']")
         end-do
         write("]")
       end-do
     writeln
     end-do
     writeln
-
-  ! print_status
-  ! writeln
-  ! writeln("The minimised penalty = ", getobjval)
-  ! writeln("Time elapsed: ", strfmt(endtime - starttime, 2), "s.")
-
 fclose(F_OUTPUT)
+
+end-procedure
+
+! writeln(getsize(wednesday_lecture_neighbourhoods(best_sol(1), best_sol(2), best_sol(3))))
+
 
 
 
@@ -282,7 +347,7 @@ fclose(F_OUTPUT)
 
 ! writeln
 
-! writeln(potential_course)
+! writeln(clashing_course)
 
 ! ! forall(d in days, t in time_periods | sum(c in CourseID) x(c,d,t,r_) = 1) do
 ! !   forall (c in CourseID | x(c,d,tp,r_) = 1 and c<>c_) writeln("Day: ", d, " time period: ", tp, " course ", c, " in Room: ", r_)
@@ -465,7 +530,7 @@ function calculate_objective(x_: array(CourseID, days, time_periods, Rooms) of i
     writeln; writeln("------------------------------------------")
     writeln("Calculating objective function")
     writeln("------------------------------------------"); writeln
-    forall(cat in Categories, d in days) potential_course(cat, d) := []
+    forall(cat in Categories, d in days) clashing_course(cat, d) := []
   end-if
   TotalPenalty := 0
   ClashPenalty := 0
@@ -479,7 +544,7 @@ function calculate_objective(x_: array(CourseID, days, time_periods, Rooms) of i
       forall(c in cati | minlist(1, sum(r in Rooms) x_(c,d,t,r)) > 0) do
         writeln; write(CourseName(c), " (", c, "), "); writeln
         forall (r in Rooms | x_(c,d,t,r) > 0) do
-          potential_course(cat, d) += [[c,d,t,r]]
+          clashing_course(cat, d) += [[c,d,t,r]]
         end-do
       end-do
     end-if
@@ -508,7 +573,7 @@ function calculate_objective(x_: array(CourseID, days, time_periods, Rooms) of i
     end-if
   end-do
 
-  WedPenalty := wed_class_penalty_weight*sum(c in CourseID, r in Rooms, t in time_periods) (x_(c,"Wednesday", t, r) + y_(c,"Wednesday", t, r) + z_(c,"Wednesday", t, r) )
+  WedPenalty := integer(wed_class_penalty_weight*sum(c in CourseID, r in Rooms, t in time_periods) (x_(c,"Wednesday", t, r) + y_(c,"Wednesday", t, r) + z_(c,"Wednesday", t, r)))
 
   TotalPenalty += WedPenalty + ClashPenalty
 
@@ -528,76 +593,14 @@ function calculate_objective(x_: array(CourseID, days, time_periods, Rooms) of i
   ! ---------------------------------------------------------------------------
 
 
-! function daytime_swap_neighbourhoods(x_in: array(CourseID, days, time_periods, Rooms) of integer,
-!   y_in: array(CourseID, days, time_periods, Rooms) of integer,
-!   z_in: array(CourseID, days, time_periods, Rooms) of integer, odd: boolean): set of list of array(CourseID, days, time_periods, Rooms) of integer
-! Neighbourhoods := {}
-! init_obj := calculate_objective(x_in, y_in, z_in, FALSE)
-! forall(cat in Categories, d in days | getsize(potential_course(cat, d)) > 0) do
-!   writeln("Category: ", cat)
-!   clash_courses := potential_course(cat, d)
-!   if odd then
-!     indices := sum(l in 1..integer(getsize(clash_courses)/2)) [l*2 - 1]
-!   else
-!     indices := sum(l in 1..integer(getsize(clash_courses)/2)) [l*2]
-!   end-if
-!   ! writeln(indices)
-!   working_list := sum(ind in indices) [clash_courses(ind)]
-!   writeln("working_list: ", working_list)
-!   indices_wlist := sum(l in 1..integer(getsize(working_list)/2)) [l*2 - 1]
-!   writeln(indices_wlist)
-!   forall(ind in indices_wlist) do
-!     info := working_list(ind)
-!     c_ := info(1); d_:= info(2); t_:= info(3); r_:= info(4)
-!     forall (c in CourseID | sum(da in days, t in time_periods) x_in(c,da,t,r_) > 0 and c<>c_) do
-!       writeln("replacing xp here")
-!       xp:= x_in; yp := y_in; zp := z_in
-!       p_list := sum(da in days, t in time_periods | x_in(c,da,t,r_) = 1) [[c,da,t,r_]]
-!       writeln("plist: ", p_list)
-! !       ! forall(da in days, t in time_periods | x_in(c,da,t,r_) = 1) do
-! !       !   ! writeln("Day: ", da, " time period: ", t, " course ", c, " in Room: ", r_)
-! !       ! end-do
-!       if getsize(p_list) = getsize(working_list) then
-!         forall(i in 1..getsize(p_list)) do
-!           org := working_list(i)
-!           cand := p_list(i)
-!           writeln("Stuff to exchange: ", org, cand)
-!           ! writeln("Original and candidates are in the same room: ", org(4) = cand(4))
-!           ! writeln("Original and candidate before reassignment on org dt: ", xp(org(1), org(2), org(3), org(4)), " and ", xp(cand(1), org(2), org(3), cand(4)))
-!           ! writeln("Original and candidate before reassignment on cand dt: ", xp(org(1), cand(2), cand(3), org(4)), " and ",xp(cand(1), cand(2), cand(3), cand(4)))
-!           xp(org(1), org(2), org(3), org(4)) := 0; xp(org(1), cand(2), cand(3), org(4)) := 1
-!           xp(cand(1), cand(2), cand(3), cand(4)) := 0; xp(cand(1), org(2), org(3), cand(4)) := 1
-!           ! writeln("Original and candidate after reassignment on org dt: ", xp(org(1), org(2), org(3), org(4)), " and ", xp(cand(1), org(2), org(3), cand(4)))
-!           ! writeln("Original and candidate after reassignment on cand dt: ", xp(org(1), cand(2), cand(3), org(4)), " and ",xp(cand(1), cand(2), cand(3), cand(4)))
-!         end-do
-!         new_obj := calculate_objective(xp,yp,zp,FALSE)
-!         old_sum := sum(cp in CourseID, dp in days, tp in time_periods, rp in Rooms) (x_in(cp,dp,tp,rp) + y_in(cp,dp,tp,rp) + z_in(cp,dp,tp,rp))
-!         new_sum := sum(cp in CourseID, dp in days, tp in time_periods, rp in Rooms) (xp(cp,dp,tp,rp) + yp(cp,dp,tp,rp) + zp(cp,dp,tp,rp))
-!         writeln("new info: ", new_obj, init_obj, old_sum, new_sum)
-!         if ((new_obj(3) < init_obj(3)) and boolean(check_constraints(xp, yp, zp, FALSE)) and (old_sum = new_sum)) then
-!           Neighbourhoods += {[xp, yp, zp]}
-!           writeln("obj: ", calculate_objective(xp,yp,zp,FALSE))
-!         end-if
-!         writeln
-!       end-if
-!     end-do
-!   end-do
-!   writeln; writeln
-! end-do
-! returned := Neighbourhoods
-! end-function
-
-
-
-
 
 function daytime_swap_neighbourhoods(x_in: array(CourseID, days, time_periods, Rooms) of integer,
   y_in: array(CourseID, days, time_periods, Rooms) of integer,
   z_in: array(CourseID, days, time_periods, Rooms) of integer, odd: boolean): set of array(days, time_periods) of list of string
   init_obj := calculate_objective(x_in, y_in, z_in, FALSE)
-  forall(cat in Categories, d in days | getsize(potential_course(cat, d)) > 0) do
+  forall(cat in Categories, d in days | getsize(clashing_course(cat, d)) > 0) do
     writeln("Category: ", cat)
-    clash_courses := potential_course(cat, d)
+    clash_courses := clashing_course(cat, d)
     if odd then
       indices := sum(l in 1..integer(getsize(clash_courses)/2)) [l*2 - 1]
     else
@@ -637,7 +640,6 @@ function daytime_swap_neighbourhoods(x_in: array(CourseID, days, time_periods, R
           new_sum := sum(cp in CourseID, dp in days, tp in time_periods, rp in Rooms) (xp(cp,dp,tp,rp) + yp(cp,dp,tp,rp) + zp(cp,dp,tp,rp))
           writeln("new info: ", new_obj, init_obj, old_sum, new_sum)
           if ((new_obj(3) < init_obj(3)) and boolean(check_constraints(xp, yp, zp, FALSE)) and (old_sum = new_sum)) then
-            Neighbourhoods += {[xp, yp, zp]}
             Neighbourhoods_new += {create_timetable(xp, yp, zp)}
             writeln("obj: ", calculate_objective(xp,yp,zp,FALSE))
           end-if
@@ -653,6 +655,131 @@ end-function
 
 
 
+function wednesday_lecture_neighbourhoods(x_in: array(CourseID, days, time_periods, Rooms) of integer,
+  y_in: array(CourseID, days, time_periods, Rooms) of integer,
+  z_in: array(CourseID, days, time_periods, Rooms) of integer): set of array(days, time_periods) of list of string
+  better_obj := calculate_objective(x_in, y_in, z_in, FALSE)
+  Neighbourhoods_new := {}
+  forall(c_ in CourseID, r_ in Rooms | sum(t in time_periods) x_in(c_,"Wednesday",t,r_) > 0) do
+    working_list := sum(t in time_periods | xp(c_,"Wednesday", t, r_)  > 0) [[c_, "Wednesday", t, r_]]
+    writeln("working_list: ", working_list)
+    forall(d in {"Monday", "Tuesday"}) do
+      forall(t in time_periods | integer(t) < getsize(time_periods) - getsize(working_list) + 1) do
+        p_list := sum(i in 0..getsize(working_list)-1) [[c_, d, time_periods(integer(t)+i), r_]]
+        ! writeln("plist: ", p_list)
+        if getsize(p_list) > 0 then
+          ! writeln("replacing xp here")
+          xp:= x_in; yp := y_in; zp := z_in
+          forall(i in 1..getsize(p_list)) do
+            org := working_list(i)
+            cand := p_list(i)
+            ! writeln("Stuff to exchange: ", org, cand)
+            ! writeln("Original and candidates are in the same room: ", org(4) = cand(4), ", ", org(1) = cand(1))
+            ! writeln("Original and candidate before reassignment: ", xp(org(1), org(2), org(3), org(4)), " and ", xp(cand(1), cand(2), cand(3), cand(4)))
+            xp(org(1), org(2), org(3), org(4)) := 0; xp(cand(1), cand(2), cand(3), cand(4)) := 1
+            ! writeln("Original and candidate after reassignment: ", xp(org(1), org(2), org(3), org(4)), " and ", xp(cand(1), cand(2), cand(3), cand(4)))
+          end-do
+          new_obj := calculate_objective(xp,yp,zp,FALSE)
+          old_sum := sum(cp in CourseID, dp in days, tp in time_periods, rp in Rooms) (x_in(cp,dp,tp,rp) + y_in(cp,dp,tp,rp) + z_in(cp,dp,tp,rp))
+          new_sum := sum(cp in CourseID, dp in days, tp in time_periods, rp in Rooms) (xp(cp,dp,tp,rp) + yp(cp,dp,tp,rp) + zp(cp,dp,tp,rp))
+          ! writeln("new info: ", new_obj, better_obj, old_sum, new_sum)
+          if ((new_obj(1) <= better_obj(1)) and (new_obj(3) < better_obj(3)) and boolean(check_constraints(xp, yp, zp, FALSE)) and (old_sum = new_sum)) then
+            Neighbourhoods_new += {create_timetable(xp, yp, zp)}
+            better_obj := new_obj
+            writeln("obj: ", calculate_objective(xp,yp,zp,FALSE))
+          end-if
+        end-if
+      end-do
+    end-do
+  end-do
+  returned := Neighbourhoods_new
+  end-function
+
+
+function wednesday_workshop_neighbourhoods(x_in: array(CourseID, days, time_periods, Rooms) of integer,
+  y_in: array(CourseID, days, time_periods, Rooms) of integer,
+  z_in: array(CourseID, days, time_periods, Rooms) of integer): set of array(days, time_periods) of list of string
+  better_obj := calculate_objective(x_in, y_in, z_in, FALSE)
+  Neighbourhoods_new := {}
+  forall(c_ in CourseID, r_ in Rooms | sum(t in time_periods) (y_in(c_,"Wednesday",t,r_)) > 0) do
+    working_list := sum(t in time_periods | yp(c_,"Wednesday", t, r_)  > 0) [[c_, "Wednesday", t, r_]]
+    writeln("working_list: ", working_list)
+    forall(d in {"Thursday", "Friday"}) do
+      forall(t in time_periods | integer(t) < getsize(time_periods) - getsize(working_list) + 1) do
+        p_list := sum(i in 0..getsize(working_list)-1) [[c_, d, time_periods(integer(t)+i), r_]]
+        ! writeln("plist: ", p_list)
+        if getsize(p_list) > 0 then
+          ! writeln("replacing yp here")
+          xp:= x_in; yp := y_in; zp := z_in
+          forall(i in 1..getsize(p_list)) do
+            org := working_list(i)
+            cand := p_list(i)
+            ! writeln("Stuff to exchange: ", org, cand)
+            ! writeln("Original and candidates are in the same room: ", org(4) = cand(4), ", ", org(1) = cand(1))
+            ! writeln("Original and candidate before reassignment: ", yp(org(1), org(2), org(3), org(4)), " and ", yp(cand(1), cand(2), cand(3), cand(4)))
+            yp(org(1), org(2), org(3), org(4)) := 0; yp(cand(1), cand(2), cand(3), cand(4)) := 1
+            ! writeln("Original and candidate after reassignment: ", yp(org(1), org(2), org(3), org(4)), " and ", yp(cand(1), cand(2), cand(3), cand(4)))
+          end-do
+          new_obj := calculate_objective(xp,yp,zp,FALSE)
+          old_sum := sum(cp in CourseID, dp in days, tp in time_periods, rp in Rooms) (x_in(cp,dp,tp,rp) + y_in(cp,dp,tp,rp) + z_in(cp,dp,tp,rp))
+          new_sum := sum(cp in CourseID, dp in days, tp in time_periods, rp in Rooms) (xp(cp,dp,tp,rp) + yp(cp,dp,tp,rp) + zp(cp,dp,tp,rp))
+          ! writeln("new info: ", new_obj, better_obj, old_sum, new_sum)
+          if ((new_obj(1) <= better_obj(1)) and (new_obj(3) < better_obj(3)) and boolean(check_constraints(xp, yp, zp, FALSE)) and (old_sum = new_sum)) then
+            Neighbourhoods_new += {create_timetable(xp, yp, zp)}
+            better_obj := new_obj
+            writeln("obj: ", calculate_objective(xp,yp,zp,FALSE))
+          end-if
+        end-if
+      end-do
+    end-do
+  end-do
+  returned := Neighbourhoods_new
+end-function
+
+
+
+
+function wednesday_cws_neighbourhoods(x_in: array(CourseID, days, time_periods, Rooms) of integer,
+  y_in: array(CourseID, days, time_periods, Rooms) of integer,
+  z_in: array(CourseID, days, time_periods, Rooms) of integer): set of array(days, time_periods) of list of string
+  better_obj := calculate_objective(x_in, y_in, z_in, FALSE)
+  Neighbourhoods_new := {}
+  forall(c_ in CourseID, r_ in Rooms | sum(t in time_periods) z_in(c_,"Wednesday",t,r_) > 0) do
+    working_list := sum(t in time_periods | zp(c_,"Wednesday", t, r_)  > 0) [[c_, "Wednesday", t, r_]]
+    writeln("working_list: ", working_list)
+    forall(d in {"Thursday", "Friday"}) do
+      forall(t in time_periods | integer(t) < getsize(time_periods) - getsize(working_list) + 1) do
+        p_list := sum(i in 0..getsize(working_list)-1) [[c_, d, time_periods(integer(t)+i), r_]]
+        writeln("plist: ", p_list)
+        if getsize(p_list) > 0 then
+          writeln("replacing zp here")
+          xp:= x_in; yp := y_in; zp := z_in
+          forall(i in 1..getsize(p_list)) do
+            org := working_list(i)
+            cand := p_list(i)
+            writeln("Stuff to exchange: ", org, cand)
+            writeln("Original and candidates are in the same room: ", org(4) = cand(4), ", ", org(1) = cand(1))
+            writeln("Original and candidate before reassignment: ", zp(org(1), org(2), org(3), org(4)), " and ", zp(cand(1), cand(2), cand(3), cand(4)))
+            zp(org(1), org(2), org(3), org(4)) := 0; zp(cand(1), cand(2), cand(3), cand(4)) := 1
+            writeln("Original and candidate after reassignment: ", zp(org(1), org(2), org(3), org(4)), " and ", zp(cand(1), cand(2), cand(3), cand(4)))
+          end-do
+          new_obj := calculate_objective(xp,yp,zp,FALSE)
+          old_sum := sum(cp in CourseID, dp in days, tp in time_periods, rp in Rooms) (x_in(cp,dp,tp,rp) + y_in(cp,dp,tp,rp) + z_in(cp,dp,tp,rp))
+          new_sum := sum(cp in CourseID, dp in days, tp in time_periods, rp in Rooms) (xp(cp,dp,tp,rp) + yp(cp,dp,tp,rp) + zp(cp,dp,tp,rp))
+          ! writeln("new info: ", new_obj, better_obj, old_sum, new_sum)
+          if ((new_obj(1) <= better_obj(1)) and (new_obj(3) < better_obj(3)) and boolean(check_constraints(xp, yp, zp, FALSE)) and (old_sum = new_sum)) then
+            Neighbourhoods_new += {create_timetable(xp, yp, zp)}
+            better_obj := new_obj
+            writeln("obj: ", calculate_objective(xp,yp,zp,FALSE))
+          end-if
+        end-if
+      end-do
+    end-do
+  end-do
+  returned := Neighbourhoods_new
+end-function
+
+
 function create_timetable(x_: array(CourseID, days, time_periods, Rooms) of integer,
                         y_: array(CourseID, days, time_periods, Rooms) of integer,
                         z_: array(CourseID, days, time_periods, Rooms) of integer) : array(days, time_periods) of list of string
@@ -664,15 +791,12 @@ forall(d in days, t in time_periods) do
   output_tt(d, t) := []
   forall(c in CourseID, r in Rooms | x_(c,d,t,r) > 0) do
     output_tt(d, t) += [string(jointext([c,"_lec"], "")), r]
-    ! writeln(CourseName(c), "(", c, "_lec) in ", r)
   end-do
   forall(c in CourseID, r in Rooms | y_(c,d,t,r) > 0) do
     output_tt(d, t) += [string(jointext([c,"_ws"],"")), r]
-    ! writeln(CourseName(c), "(", c, "_ws) in ", r)
   end-do
   forall(c in CourseID, r in Rooms | z_(c,d,t,r) > 0) do
     output_tt(d, t) += [string(jointext([c,"_cws"], "")), r]
-    ! writeln(CourseName(c), "(", c, "_cws) in ", r)
   end-do
 end-do
 returned := output_tt
